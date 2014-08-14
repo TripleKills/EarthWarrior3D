@@ -219,6 +219,8 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		E3E8E542199CF4020004E8D8 /* MMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E8E541199CF4020004E8D8 /* MMainScene.cpp */; };
+		E3E8E543199CF4020004E8D8 /* MMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E8E541199CF4020004E8D8 /* MMainScene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -510,6 +512,9 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		E3E8E540199CF2F20004E8D8 /* MMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMainScene.h; path = ../Classes/MMainScene.h; sourceTree = "<group>"; };
+		E3E8E541199CF4020004E8D8 /* MMainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MMainScene.cpp; path = ../Classes/MMainScene.cpp; sourceTree = "<group>"; };
+		E3E8E544199CF8500004E8D8 /* MMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMacros.h; path = ../Classes/MMacros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -579,6 +584,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E3E8E53D199CF2CF0004E8D8 /* mgame */,
 				BB0C4882190910CE0015152C /* AirCraft.cpp */,
 				BB0C4883190910CE0015152C /* AirCraft.h */,
 				BB0C4884190910CE0015152C /* Bullets.cpp */,
@@ -805,6 +811,16 @@
 				BB0C48E3190910E60015152C /* Marker Felt.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		E3E8E53D199CF2CF0004E8D8 /* mgame */ = {
+			isa = PBXGroup;
+			children = (
+				E3E8E540199CF2F20004E8D8 /* MMainScene.h */,
+				E3E8E541199CF4020004E8D8 /* MMainScene.cpp */,
+				E3E8E544199CF8500004E8D8 /* MMacros.h */,
+			);
+			name = mgame;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1140,6 +1156,7 @@
 				BB0C48AB190910CE0015152C /* Bullets.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				E3E8E542199CF4020004E8D8 /* MMainScene.cpp in Sources */,
 				BB0C48B9190910CE0015152C /* GameOverLayer.cpp in Sources */,
 				BB0C48BF190910CE0015152C /* MainMenuScene.cpp in Sources */,
 				BB0C48B3190910CE0015152C /* GameControllers.cpp in Sources */,
@@ -1160,6 +1177,7 @@
 				BB0C48B0190910CE0015152C /* Enemies.cpp in Sources */,
 				BB0C48AA190910CE0015152C /* AirCraft.cpp in Sources */,
 				BB0C48C6190910CE0015152C /* Player.cpp in Sources */,
+				E3E8E543199CF4020004E8D8 /* MMainScene.cpp in Sources */,
 				BB0C48B8190910CE0015152C /* GameLayer.cpp in Sources */,
 				BB0C48B4190910CE0015152C /* GameControllers.cpp in Sources */,
 				BB0C48C8190910CE0015152C /* PublicApi.cpp in Sources */,
