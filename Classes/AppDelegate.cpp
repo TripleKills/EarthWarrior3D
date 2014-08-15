@@ -27,6 +27,7 @@
 #include "HelloWorldScene.h"
 #include "LoadingScene.h"
 #include "SimpleAudioEngine.h"
+#include "MMainScene.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -61,7 +62,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     //auto scene = LoadingScene::createScene();
-    auto scene = MainMenuScene::createScene();
+    auto scene = MMainScene::createScene();
     //auto scene = HelloWorld::createScene();
     // run
     director->runWithScene(scene);
