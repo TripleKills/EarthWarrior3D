@@ -8,6 +8,8 @@
 
 #include "MGameScene.h"
 #include "MLayerUtil.h"
+#include "MGameEntity.h"
+#include "MPlayer.h"
 
 USING_NS_CC;
 
@@ -36,6 +38,12 @@ void MGameScene::initLayer() {
     MLayerUtil::addLayerSameZorderTag(BulletZOrder::player, BulletZOrder::enemy, bulletLayer);
     
     this->initBackground();
+    
+    auto player = MPlayer::create();
+    addChild(player);
+    player->setPosition(Vec2(200, 100));
+
+    
 }
 
 void MGameScene::onEnter(){

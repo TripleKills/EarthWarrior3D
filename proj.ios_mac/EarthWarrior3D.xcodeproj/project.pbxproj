@@ -225,6 +225,12 @@
 		E395C859199E3A3800AC2148 /* MMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E395C857199E3A3800AC2148 /* MMainScene.cpp */; };
 		E3E47023199F364200E45D99 /* MLayerUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47022199F364200E45D99 /* MLayerUtil.cpp */; };
 		E3E47024199F364200E45D99 /* MLayerUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47022199F364200E45D99 /* MLayerUtil.cpp */; };
+		E3E47028199F47AE00E45D99 /* MGameEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47027199F47AE00E45D99 /* MGameEntity.cpp */; };
+		E3E47029199F47AE00E45D99 /* MGameEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47027199F47AE00E45D99 /* MGameEntity.cpp */; };
+		E3E4702E199F570000E45D99 /* MPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E4702D199F570000E45D99 /* MPlayer.cpp */; };
+		E3E4702F199F570000E45D99 /* MPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E4702D199F570000E45D99 /* MPlayer.cpp */; };
+		E3E47031199F577300E45D99 /* MAirCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47030199F577300E45D99 /* MAirCraft.cpp */; };
+		E3E47032199F577300E45D99 /* MAirCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47030199F577300E45D99 /* MAirCraft.cpp */; };
 		E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
 		E3EA6FCD199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
 		E3EA6FD1199F030000974707 /* MStringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD0199F030000974707 /* MStringUtils.cpp */; };
@@ -529,6 +535,13 @@
 		E395C85A199E3E7A00AC2148 /* MLoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLoadingScene.h; path = ../Classes/MLoadingScene.h; sourceTree = "<group>"; };
 		E3E4701F199F360700E45D99 /* MLayerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLayerUtil.h; path = ../Classes/MLayerUtil.h; sourceTree = "<group>"; };
 		E3E47022199F364200E45D99 /* MLayerUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLayerUtil.cpp; path = ../Classes/MLayerUtil.cpp; sourceTree = "<group>"; };
+		E3E47026199F42BB00E45D99 /* MGameEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGameEntity.h; path = ../Classes/MGameEntity.h; sourceTree = "<group>"; };
+		E3E47027199F47AE00E45D99 /* MGameEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MGameEntity.cpp; path = ../Classes/MGameEntity.cpp; sourceTree = "<group>"; };
+		E3E4702A199F481400E45D99 /* MConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MConsts.h; path = ../Classes/MConsts.h; sourceTree = "<group>"; };
+		E3E4702B199F563E00E45D99 /* MAirCraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAirCraft.h; path = ../Classes/MAirCraft.h; sourceTree = "<group>"; };
+		E3E4702C199F566900E45D99 /* MPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPlayer.h; path = ../Classes/MPlayer.h; sourceTree = "<group>"; };
+		E3E4702D199F570000E45D99 /* MPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MPlayer.cpp; path = ../Classes/MPlayer.cpp; sourceTree = "<group>"; };
+		E3E47030199F577300E45D99 /* MAirCraft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MAirCraft.cpp; path = ../Classes/MAirCraft.cpp; sourceTree = "<group>"; };
 		E3EA6FCA199EF9FD00974707 /* MParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MParticleManager.h; path = ../Classes/MParticleManager.h; sourceTree = "<group>"; };
 		E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MParticleManager.cpp; path = ../Classes/MParticleManager.cpp; sourceTree = "<group>"; };
 		E3EA6FCF199F02C100974707 /* MStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MStringUtils.h; path = ../Classes/MStringUtils.h; sourceTree = "<group>"; };
@@ -836,6 +849,7 @@
 		E395C850199E39C700AC2148 /* mgame */ = {
 			isa = PBXGroup;
 			children = (
+				E3E47025199F429600E45D99 /* model */,
 				E3EA6FD3199F0A5F00974707 /* view */,
 				E3EA6FCE199F017300974707 /* utils */,
 				E3EA6FC7199EF9E600974707 /* controller */,
@@ -846,6 +860,19 @@
 				E35778E2199EE859004AA26F /* MLoadingScene.cpp */,
 			);
 			name = mgame;
+			sourceTree = "<group>";
+		};
+		E3E47025199F429600E45D99 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				E3E47026199F42BB00E45D99 /* MGameEntity.h */,
+				E3E47027199F47AE00E45D99 /* MGameEntity.cpp */,
+				E3E4702B199F563E00E45D99 /* MAirCraft.h */,
+				E3E4702C199F566900E45D99 /* MPlayer.h */,
+				E3E4702D199F570000E45D99 /* MPlayer.cpp */,
+				E3E47030199F577300E45D99 /* MAirCraft.cpp */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 		E3EA6FC7199EF9E600974707 /* controller */ = {
@@ -864,6 +891,7 @@
 				E3EA6FD0199F030000974707 /* MStringUtils.cpp */,
 				E3E4701F199F360700E45D99 /* MLayerUtil.h */,
 				E3E47022199F364200E45D99 /* MLayerUtil.cpp */,
+				E3E4702A199F481400E45D99 /* MConsts.h */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1193,8 +1221,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B21386761925C30000A2C310 /* Sprite3DEffect.cpp in Sources */,
+				E3E47028199F47AE00E45D99 /* MGameEntity.cpp in Sources */,
 				BB0C48B1190910CE0015152C /* Explosion.cpp in Sources */,
 				BB0C48BD190910CE0015152C /* LoadingScene.cpp in Sources */,
+				E3E4702E199F570000E45D99 /* MPlayer.cpp in Sources */,
 				BB0C48B5190910CE0015152C /* GameEntity.cpp in Sources */,
 				BB0C48C3190910CE0015152C /* Plane.cpp in Sources */,
 				BB0C48A9190910CE0015152C /* AirCraft.cpp in Sources */,
@@ -1220,6 +1250,7 @@
 				BB0C48B3190910CE0015152C /* GameControllers.cpp in Sources */,
 				E3EA6FD1199F030000974707 /* MStringUtils.cpp in Sources */,
 				BB0C48C7190910CE0015152C /* PublicApi.cpp in Sources */,
+				E3E47031199F577300E45D99 /* MAirCraft.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1249,9 +1280,12 @@
 				BB0C48BA190910CE0015152C /* GameOverLayer.cpp in Sources */,
 				BB0C48AE190910CE0015152C /* Effects.cpp in Sources */,
 				BB0C48BE190910CE0015152C /* LoadingScene.cpp in Sources */,
+				E3E4702F199F570000E45D99 /* MPlayer.cpp in Sources */,
 				BB0C48AC190910CE0015152C /* Bullets.cpp in Sources */,
 				BB0C48B2190910CE0015152C /* Explosion.cpp in Sources */,
+				E3E47032199F577300E45D99 /* MAirCraft.cpp in Sources */,
 				E3EA6FD2199F030000974707 /* MStringUtils.cpp in Sources */,
+				E3E47029199F47AE00E45D99 /* MGameEntity.cpp in Sources */,
 				BB0C48B6190910CE0015152C /* GameEntity.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
