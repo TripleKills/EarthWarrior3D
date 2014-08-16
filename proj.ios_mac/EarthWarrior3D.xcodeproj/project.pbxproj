@@ -223,6 +223,8 @@
 		E35778E4199EE859004AA26F /* MLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E35778E2199EE859004AA26F /* MLoadingScene.cpp */; };
 		E395C858199E3A3800AC2148 /* MMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E395C857199E3A3800AC2148 /* MMainScene.cpp */; };
 		E395C859199E3A3800AC2148 /* MMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E395C857199E3A3800AC2148 /* MMainScene.cpp */; };
+		E3E47023199F364200E45D99 /* MLayerUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47022199F364200E45D99 /* MLayerUtil.cpp */; };
+		E3E47024199F364200E45D99 /* MLayerUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47022199F364200E45D99 /* MLayerUtil.cpp */; };
 		E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
 		E3EA6FCD199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
 		E3EA6FD1199F030000974707 /* MStringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD0199F030000974707 /* MStringUtils.cpp */; };
@@ -525,6 +527,8 @@
 		E395C854199E39FD00AC2148 /* MMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMainScene.h; path = ../Classes/MMainScene.h; sourceTree = "<group>"; };
 		E395C857199E3A3800AC2148 /* MMainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MMainScene.cpp; path = ../Classes/MMainScene.cpp; sourceTree = "<group>"; };
 		E395C85A199E3E7A00AC2148 /* MLoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLoadingScene.h; path = ../Classes/MLoadingScene.h; sourceTree = "<group>"; };
+		E3E4701F199F360700E45D99 /* MLayerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLayerUtil.h; path = ../Classes/MLayerUtil.h; sourceTree = "<group>"; };
+		E3E47022199F364200E45D99 /* MLayerUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLayerUtil.cpp; path = ../Classes/MLayerUtil.cpp; sourceTree = "<group>"; };
 		E3EA6FCA199EF9FD00974707 /* MParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MParticleManager.h; path = ../Classes/MParticleManager.h; sourceTree = "<group>"; };
 		E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MParticleManager.cpp; path = ../Classes/MParticleManager.cpp; sourceTree = "<group>"; };
 		E3EA6FCF199F02C100974707 /* MStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MStringUtils.h; path = ../Classes/MStringUtils.h; sourceTree = "<group>"; };
@@ -858,6 +862,8 @@
 			children = (
 				E3EA6FCF199F02C100974707 /* MStringUtils.h */,
 				E3EA6FD0199F030000974707 /* MStringUtils.cpp */,
+				E3E4701F199F360700E45D99 /* MLayerUtil.h */,
+				E3E47022199F364200E45D99 /* MLayerUtil.cpp */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1205,6 +1211,7 @@
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */,
 				BB0C48AB190910CE0015152C /* Bullets.cpp in Sources */,
+				E3E47023199F364200E45D99 /* MLayerUtil.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 				E395C858199E3A3800AC2148 /* MMainScene.cpp in Sources */,
@@ -1237,6 +1244,7 @@
 				BB0C48C8190910CE0015152C /* PublicApi.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				BB0C48C0190910CE0015152C /* MainMenuScene.cpp in Sources */,
+				E3E47024199F364200E45D99 /* MLayerUtil.cpp in Sources */,
 				E35778E4199EE859004AA26F /* MLoadingScene.cpp in Sources */,
 				BB0C48BA190910CE0015152C /* GameOverLayer.cpp in Sources */,
 				BB0C48AE190910CE0015152C /* Effects.cpp in Sources */,
