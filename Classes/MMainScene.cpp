@@ -8,6 +8,7 @@
 
 #include "MMainScene.h"
 #include "MMacros.h"
+#include "MLoadingScene.h"
 
 USING_NS_CC;
 
@@ -44,8 +45,11 @@ bool MMainScene::init() {
 
 void MMainScene::startGame(Ref* sender) {
     LOG_FUNC
+    auto scene = MLoadingScene::createScene();
+    Director::getInstance()->replaceScene(scene);
 }
- 
+
 void MMainScene::exitGame(Ref* sender) {
     LOG_FUNC
+    Director::getInstance()->end();
 }

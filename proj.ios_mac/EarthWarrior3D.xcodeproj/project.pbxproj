@@ -219,8 +219,16 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		E35778E3199EE859004AA26F /* MLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E35778E2199EE859004AA26F /* MLoadingScene.cpp */; };
+		E35778E4199EE859004AA26F /* MLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E35778E2199EE859004AA26F /* MLoadingScene.cpp */; };
 		E395C858199E3A3800AC2148 /* MMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E395C857199E3A3800AC2148 /* MMainScene.cpp */; };
 		E395C859199E3A3800AC2148 /* MMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E395C857199E3A3800AC2148 /* MMainScene.cpp */; };
+		E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
+		E3EA6FCD199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
+		E3EA6FD1199F030000974707 /* MStringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD0199F030000974707 /* MStringUtils.cpp */; };
+		E3EA6FD2199F030000974707 /* MStringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD0199F030000974707 /* MStringUtils.cpp */; };
+		E3EA6FD6199F0AB800974707 /* MGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD5199F0AB800974707 /* MGameScene.cpp */; };
+		E3EA6FD7199F0AB800974707 /* MGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD5199F0AB800974707 /* MGameScene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -512,9 +520,17 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		E35778E2199EE859004AA26F /* MLoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLoadingScene.cpp; path = ../Classes/MLoadingScene.cpp; sourceTree = "<group>"; };
 		E395C853199E39DA00AC2148 /* MMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMacros.h; path = ../Classes/MMacros.h; sourceTree = "<group>"; };
 		E395C854199E39FD00AC2148 /* MMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMainScene.h; path = ../Classes/MMainScene.h; sourceTree = "<group>"; };
 		E395C857199E3A3800AC2148 /* MMainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MMainScene.cpp; path = ../Classes/MMainScene.cpp; sourceTree = "<group>"; };
+		E395C85A199E3E7A00AC2148 /* MLoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLoadingScene.h; path = ../Classes/MLoadingScene.h; sourceTree = "<group>"; };
+		E3EA6FCA199EF9FD00974707 /* MParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MParticleManager.h; path = ../Classes/MParticleManager.h; sourceTree = "<group>"; };
+		E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MParticleManager.cpp; path = ../Classes/MParticleManager.cpp; sourceTree = "<group>"; };
+		E3EA6FCF199F02C100974707 /* MStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MStringUtils.h; path = ../Classes/MStringUtils.h; sourceTree = "<group>"; };
+		E3EA6FD0199F030000974707 /* MStringUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MStringUtils.cpp; path = ../Classes/MStringUtils.cpp; sourceTree = "<group>"; };
+		E3EA6FD4199F0A7100974707 /* MGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGameScene.h; path = ../Classes/MGameScene.h; sourceTree = "<group>"; };
+		E3EA6FD5199F0AB800974707 /* MGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MGameScene.cpp; path = ../Classes/MGameScene.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -816,11 +832,43 @@
 		E395C850199E39C700AC2148 /* mgame */ = {
 			isa = PBXGroup;
 			children = (
+				E3EA6FD3199F0A5F00974707 /* view */,
+				E3EA6FCE199F017300974707 /* utils */,
+				E3EA6FC7199EF9E600974707 /* controller */,
 				E395C853199E39DA00AC2148 /* MMacros.h */,
 				E395C854199E39FD00AC2148 /* MMainScene.h */,
 				E395C857199E3A3800AC2148 /* MMainScene.cpp */,
+				E395C85A199E3E7A00AC2148 /* MLoadingScene.h */,
+				E35778E2199EE859004AA26F /* MLoadingScene.cpp */,
 			);
 			name = mgame;
+			sourceTree = "<group>";
+		};
+		E3EA6FC7199EF9E600974707 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				E3EA6FCA199EF9FD00974707 /* MParticleManager.h */,
+				E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		E3EA6FCE199F017300974707 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				E3EA6FCF199F02C100974707 /* MStringUtils.h */,
+				E3EA6FD0199F030000974707 /* MStringUtils.cpp */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		E3EA6FD3199F0A5F00974707 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				E3EA6FD4199F0A7100974707 /* MGameScene.h */,
+				E3EA6FD5199F0AB800974707 /* MGameScene.cpp */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1149,10 +1197,13 @@
 				BB0C48B7190910CE0015152C /* GameLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				BB0C48BB190910CE0015152C /* LicenseLayer.cpp in Sources */,
+				E35778E3199EE859004AA26F /* MLoadingScene.cpp in Sources */,
+				E3EA6FD6199F0AB800974707 /* MGameScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				BB0C48AD190910CE0015152C /* Effects.cpp in Sources */,
 				BB0C48C1190910CE0015152C /* ParticleManager.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */,
 				BB0C48AB190910CE0015152C /* Bullets.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
@@ -1160,6 +1211,7 @@
 				BB0C48B9190910CE0015152C /* GameOverLayer.cpp in Sources */,
 				BB0C48BF190910CE0015152C /* MainMenuScene.cpp in Sources */,
 				BB0C48B3190910CE0015152C /* GameControllers.cpp in Sources */,
+				E3EA6FD1199F030000974707 /* MStringUtils.cpp in Sources */,
 				BB0C48C7190910CE0015152C /* PublicApi.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1175,19 +1227,23 @@
 				BB0C48BC190910CE0015152C /* LicenseLayer.cpp in Sources */,
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
 				BB0C48B0190910CE0015152C /* Enemies.cpp in Sources */,
+				E3EA6FD7199F0AB800974707 /* MGameScene.cpp in Sources */,
 				BB0C48AA190910CE0015152C /* AirCraft.cpp in Sources */,
 				BB0C48C6190910CE0015152C /* Player.cpp in Sources */,
 				E395C859199E3A3800AC2148 /* MMainScene.cpp in Sources */,
+				E3EA6FCD199EFB4000974707 /* MParticleManager.cpp in Sources */,
 				BB0C48B8190910CE0015152C /* GameLayer.cpp in Sources */,
 				BB0C48B4190910CE0015152C /* GameControllers.cpp in Sources */,
 				BB0C48C8190910CE0015152C /* PublicApi.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				BB0C48C0190910CE0015152C /* MainMenuScene.cpp in Sources */,
+				E35778E4199EE859004AA26F /* MLoadingScene.cpp in Sources */,
 				BB0C48BA190910CE0015152C /* GameOverLayer.cpp in Sources */,
 				BB0C48AE190910CE0015152C /* Effects.cpp in Sources */,
 				BB0C48BE190910CE0015152C /* LoadingScene.cpp in Sources */,
 				BB0C48AC190910CE0015152C /* Bullets.cpp in Sources */,
 				BB0C48B2190910CE0015152C /* Explosion.cpp in Sources */,
+				E3EA6FD2199F030000974707 /* MStringUtils.cpp in Sources */,
 				BB0C48B6190910CE0015152C /* GameEntity.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
