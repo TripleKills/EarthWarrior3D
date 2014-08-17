@@ -10,6 +10,7 @@
 #include "MLayerUtil.h"
 #include "MGameEntity.h"
 #include "MPlayer.h"
+#include "MBullet.h"
 
 USING_NS_CC;
 
@@ -43,7 +44,12 @@ void MGameScene::initLayer() {
     addChild(player);
     player->setPosition(Vec2(200, 100));
 
-    
+    auto bullet = MLineBullet::create();
+    bullet->setOwner(entityTypes::kBullet);
+    bullet->setSpeed(Vec2(60,-300));
+    bullet->setDamage(100);
+    addChild(bullet);
+    bullet->setPosition(Vec2(0,700));
 }
 
 void MGameScene::onEnter(){

@@ -231,6 +231,8 @@
 		E3E4702F199F570000E45D99 /* MPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E4702D199F570000E45D99 /* MPlayer.cpp */; };
 		E3E47031199F577300E45D99 /* MAirCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47030199F577300E45D99 /* MAirCraft.cpp */; };
 		E3E47032199F577300E45D99 /* MAirCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47030199F577300E45D99 /* MAirCraft.cpp */; };
+		E3E47035199F5F3A00E45D99 /* MBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47034199F5F3A00E45D99 /* MBullet.cpp */; };
+		E3E47036199F5F3A00E45D99 /* MBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47034199F5F3A00E45D99 /* MBullet.cpp */; };
 		E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
 		E3EA6FCD199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
 		E3EA6FD1199F030000974707 /* MStringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD0199F030000974707 /* MStringUtils.cpp */; };
@@ -542,6 +544,8 @@
 		E3E4702C199F566900E45D99 /* MPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPlayer.h; path = ../Classes/MPlayer.h; sourceTree = "<group>"; };
 		E3E4702D199F570000E45D99 /* MPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MPlayer.cpp; path = ../Classes/MPlayer.cpp; sourceTree = "<group>"; };
 		E3E47030199F577300E45D99 /* MAirCraft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MAirCraft.cpp; path = ../Classes/MAirCraft.cpp; sourceTree = "<group>"; };
+		E3E47033199F5E9B00E45D99 /* MBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBullet.h; path = ../Classes/MBullet.h; sourceTree = "<group>"; };
+		E3E47034199F5F3A00E45D99 /* MBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MBullet.cpp; path = ../Classes/MBullet.cpp; sourceTree = "<group>"; };
 		E3EA6FCA199EF9FD00974707 /* MParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MParticleManager.h; path = ../Classes/MParticleManager.h; sourceTree = "<group>"; };
 		E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MParticleManager.cpp; path = ../Classes/MParticleManager.cpp; sourceTree = "<group>"; };
 		E3EA6FCF199F02C100974707 /* MStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MStringUtils.h; path = ../Classes/MStringUtils.h; sourceTree = "<group>"; };
@@ -871,6 +875,8 @@
 				E3E4702C199F566900E45D99 /* MPlayer.h */,
 				E3E4702D199F570000E45D99 /* MPlayer.cpp */,
 				E3E47030199F577300E45D99 /* MAirCraft.cpp */,
+				E3E47033199F5E9B00E45D99 /* MBullet.h */,
+				E3E47034199F5F3A00E45D99 /* MBullet.cpp */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1237,6 +1243,7 @@
 				E3EA6FD6199F0AB800974707 /* MGameScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				BB0C48AD190910CE0015152C /* Effects.cpp in Sources */,
+				E3E47035199F5F3A00E45D99 /* MBullet.cpp in Sources */,
 				BB0C48C1190910CE0015152C /* ParticleManager.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */,
@@ -1267,6 +1274,7 @@
 				BB0C48B0190910CE0015152C /* Enemies.cpp in Sources */,
 				E3EA6FD7199F0AB800974707 /* MGameScene.cpp in Sources */,
 				BB0C48AA190910CE0015152C /* AirCraft.cpp in Sources */,
+				E3E47036199F5F3A00E45D99 /* MBullet.cpp in Sources */,
 				BB0C48C6190910CE0015152C /* Player.cpp in Sources */,
 				E395C859199E3A3800AC2148 /* MMainScene.cpp in Sources */,
 				E3EA6FCD199EFB4000974707 /* MParticleManager.cpp in Sources */,

@@ -131,7 +131,7 @@ void LoadingScene::LoadingResource()
     LoadingMusic();
     
     //Loading Picture
- //   LoadingPic();
+    LoadingPic();
 }
 
 void LoadingScene::LoadingMusic()
