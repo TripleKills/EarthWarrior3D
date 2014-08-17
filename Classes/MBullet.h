@@ -26,8 +26,7 @@ public:
     
     cocos2d::Vec2 getSpeed() {return _speed;}
     void setSpeed(cocos2d::Vec2 speed);
-    
-    //CC_SYNTHESIZE(cocos2d::Vec2, _speed, Speed);
+
     CC_SYNTHESIZE(int, _owner, Owner);
     CC_SYNTHESIZE(int, _damage, Damage);
 protected:
@@ -39,6 +38,19 @@ public:
     CREATE_FUNC(MLineBullet);
     virtual bool init();
     virtual void update(float dt);
+};
+
+class MLineBackBullet : public MLineBullet {
+public:
+    MLineBackBullet();
+    CREATE_FUNC(MLineBackBullet);
+    virtual bool init();
+    virtual void update(float dt);
+    
+    void setDistX(float distX);
+    virtual void reset();
+private:
+    float _distX;
 };
 
 #endif

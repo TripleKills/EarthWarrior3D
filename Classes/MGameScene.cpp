@@ -44,12 +44,13 @@ void MGameScene::initLayer() {
     addChild(player);
     player->setPosition(Vec2(200, 100));
 
-    auto bullet = MLineBullet::create();
+    auto bullet = MLineBackBullet::create();
     bullet->setOwner(entityTypes::kBullet);
-    bullet->setSpeed(Vec2(60,-300));
+    bullet->setSpeed(Vec2(60,300));
     bullet->setDamage(100);
+    bullet->setDistX(100);
     addChild(bullet);
-    bullet->setPosition(Vec2(0,700));
+    bullet->setPosition(Vec2(180,120));
 }
 
 void MGameScene::onEnter(){

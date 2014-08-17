@@ -239,6 +239,8 @@
 		E3EA6FD2199F030000974707 /* MStringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD0199F030000974707 /* MStringUtils.cpp */; };
 		E3EA6FD6199F0AB800974707 /* MGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD5199F0AB800974707 /* MGameScene.cpp */; };
 		E3EA6FD7199F0AB800974707 /* MGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD5199F0AB800974707 /* MGameScene.cpp */; };
+		E3ED0D8D19A0CCB4005C9A79 /* MWeapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3ED0D8C19A0CCB4005C9A79 /* MWeapon.cpp */; };
+		E3ED0D8E19A0CCB4005C9A79 /* MWeapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3ED0D8C19A0CCB4005C9A79 /* MWeapon.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -552,6 +554,8 @@
 		E3EA6FD0199F030000974707 /* MStringUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MStringUtils.cpp; path = ../Classes/MStringUtils.cpp; sourceTree = "<group>"; };
 		E3EA6FD4199F0A7100974707 /* MGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGameScene.h; path = ../Classes/MGameScene.h; sourceTree = "<group>"; };
 		E3EA6FD5199F0AB800974707 /* MGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MGameScene.cpp; path = ../Classes/MGameScene.cpp; sourceTree = "<group>"; };
+		E3ED0D8919A0C847005C9A79 /* MWeapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MWeapon.h; path = ../Classes/MWeapon.h; sourceTree = "<group>"; };
+		E3ED0D8C19A0CCB4005C9A79 /* MWeapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MWeapon.cpp; path = ../Classes/MWeapon.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -877,6 +881,8 @@
 				E3E47030199F577300E45D99 /* MAirCraft.cpp */,
 				E3E47033199F5E9B00E45D99 /* MBullet.h */,
 				E3E47034199F5F3A00E45D99 /* MBullet.cpp */,
+				E3ED0D8919A0C847005C9A79 /* MWeapon.h */,
+				E3ED0D8C19A0CCB4005C9A79 /* MWeapon.cpp */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1243,6 +1249,7 @@
 				E3EA6FD6199F0AB800974707 /* MGameScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				BB0C48AD190910CE0015152C /* Effects.cpp in Sources */,
+				E3ED0D8D19A0CCB4005C9A79 /* MWeapon.cpp in Sources */,
 				E3E47035199F5F3A00E45D99 /* MBullet.cpp in Sources */,
 				BB0C48C1190910CE0015152C /* ParticleManager.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
@@ -1292,6 +1299,7 @@
 				BB0C48AC190910CE0015152C /* Bullets.cpp in Sources */,
 				BB0C48B2190910CE0015152C /* Explosion.cpp in Sources */,
 				E3E47032199F577300E45D99 /* MAirCraft.cpp in Sources */,
+				E3ED0D8E19A0CCB4005C9A79 /* MWeapon.cpp in Sources */,
 				E3EA6FD2199F030000974707 /* MStringUtils.cpp in Sources */,
 				E3E47029199F47AE00E45D99 /* MGameEntity.cpp in Sources */,
 				BB0C48B6190910CE0015152C /* GameEntity.cpp in Sources */,

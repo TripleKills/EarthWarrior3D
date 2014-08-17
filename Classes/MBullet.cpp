@@ -55,3 +55,32 @@ bool MLineBullet::init() {
 void MLineBullet::update(float dt) {
     this->setPosition(this->getPosition() + this->_speed * dt);
 }
+
+MLineBackBullet::MLineBackBullet() : _distX(0) {};
+
+void MLineBackBullet::setDistX(float distX) {
+    _distX = fabsf(distX);
+}
+
+bool MLineBackBullet::init() {
+    if(!MLineBullet::init()){
+        return false;
+    }
+    return true;
+}
+
+void MLineBackBullet::update(float dt) {
+    if (_distX > 0) {
+        MLineBullet::update(dt);
+        _distX -= fabsf(_speed.x * dt);
+        if (_distX <= 0) {
+            setSpeed(-_speed);
+        }
+    } else {
+        MLineBullet::update(dt);
+    }
+}
+
+void MLineBackBullet::reset() {
+    MLineBullet::reset();
+}
