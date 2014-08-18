@@ -233,6 +233,11 @@
 		E3E47032199F577300E45D99 /* MAirCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47030199F577300E45D99 /* MAirCraft.cpp */; };
 		E3E47035199F5F3A00E45D99 /* MBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47034199F5F3A00E45D99 /* MBullet.cpp */; };
 		E3E47036199F5F3A00E45D99 /* MBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47034199F5F3A00E45D99 /* MBullet.cpp */; };
+		E3E6F13719A228C2009658FC /* MBullet2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E6F13619A228C2009658FC /* MBullet2.cpp */; };
+		E3E6F13A19A22AA9009658FC /* MBulletAimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E6F13919A22AA9009658FC /* MBulletAimer.cpp */; };
+		E3E6F13B19A22AA9009658FC /* MBulletAimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E6F13919A22AA9009658FC /* MBulletAimer.cpp */; };
+		E3E6F13E19A22FB4009658FC /* MBulletRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E6F13D19A22FB4009658FC /* MBulletRunner.cpp */; };
+		E3E6F13F19A22FB4009658FC /* MBulletRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E6F13D19A22FB4009658FC /* MBulletRunner.cpp */; };
 		E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
 		E3EA6FCD199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
 		E3EA6FD1199F030000974707 /* MStringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD0199F030000974707 /* MStringUtils.cpp */; };
@@ -548,6 +553,12 @@
 		E3E47030199F577300E45D99 /* MAirCraft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MAirCraft.cpp; path = ../Classes/MAirCraft.cpp; sourceTree = "<group>"; };
 		E3E47033199F5E9B00E45D99 /* MBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBullet.h; path = ../Classes/MBullet.h; sourceTree = "<group>"; };
 		E3E47034199F5F3A00E45D99 /* MBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MBullet.cpp; path = ../Classes/MBullet.cpp; sourceTree = "<group>"; };
+		E3E6F13519A227DE009658FC /* MBullet2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBullet2.h; path = ../Classes/MBullet2.h; sourceTree = "<group>"; };
+		E3E6F13619A228C2009658FC /* MBullet2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MBullet2.cpp; path = ../Classes/MBullet2.cpp; sourceTree = "<group>"; };
+		E3E6F13819A22965009658FC /* MBulletAimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBulletAimer.h; path = ../Classes/MBulletAimer.h; sourceTree = "<group>"; };
+		E3E6F13919A22AA9009658FC /* MBulletAimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MBulletAimer.cpp; path = ../Classes/MBulletAimer.cpp; sourceTree = "<group>"; };
+		E3E6F13C19A22E95009658FC /* MBulletRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBulletRunner.h; path = ../Classes/MBulletRunner.h; sourceTree = "<group>"; };
+		E3E6F13D19A22FB4009658FC /* MBulletRunner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MBulletRunner.cpp; path = ../Classes/MBulletRunner.cpp; sourceTree = "<group>"; };
 		E3EA6FCA199EF9FD00974707 /* MParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MParticleManager.h; path = ../Classes/MParticleManager.h; sourceTree = "<group>"; };
 		E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MParticleManager.cpp; path = ../Classes/MParticleManager.cpp; sourceTree = "<group>"; };
 		E3EA6FCF199F02C100974707 /* MStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MStringUtils.h; path = ../Classes/MStringUtils.h; sourceTree = "<group>"; };
@@ -873,6 +884,7 @@
 		E3E47025199F429600E45D99 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				E3E6F13219A227CC009658FC /* weaponsystem */,
 				E3E47026199F42BB00E45D99 /* MGameEntity.h */,
 				E3E47027199F47AE00E45D99 /* MGameEntity.cpp */,
 				E3E4702B199F563E00E45D99 /* MAirCraft.h */,
@@ -885,6 +897,19 @@
 				E3ED0D8C19A0CCB4005C9A79 /* MWeapon.cpp */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		E3E6F13219A227CC009658FC /* weaponsystem */ = {
+			isa = PBXGroup;
+			children = (
+				E3E6F13519A227DE009658FC /* MBullet2.h */,
+				E3E6F13619A228C2009658FC /* MBullet2.cpp */,
+				E3E6F13819A22965009658FC /* MBulletAimer.h */,
+				E3E6F13919A22AA9009658FC /* MBulletAimer.cpp */,
+				E3E6F13C19A22E95009658FC /* MBulletRunner.h */,
+				E3E6F13D19A22FB4009658FC /* MBulletRunner.cpp */,
+			);
+			name = weaponsystem;
 			sourceTree = "<group>";
 		};
 		E3EA6FC7199EF9E600974707 /* controller */ = {
@@ -1237,13 +1262,16 @@
 				BB0C48B1190910CE0015152C /* Explosion.cpp in Sources */,
 				BB0C48BD190910CE0015152C /* LoadingScene.cpp in Sources */,
 				E3E4702E199F570000E45D99 /* MPlayer.cpp in Sources */,
+				E3E6F13E19A22FB4009658FC /* MBulletRunner.cpp in Sources */,
 				BB0C48B5190910CE0015152C /* GameEntity.cpp in Sources */,
 				BB0C48C3190910CE0015152C /* Plane.cpp in Sources */,
 				BB0C48A9190910CE0015152C /* AirCraft.cpp in Sources */,
 				BB0C48AF190910CE0015152C /* Enemies.cpp in Sources */,
 				BB0C48C5190910CE0015152C /* Player.cpp in Sources */,
+				E3E6F13719A228C2009658FC /* MBullet2.cpp in Sources */,
 				BB0C48B7190910CE0015152C /* GameLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				E3E6F13A19A22AA9009658FC /* MBulletAimer.cpp in Sources */,
 				BB0C48BB190910CE0015152C /* LicenseLayer.cpp in Sources */,
 				E35778E3199EE859004AA26F /* MLoadingScene.cpp in Sources */,
 				E3EA6FD6199F0AB800974707 /* MGameScene.cpp in Sources */,
@@ -1276,6 +1304,7 @@
 				BB0C48C2190910CE0015152C /* ParticleManager.cpp in Sources */,
 				B21386771925C30000A2C310 /* Sprite3DEffect.cpp in Sources */,
 				BB0C48C4190910CE0015152C /* Plane.cpp in Sources */,
+				E3E6F13B19A22AA9009658FC /* MBulletAimer.cpp in Sources */,
 				BB0C48BC190910CE0015152C /* LicenseLayer.cpp in Sources */,
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
 				BB0C48B0190910CE0015152C /* Enemies.cpp in Sources */,
@@ -1288,6 +1317,7 @@
 				BB0C48B8190910CE0015152C /* GameLayer.cpp in Sources */,
 				BB0C48B4190910CE0015152C /* GameControllers.cpp in Sources */,
 				BB0C48C8190910CE0015152C /* PublicApi.cpp in Sources */,
+				E3E6F13F19A22FB4009658FC /* MBulletRunner.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				BB0C48C0190910CE0015152C /* MainMenuScene.cpp in Sources */,
 				E3E47024199F364200E45D99 /* MLayerUtil.cpp in Sources */,

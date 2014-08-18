@@ -11,6 +11,7 @@
 #include "MGameEntity.h"
 #include "MPlayer.h"
 #include "MBullet.h"
+#include "MBullet2.h"
 
 USING_NS_CC;
 
@@ -44,13 +45,23 @@ void MGameScene::initLayer() {
     addChild(player);
     player->setPosition(Vec2(200, 100));
 
-    auto bullet = MLineBackBullet::create();
+    auto bullet = MBullet2::create();
+    /**
     bullet->setOwner(entityTypes::kBullet);
     bullet->setSpeed(Vec2(60,300));
     bullet->setDamage(100);
     bullet->setDistX(100);
+     */
+    auto aimer = MBulletAimerTargeted::create(4, player);
+    
+    auto runner = MBulletRunnerLine::create();
+    bullet->setRotation(-120);
+    bullet->setSpeed(200);
+    bullet->setDamage(100);
+    bullet->setAimer(aimer);
+    bullet->setRunner(runner);
     addChild(bullet);
-    bullet->setPosition(Vec2(180,120));
+    bullet->setPosition(Vec2(580,720));
 }
 
 void MGameScene::onEnter(){
