@@ -47,6 +47,15 @@ void MBullet2::update(float dt) {
     }
 }
 
+void MBulletAimer::aim(Node* node, Node* target) {
+    Vec2 delta = target->getPosition() - node->getPosition();
+    float angleRad = delta.getAngle();
+    float angleDeg = CC_RADIANS_TO_DEGREES(angleRad);
+    if (node->getRotation() != 90 - angleDeg) {
+        node->setRotation(90 - angleDeg);
+    }
+}
+
 MBulletAimerStatic* MBulletAimerStatic::create(float time) {
     auto aimer = new MBulletAimerStatic();
     aimer->autorelease();
@@ -69,12 +78,7 @@ MBulletAimerTargeted* MBulletAimerTargeted::create(float time, Node* target) {
 void MBulletAimerTargeted::update(float dt) {
     CCASSERT(_owner != nullptr, "owner must exist");
     CCASSERT(_target != nullptr, "_target must exist");
-    Vec2 delta = _target->getPosition() - _owner->getPosition();
-    float angleRad = delta.getAngle();
-    float angleDeg = CC_RADIANS_TO_DEGREES(angleRad);
-    if (_owner->getRotation() != 90 - angleDeg) {
-        _owner->setRotation(90 - angleDeg);
-    }
+    MBulletAimer::aim(_owner, _target);
 }
 
 MBulletRunnerLine* MBulletRunnerLine::create() {
@@ -97,11 +101,6 @@ MBulletRunnerTarget* MBulletRunnerTarget::create() {
 void MBulletRunnerTarget::update(float dt) {
     CCASSERT(_owner != nullptr, "owner must exist");
     CCASSERT(_target != nullptr, "target must exist");
-    Vec2 delta = _target->getPosition() - _owner->getPosition();
-    float angleRad = delta.getAngle();
-    float angleDeg = CC_RADIANS_TO_DEGREES(angleRad);
-    if (_owner->getRotation() != 90 - angleDeg) {
-        _owner->setRotation(90 - angleDeg);
-    }
+    MBulletAimer::aim(_owner, _target);
     _owner->forward(dt * _owner->getSpeed());
 }
