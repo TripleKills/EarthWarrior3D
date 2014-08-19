@@ -20,7 +20,7 @@ MWeaponLoader* MWeaponLoader::create() {
 
 Vector<MBullet2*> MWeaponLoader::getBullets() {
     Vector<MBullet2*> bullets;
-    for (int i = 0 ; i < 8; i++) {
+    for (int i = 0 ; i < 18; i++) {
         auto bullet = MBullet2::create();
         auto runner = MBulletRunnerLine::create();
         auto aimer = MBulletAimerStatic::create(2);
@@ -42,9 +42,12 @@ MWeaponEmitterArc* MWeaponEmitterArc::create() {
 
 void MWeaponEmitterArc::emmit(cocos2d::Vector<MBullet2*> bullets) {
     auto iter = bullets.begin();
+    int count = bullets.size();
+    float deltaRotation = 10;
+    
     float time = 0;
     Vec2 vec = Vec2(160, 200);
-    float rotation = -50;
+    float rotation = -count * deltaRotation / 2;
     while(iter != bullets.end()) {
         (*iter)->setPosition(vec+=Vec2(5,0));
         (*iter)->getAimer()->setTime(0);
