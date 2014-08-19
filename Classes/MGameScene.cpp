@@ -13,6 +13,7 @@
 #include "MBullet.h"
 #include "MBullet2.h"
 #include "MWeapon2.h"
+#include "MEnemy.h"
 
 USING_NS_CC;
 
@@ -77,6 +78,11 @@ void MGameScene::initLayer() {
     _weapon2->setEmitter(emitter2);
     _weapon2->setPosition(Vec2(40, 40));
     player->addChild(_weapon2);
+    
+    auto enemy = MEnemyArc::create(350, 20);
+    enemy->setRotation(180);
+    addChild(enemy);
+    enemy->setPosition(Vec2(320, 700));
 }
 
 void MGameScene::onEnter(){

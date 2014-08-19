@@ -236,6 +236,8 @@
 		E3E47035199F5F3A00E45D99 /* MBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47034199F5F3A00E45D99 /* MBullet.cpp */; };
 		E3E47036199F5F3A00E45D99 /* MBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47034199F5F3A00E45D99 /* MBullet.cpp */; };
 		E3E6F13719A228C2009658FC /* MBullet2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E6F13619A228C2009658FC /* MBullet2.cpp */; };
+		E3E8778619A3894F002BAB2A /* MEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E8778519A3894F002BAB2A /* MEnemy.cpp */; };
+		E3E8778719A3894F002BAB2A /* MEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E8778519A3894F002BAB2A /* MEnemy.cpp */; };
 		E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
 		E3EA6FCD199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
 		E3EA6FD1199F030000974707 /* MStringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD0199F030000974707 /* MStringUtils.cpp */; };
@@ -555,6 +557,8 @@
 		E3E47034199F5F3A00E45D99 /* MBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MBullet.cpp; path = ../Classes/MBullet.cpp; sourceTree = "<group>"; };
 		E3E6F13519A227DE009658FC /* MBullet2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBullet2.h; path = ../Classes/MBullet2.h; sourceTree = "<group>"; };
 		E3E6F13619A228C2009658FC /* MBullet2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MBullet2.cpp; path = ../Classes/MBullet2.cpp; sourceTree = "<group>"; };
+		E3E8778419A3887E002BAB2A /* MEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MEnemy.h; path = ../Classes/MEnemy.h; sourceTree = "<group>"; };
+		E3E8778519A3894F002BAB2A /* MEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MEnemy.cpp; path = ../Classes/MEnemy.cpp; sourceTree = "<group>"; };
 		E3EA6FCA199EF9FD00974707 /* MParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MParticleManager.h; path = ../Classes/MParticleManager.h; sourceTree = "<group>"; };
 		E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MParticleManager.cpp; path = ../Classes/MParticleManager.cpp; sourceTree = "<group>"; };
 		E3EA6FCF199F02C100974707 /* MStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MStringUtils.h; path = ../Classes/MStringUtils.h; sourceTree = "<group>"; };
@@ -880,6 +884,7 @@
 		E3E47025199F429600E45D99 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				E3E8778119A38868002BAB2A /* enemy */,
 				E3E6F13219A227CC009658FC /* weaponsystem */,
 				E3E47026199F42BB00E45D99 /* MGameEntity.h */,
 				E3E47027199F47AE00E45D99 /* MGameEntity.cpp */,
@@ -904,6 +909,15 @@
 				E328643719A2F1D10098A2F6 /* MWeapon2.cpp */,
 			);
 			name = weaponsystem;
+			sourceTree = "<group>";
+		};
+		E3E8778119A38868002BAB2A /* enemy */ = {
+			isa = PBXGroup;
+			children = (
+				E3E8778419A3887E002BAB2A /* MEnemy.h */,
+				E3E8778519A3894F002BAB2A /* MEnemy.cpp */,
+			);
+			name = enemy;
 			sourceTree = "<group>";
 		};
 		E3EA6FC7199EF9E600974707 /* controller */ = {
@@ -1253,6 +1267,7 @@
 			files = (
 				B21386761925C30000A2C310 /* Sprite3DEffect.cpp in Sources */,
 				E3E47028199F47AE00E45D99 /* MGameEntity.cpp in Sources */,
+				E3E8778619A3894F002BAB2A /* MEnemy.cpp in Sources */,
 				BB0C48B1190910CE0015152C /* Explosion.cpp in Sources */,
 				BB0C48BD190910CE0015152C /* LoadingScene.cpp in Sources */,
 				E3E4702E199F570000E45D99 /* MPlayer.cpp in Sources */,
@@ -1310,6 +1325,7 @@
 				BB0C48B4190910CE0015152C /* GameControllers.cpp in Sources */,
 				BB0C48C8190910CE0015152C /* PublicApi.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				E3E8778719A3894F002BAB2A /* MEnemy.cpp in Sources */,
 				BB0C48C0190910CE0015152C /* MainMenuScene.cpp in Sources */,
 				E3E47024199F364200E45D99 /* MLayerUtil.cpp in Sources */,
 				E35778E4199EE859004AA26F /* MLoadingScene.cpp in Sources */,
