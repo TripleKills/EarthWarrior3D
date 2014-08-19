@@ -59,6 +59,8 @@ enum BatchedBulletZOrder {
     enemy_batched
 };
 
+class MWeapon2;
+
 class MGameScene : public cocos2d::Layer {
 
 public:
@@ -79,6 +81,7 @@ private:
 private:
     cocos2d::Sprite* _background;
     float _xScroll;
+    MWeapon2* _weapon;
 };
 
 

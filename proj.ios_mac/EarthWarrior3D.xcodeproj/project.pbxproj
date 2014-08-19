@@ -219,6 +219,8 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		E328643819A2F1D10098A2F6 /* MWeapon2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E328643719A2F1D10098A2F6 /* MWeapon2.cpp */; };
+		E328643919A2F1D10098A2F6 /* MWeapon2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E328643719A2F1D10098A2F6 /* MWeapon2.cpp */; };
 		E35778E3199EE859004AA26F /* MLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E35778E2199EE859004AA26F /* MLoadingScene.cpp */; };
 		E35778E4199EE859004AA26F /* MLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E35778E2199EE859004AA26F /* MLoadingScene.cpp */; };
 		E395C858199E3A3800AC2148 /* MMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E395C857199E3A3800AC2148 /* MMainScene.cpp */; };
@@ -537,6 +539,8 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		E328643619A2EB250098A2F6 /* MWeapon2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MWeapon2.h; path = ../Classes/MWeapon2.h; sourceTree = "<group>"; };
+		E328643719A2F1D10098A2F6 /* MWeapon2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MWeapon2.cpp; path = ../Classes/MWeapon2.cpp; sourceTree = "<group>"; };
 		E35778E2199EE859004AA26F /* MLoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLoadingScene.cpp; path = ../Classes/MLoadingScene.cpp; sourceTree = "<group>"; };
 		E395C853199E39DA00AC2148 /* MMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMacros.h; path = ../Classes/MMacros.h; sourceTree = "<group>"; };
 		E395C854199E39FD00AC2148 /* MMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMainScene.h; path = ../Classes/MMainScene.h; sourceTree = "<group>"; };
@@ -908,6 +912,8 @@
 				E3E6F13919A22AA9009658FC /* MBulletAimer.cpp */,
 				E3E6F13C19A22E95009658FC /* MBulletRunner.h */,
 				E3E6F13D19A22FB4009658FC /* MBulletRunner.cpp */,
+				E328643619A2EB250098A2F6 /* MWeapon2.h */,
+				E328643719A2F1D10098A2F6 /* MWeapon2.cpp */,
 			);
 			name = weaponsystem;
 			sourceTree = "<group>";
@@ -1285,6 +1291,7 @@
 				BB0C48AB190910CE0015152C /* Bullets.cpp in Sources */,
 				E3E47023199F364200E45D99 /* MLayerUtil.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				E328643819A2F1D10098A2F6 /* MWeapon2.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 				E395C858199E3A3800AC2148 /* MMainScene.cpp in Sources */,
 				BB0C48B9190910CE0015152C /* GameOverLayer.cpp in Sources */,
@@ -1324,6 +1331,7 @@
 				E35778E4199EE859004AA26F /* MLoadingScene.cpp in Sources */,
 				BB0C48BA190910CE0015152C /* GameOverLayer.cpp in Sources */,
 				BB0C48AE190910CE0015152C /* Effects.cpp in Sources */,
+				E328643919A2F1D10098A2F6 /* MWeapon2.cpp in Sources */,
 				BB0C48BE190910CE0015152C /* LoadingScene.cpp in Sources */,
 				E3E4702F199F570000E45D99 /* MPlayer.cpp in Sources */,
 				BB0C48AC190910CE0015152C /* Bullets.cpp in Sources */,

@@ -12,6 +12,7 @@
 #include "MPlayer.h"
 #include "MBullet.h"
 #include "MBullet2.h"
+#include "MWeapon2.h"
 
 USING_NS_CC;
 
@@ -45,13 +46,14 @@ void MGameScene::initLayer() {
     addChild(player);
     player->setPosition(Vec2(200, 100));
 
+    /**
     auto bullet = MBullet2::create();
     /**
     bullet->setOwner(entityTypes::kBullet);
     bullet->setSpeed(Vec2(60,300));
     bullet->setDamage(100);
     bullet->setDistX(100);
-     */
+     
     auto aimer = MBulletAimerTargeted::create(4, player);
     
     auto runner = MBulletRunnerLine::create();
@@ -62,16 +64,31 @@ void MGameScene::initLayer() {
     bullet->setRunner(runner);
     addChild(bullet);
     bullet->setPosition(Vec2(580,720));
+    */
+    _weapon = MWeapon2::create();
+    auto loader = MWeaponLoader::create();
+    auto emitter = MWeaponEmitterArc::create();
+    _weapon->setBulletsLayer(this);
+    _weapon->setLoader(loader);
+    _weapon->setInterval(1);
+    _weapon->setEmitter(emitter);
+    
+    _weapon->retain();
+    CCLOG("weapon added");
 }
 
 void MGameScene::onEnter(){
     Layer::onEnter();
-    
+    CCLOG("on enter");
     scheduleUpdate();
+    CCLOG("on enter finish");
 }
 
 void MGameScene::update(float dt) {
+    CCLOG("game scene update");
     updateBackground(dt);
+    _weapon->update(dt);
+    CCLOG("update weapon");
 }
 
 void MGameScene::updateBackground(float dt) {
