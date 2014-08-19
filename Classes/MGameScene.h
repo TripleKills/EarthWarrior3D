@@ -81,7 +81,6 @@ private:
 private:
     cocos2d::Sprite* _background;
     float _xScroll;
-    MWeapon2* _weapon;
 };
 
 

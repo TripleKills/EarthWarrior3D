@@ -26,6 +26,17 @@ void MBullet2::reset() {
     _timePassed = 0;
 }
 
+void MBullet2::setAimer(MBulletAimer* aimer) {
+    this->_aimer = aimer;
+    this->_aimer->retain();
+    this->_aimer->setOwner(this);
+};
+void MBullet2::setRunner(MBulletRunner* runner) {
+    this->_runner = runner;
+    this->_runner->retain();
+    this->_runner->setOwner(this);
+};
+
 void MBullet2::update(float dt) {
     CCASSERT(_runner != nullptr, "must set runner");
     _timePassed += dt;
@@ -34,4 +45,63 @@ void MBullet2::update(float dt) {
     } else {
         _runner->update(dt);
     }
+}
+
+MBulletAimerStatic* MBulletAimerStatic::create(float time) {
+    auto aimer = new MBulletAimerStatic();
+    aimer->autorelease();
+    aimer->setTime(time);
+    return aimer;
+}
+
+void MBulletAimerStatic::update(float dt) {
+    //do nothing
+}
+
+MBulletAimerTargeted* MBulletAimerTargeted::create(float time, Node* target) {
+    auto aimer = new MBulletAimerTargeted();
+    aimer->autorelease();
+    aimer->setTime(time);
+    aimer->_target = target;
+    return aimer;
+}
+
+void MBulletAimerTargeted::update(float dt) {
+    CCASSERT(_owner != nullptr, "owner must exist");
+    CCASSERT(_target != nullptr, "_target must exist");
+    Vec2 delta = _target->getPosition() - _owner->getPosition();
+    float angleRad = delta.getAngle();
+    float angleDeg = CC_RADIANS_TO_DEGREES(angleRad);
+    if (_owner->getRotation() != 90 - angleDeg) {
+        _owner->setRotation(90 - angleDeg);
+    }
+}
+
+MBulletRunnerLine* MBulletRunnerLine::create() {
+    auto runner = new MBulletRunnerLine();
+    runner->autorelease();
+    return runner;
+}
+
+void MBulletRunnerLine::update(float dt) {
+    CCASSERT(_owner != nullptr, "owner must exist");
+    _owner->forward(dt * _owner->getSpeed());
+}
+
+MBulletRunnerTarget* MBulletRunnerTarget::create() {
+    auto runner = new MBulletRunnerTarget();
+    runner->autorelease();
+    return runner;
+}
+
+void MBulletRunnerTarget::update(float dt) {
+    CCASSERT(_owner != nullptr, "owner must exist");
+    CCASSERT(_target != nullptr, "target must exist");
+    Vec2 delta = _target->getPosition() - _owner->getPosition();
+    float angleRad = delta.getAngle();
+    float angleDeg = CC_RADIANS_TO_DEGREES(angleRad);
+    if (_owner->getRotation() != 90 - angleDeg) {
+        _owner->setRotation(90 - angleDeg);
+    }
+    _owner->forward(dt * _owner->getSpeed());
 }

@@ -16,8 +16,13 @@ class MWeapon2;
 
 class MWeaponLoader : public cocos2d::Ref {
 public:
-    static MWeaponLoader* create();
+    MWeaponLoader(): _bulletNum(0) {};
+    static MWeaponLoader* create(int bulletNum);
     cocos2d::Vector<MBullet2*> getBullets();
+    void setTarget(cocos2d::Node* target) { this->_target = target;};
+private:
+    int _bulletNum;
+    cocos2d::Node* _target;
 };
 
 class MWeaponEmitter : public cocos2d::Ref {
@@ -31,9 +36,10 @@ public:
     virtual void emmit(cocos2d::Vector<MBullet2*> bullets);
 };
 
-class MWeapon2 : public cocos2d::Ref {
+class MWeapon2 : public cocos2d::Node {
 public:
     static MWeapon2* create();
+    virtual void onEnter();
     MWeapon2():_timePassed(-1.0f), _interval(0.0f) {};
     void update(float dt);
     void setEmitter(MWeaponEmitter* emitter);

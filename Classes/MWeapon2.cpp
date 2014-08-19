@@ -12,21 +12,24 @@
 
 USING_NS_CC;
 
-MWeaponLoader* MWeaponLoader::create() {
+MWeaponLoader* MWeaponLoader::create(int bulletNum) {
     auto loader = new MWeaponLoader();
+    loader->_bulletNum = bulletNum;
     loader->autorelease();
     return loader;
 }
 
 Vector<MBullet2*> MWeaponLoader::getBullets() {
     Vector<MBullet2*> bullets;
-    for (int i = 0 ; i < 18; i++) {
+    for (int i = 0 ; i < _bulletNum; i++) {
         auto bullet = MBullet2::create();
-        auto runner = MBulletRunnerLine::create();
+        auto runner = MBulletRunnerTarget::create();
         auto aimer = MBulletAimerStatic::create(2);
+        runner->setTarget(_target);
+        
         bullet->setAimer(aimer);
         bullet->setRotation(-120);
-        bullet->setSpeed(200);
+        bullet->setSpeed(300);
         bullet->setDamage(100);
         bullet->setRunner(runner);
         bullets.pushBack(bullet);
@@ -46,7 +49,7 @@ void MWeaponEmitterArc::emmit(cocos2d::Vector<MBullet2*> bullets) {
     float deltaRotation = 10;
     
     float time = 0;
-    Vec2 vec = Vec2(160, 200);
+    Vec2 vec = Vec2(20, 20);
     float rotation = -count * deltaRotation / 2;
     while(iter != bullets.end()) {
         (*iter)->setPosition(vec+=Vec2(5,0));
@@ -70,6 +73,10 @@ void MWeapon2::setLoader(MWeaponLoader* loader) {
     this->_loader = loader;
     this->_loader->retain();
 }
+void MWeapon2::onEnter() {
+    Node::onEnter();
+    scheduleUpdate();
+}
 void MWeapon2::update(float dt) {
     CCASSERT(nullptr != _loader, "must set loader for weapon");
     CCASSERT(nullptr != _emitter, "must set emitter for weapon");
@@ -80,6 +87,8 @@ void MWeapon2::update(float dt) {
         auto iter = bullets.begin();
         while(iter != bullets.end()) {
             _bulletsLayer->addChild(*iter);
+            Vec2 pos = convertToWorldSpace((*iter)->getPosition());
+            (*iter)->setPosition(_bulletsLayer->convertToNodeSpace(pos));
             iter++;
         }
         if(_timePassed < 0) {

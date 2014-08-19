@@ -12,8 +12,8 @@
 #include "cocos2d.h"
 
 #include "MGameEntity.h"
-#include "MBulletAimer.h"
-#include "MBulletRunner.h"
+class MBulletAimer;
+class MBulletRunner;
 
 class MBullet2 : public MGameEntity {
 public:
@@ -30,20 +30,55 @@ public:
     CC_SYNTHESIZE(int, _speed, Speed);
     
     MBulletAimer* getAimer() { return _aimer; };
-    void setAimer(MBulletAimer* aimer) {
-        this->_aimer = aimer;
-        this->_aimer->retain();
-        this->_aimer->setOwner(this);
-    };
-    void setRunner(MBulletRunner* runner) {
-        this->_runner = runner;
-        this->_runner->retain();
-        this->_runner->setOwner(this);
-    };
+    void setAimer(MBulletAimer* aimer);
+    void setRunner(MBulletRunner* runner);
 protected:
     MBulletAimer* _aimer;
     MBulletRunner* _runner;
     float _timePassed;
 };
+
+class MBulletAimer : public cocos2d::Ref {
+public:
+    CC_SYNTHESIZE(float, time, Time);
+    CC_SYNTHESIZE(MBullet2*, _owner, Owner);
+    virtual void update(float dt) = 0;
+};
+
+class MBulletAimerStatic : public MBulletAimer {
+public:
+    static MBulletAimerStatic* create(float time);
+    virtual void update(float dt);
+};
+
+class MBulletAimerTargeted : public MBulletAimer {
+public:
+    static MBulletAimerTargeted* create(float time, cocos2d::Node* target);
+    virtual void update(float dt);
+private:
+    cocos2d::Node* _target;
+};
+
+class MBulletRunner : public cocos2d::Ref {
+public:
+    virtual void update(float dt) = 0;
+    CC_SYNTHESIZE(MBullet2*, _owner, Owner);
+};
+
+class MBulletRunnerLine : public MBulletRunner {
+public:
+    static MBulletRunnerLine* create();
+    virtual void update(float dt);
+};
+
+class MBulletRunnerTarget : public MBulletRunner {
+public:
+    static MBulletRunnerTarget* create();
+    virtual void update(float dt);
+    void setTarget(cocos2d::Node* target) { this->_target = target;};
+private:
+    cocos2d::Node* _target;
+};
+
 
 #endif

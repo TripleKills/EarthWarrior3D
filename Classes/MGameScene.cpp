@@ -46,16 +46,37 @@ void MGameScene::initLayer() {
     addChild(player);
     player->setPosition(Vec2(200, 100));
 
+    auto target = Sprite3D::create("playerv002.c3b", "playerv002_256.png");
+    this->addChild(target);
+    target->setScale(5);
+    target->setPosition(Vec2(0, 900));
+    auto seq = Sequence::create(MoveBy::create(4.0, Vec2(640, 0)),
+                                               MoveBy::create(4.0, Vec2(-640,0)),nullptr);
+    auto repeat = RepeatForever::create(seq);
+    target->runAction(repeat);
 
-    _weapon = MWeapon2::create();
-    auto loader = MWeaponLoader::create();
+    
+    auto _weapon = MWeapon2::create();
+    auto loader = MWeaponLoader::create(1);
     auto emitter = MWeaponEmitterArc::create();
+    loader->setTarget(target);
     _weapon->setBulletsLayer(this);
     _weapon->setLoader(loader);
     _weapon->setInterval(1);
     _weapon->setEmitter(emitter);
+    _weapon->setPosition(Vec2(-75, 40));
+    player->addChild(_weapon);
     
-    _weapon->retain();
+    auto _weapon2 = MWeapon2::create();
+    auto loader2 = MWeaponLoader::create(1);
+    loader2->setTarget(target);
+    auto emitter2 = MWeaponEmitterArc::create();
+    _weapon2->setBulletsLayer(this);
+    _weapon2->setLoader(loader2);
+    _weapon2->setInterval(1);
+    _weapon2->setEmitter(emitter2);
+    _weapon2->setPosition(Vec2(40, 40));
+    player->addChild(_weapon2);
 }
 
 void MGameScene::onEnter(){
@@ -65,7 +86,6 @@ void MGameScene::onEnter(){
 
 void MGameScene::update(float dt) {
     updateBackground(dt);
-    _weapon->update(dt);
 }
 
 void MGameScene::updateBackground(float dt) {
