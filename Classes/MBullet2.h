@@ -43,8 +43,6 @@ public:
     CC_SYNTHESIZE(float, time, Time);
     CC_SYNTHESIZE(MBullet2*, _owner, Owner);
     virtual void update(float dt) = 0;
-
-    static void aim(cocos2d::Node* node, cocos2d::Node* target);
 };
 
 class MBulletAimerStatic : public MBulletAimer {

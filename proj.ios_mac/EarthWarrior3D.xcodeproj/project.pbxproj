@@ -236,6 +236,8 @@
 		E3E47035199F5F3A00E45D99 /* MBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47034199F5F3A00E45D99 /* MBullet.cpp */; };
 		E3E47036199F5F3A00E45D99 /* MBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47034199F5F3A00E45D99 /* MBullet.cpp */; };
 		E3E6F13719A228C2009658FC /* MBullet2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E6F13619A228C2009658FC /* MBullet2.cpp */; };
+		E3E805E419A4D7790046BA6A /* MGeometryUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E805E319A4D7790046BA6A /* MGeometryUtils.cpp */; };
+		E3E805E519A4D7790046BA6A /* MGeometryUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E805E319A4D7790046BA6A /* MGeometryUtils.cpp */; };
 		E3E8778619A3894F002BAB2A /* MEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E8778519A3894F002BAB2A /* MEnemy.cpp */; };
 		E3E8778719A3894F002BAB2A /* MEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E8778519A3894F002BAB2A /* MEnemy.cpp */; };
 		E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */; };
@@ -557,6 +559,8 @@
 		E3E47034199F5F3A00E45D99 /* MBullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MBullet.cpp; path = ../Classes/MBullet.cpp; sourceTree = "<group>"; };
 		E3E6F13519A227DE009658FC /* MBullet2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBullet2.h; path = ../Classes/MBullet2.h; sourceTree = "<group>"; };
 		E3E6F13619A228C2009658FC /* MBullet2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MBullet2.cpp; path = ../Classes/MBullet2.cpp; sourceTree = "<group>"; };
+		E3E805E019A4D73B0046BA6A /* MGeometryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGeometryUtils.h; path = ../Classes/MGeometryUtils.h; sourceTree = "<group>"; };
+		E3E805E319A4D7790046BA6A /* MGeometryUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MGeometryUtils.cpp; path = ../Classes/MGeometryUtils.cpp; sourceTree = "<group>"; };
 		E3E8778419A3887E002BAB2A /* MEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MEnemy.h; path = ../Classes/MEnemy.h; sourceTree = "<group>"; };
 		E3E8778519A3894F002BAB2A /* MEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MEnemy.cpp; path = ../Classes/MEnemy.cpp; sourceTree = "<group>"; };
 		E3EA6FCA199EF9FD00974707 /* MParticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MParticleManager.h; path = ../Classes/MParticleManager.h; sourceTree = "<group>"; };
@@ -937,6 +941,8 @@
 				E3E4701F199F360700E45D99 /* MLayerUtil.h */,
 				E3E47022199F364200E45D99 /* MLayerUtil.cpp */,
 				E3E4702A199F481400E45D99 /* MConsts.h */,
+				E3E805E019A4D73B0046BA6A /* MGeometryUtils.h */,
+				E3E805E319A4D7790046BA6A /* MGeometryUtils.cpp */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1284,6 +1290,7 @@
 				E3EA6FD6199F0AB800974707 /* MGameScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				BB0C48AD190910CE0015152C /* Effects.cpp in Sources */,
+				E3E805E419A4D7790046BA6A /* MGeometryUtils.cpp in Sources */,
 				E3ED0D8D19A0CCB4005C9A79 /* MWeapon.cpp in Sources */,
 				E3E47035199F5F3A00E45D99 /* MBullet.cpp in Sources */,
 				BB0C48C1190910CE0015152C /* ParticleManager.cpp in Sources */,
@@ -1335,6 +1342,7 @@
 				BB0C48BE190910CE0015152C /* LoadingScene.cpp in Sources */,
 				E3E4702F199F570000E45D99 /* MPlayer.cpp in Sources */,
 				BB0C48AC190910CE0015152C /* Bullets.cpp in Sources */,
+				E3E805E519A4D7790046BA6A /* MGeometryUtils.cpp in Sources */,
 				BB0C48B2190910CE0015152C /* Explosion.cpp in Sources */,
 				E3E47032199F577300E45D99 /* MAirCraft.cpp in Sources */,
 				E3ED0D8E19A0CCB4005C9A79 /* MWeapon.cpp in Sources */,

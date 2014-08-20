@@ -7,8 +7,10 @@
 //
 
 #include "MBullet2.h"
+#include "MGeometryUtils.h"
 
 USING_NS_CC;
+
 bool MBullet2::init() {
     if(!Node::init()){
         return false;
@@ -47,15 +49,6 @@ void MBullet2::update(float dt) {
     }
 }
 
-void MBulletAimer::aim(Node* node, Node* target) {
-    Vec2 delta = target->getPosition() - node->getPosition();
-    float angleRad = delta.getAngle();
-    float angleDeg = CC_RADIANS_TO_DEGREES(angleRad);
-    if (node->getRotation() != 90 - angleDeg) {
-        node->setRotation(90 - angleDeg);
-    }
-}
-
 MBulletAimerStatic* MBulletAimerStatic::create(float time) {
     auto aimer = new MBulletAimerStatic();
     aimer->autorelease();
@@ -78,7 +71,7 @@ MBulletAimerTargeted* MBulletAimerTargeted::create(float time, Node* target) {
 void MBulletAimerTargeted::update(float dt) {
     CCASSERT(_owner != nullptr, "owner must exist");
     CCASSERT(_target != nullptr, "_target must exist");
-    MBulletAimer::aim(_owner, _target);
+    MGeometryUtils::aim(_owner, _target);
 }
 
 MBulletRunnerLine* MBulletRunnerLine::create() {
@@ -101,6 +94,6 @@ MBulletRunnerTarget* MBulletRunnerTarget::create() {
 void MBulletRunnerTarget::update(float dt) {
     CCASSERT(_owner != nullptr, "owner must exist");
     CCASSERT(_target != nullptr, "target must exist");
-    MBulletAimer::aim(_owner, _target);
+    MGeometryUtils::aim(_owner, _target);
     _owner->forward(dt * _owner->getSpeed());
 }

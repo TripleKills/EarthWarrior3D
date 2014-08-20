@@ -79,7 +79,7 @@ void MGameScene::initLayer() {
     _weapon2->setPosition(Vec2(40, 40));
     player->addChild(_weapon2);
     
-    auto enemy = MEnemyArc::create(350, 20);
+    auto enemy = MEnemyStaticAimTarget::create(player);
     enemy->setRotation(180);
     addChild(enemy);
     enemy->setPosition(Vec2(320, 700));
