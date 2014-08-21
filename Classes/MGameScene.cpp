@@ -66,7 +66,7 @@ void MGameScene::initLayer() {
     _weapon->setInterval(1);
     _weapon->setEmitter(emitter);
     _weapon->setPosition(Vec2(-75, 40));
-    player->addChild(_weapon);
+    //player->addChild(_weapon);
     
     auto _weapon2 = MWeapon2::create();
     auto loader2 = MWeaponLoader::create(1);
@@ -77,7 +77,7 @@ void MGameScene::initLayer() {
     _weapon2->setInterval(1);
     _weapon2->setEmitter(emitter2);
     _weapon2->setPosition(Vec2(40, 40));
-    player->addChild(_weapon2);
+    //player->addChild(_weapon2);
     
     auto enemy = MEnemyStaticAimTarget::create(player);
     enemy->setRotation(180);
