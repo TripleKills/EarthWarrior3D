@@ -10,6 +10,7 @@
 #define EarthWarrior3D_MEnemyGeneral_h
 
 #include "cocos2d.h"
+#include "MEnemy.h"
 
 class MEnemyMajor;
 class MEnemyColonel;
@@ -31,13 +32,19 @@ public:
         return _sInstance;
     };
     
+    ~MEnemyGeneral();
+    
     void destroy();
     void update(float dt);
     CC_SYNTHESIZE(float, _interval, Interval);
 private:
     MEnemyGeneral();
+    void init();
+    
+private:
     static MEnemyGeneral* _sInstance;
     float _timePassed, _timeInterval;
+    cocos2d::Vector<MEnemyMajor*> _mMajors;
 };
 
 /**
@@ -49,9 +56,14 @@ private:
 class MEnemyMajor : public cocos2d::Ref {
 public:
     CREATE_FUNC(MEnemyMajor);
+    MEnemyMajor();
     bool init();
+    bool update(float dt);
+    void activate();
+public:
+    constexpr const static float K_LOOP_INTERVAL = -1;
 private:
-    float _time;
+    float _time, _timePassed;
     cocos2d::Vector<MEnemyColonel*> _colonels;
 };
 
@@ -62,14 +74,29 @@ private:
 class MEnemyColonel : public cocos2d::Ref {
 public:
     CREATE_FUNC(MEnemyColonel);
+    MEnemyColonel();
     bool init();
+    bool update(float dt);
+    void activate();
+    float getInterval() { return _interval; };
+    bool flee(float dt);
+public:
+    constexpr const static float K_LOOP_INTERVAL = -1;
 private:
-    float _interval;
+    float _interval, _timePassed;
 };
 
-class MEnemyColonelConscripter {};
+class MEnemyColonelConscripter : public cocos2d::Ref {
+public:
+    static MEnemyColonelConscripter* create();
+    cocos2d::Vector<MEnemy*> getEnemys();
+};
 
-class MEnemyColonelDeployer {};
+class MEnemyColonelDeployer : public cocos2d::Ref {
+public:
+    static MEnemyColonelDeployer* create();
+    void deployEnemys(cocos2d::Vector<MEnemy*> enemys);
+};
 
 
 #endif
