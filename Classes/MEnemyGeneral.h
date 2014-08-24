@@ -75,26 +75,34 @@ class MEnemyColonel : public cocos2d::Ref {
 public:
     CREATE_FUNC(MEnemyColonel);
     MEnemyColonel();
+    ~MEnemyColonel();
     bool init();
     bool update(float dt);
     void activate();
-    float getInterval() { return _interval; };
+    bool isLoop();
     bool flee(float dt);
-public:
-    constexpr const static float K_LOOP_INTERVAL = -1;
 private:
-    float _interval, _timePassed;
+    void launchAForce();
+public:
+    constexpr const static float K_ONCE_INTERVAL = -1;
+private:
+    float _interval, _timePassed, _fleeSpeed;
+    MEnemyColonelConscripter* _conscripter;
+    MEnemyColonelDeployer* _deployer;
+    cocos2d::Vector<MEnemy*> _mSoldiers;
 };
 
 class MEnemyColonelConscripter : public cocos2d::Ref {
 public:
-    static MEnemyColonelConscripter* create();
+    CREATE_FUNC(MEnemyColonelConscripter);
+    bool init();
     cocos2d::Vector<MEnemy*> getEnemys();
 };
 
 class MEnemyColonelDeployer : public cocos2d::Ref {
 public:
-    static MEnemyColonelDeployer* create();
+    CREATE_FUNC(MEnemyColonelDeployer);
+    bool init();
     void deployEnemys(cocos2d::Vector<MEnemy*> enemys);
 };
 

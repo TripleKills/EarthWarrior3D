@@ -73,7 +73,7 @@ bool MEnemyMajor::update(float dt) {
         auto colonel = _colonels.at(i);
         bool ret = colonel->update(dt);
         
-        bool isLoop = colonel->getInterval() == MEnemyColonel::K_LOOP_INTERVAL;
+        bool isLoop = colonel->isLoop();
         if (!ret && !isLoop) {
             _colonels.erase(i);
         } else if (ret) {
@@ -87,18 +87,68 @@ void MEnemyMajor::activate() {
 }
 
 
+MEnemyColonel::MEnemyColonel() : _mSoldiers(), _timePassed(0.0f),
+                                 _interval(-1), _fleeSpeed(-200) {
+
+}
+MEnemyColonel::~MEnemyColonel() {
+    
+}
 
 bool MEnemyColonel::init() {
     return true;
 }
 
 bool MEnemyColonel::flee(float dt) {
-    return true;
+    for (auto iter = _mSoldiers.begin(); iter != _mSoldiers.end(); iter++) {
+        (*iter)->unscheduleUpdate();
+        (*iter)->setPosition((*iter)->getPosition() + Vec2(0, _fleeSpeed));
+    }
+    return !_mSoldiers.empty();
 }
 
 void MEnemyColonel::activate() {
 }
 
+bool MEnemyColonel::isLoop() {
+    return _interval != MEnemyColonel::K_ONCE_INTERVAL;
+}
+
+void MEnemyColonel::launchAForce() {
+    _mSoldiers = _conscripter->getEnemys();
+    _deployer->deployEnemys(_mSoldiers);
+}
+
 bool MEnemyColonel::update(float dt) {
+    if (_timePassed == 0) {
+        launchAForce();
+    } else if (_timePassed + dt >= _interval && _interval != MEnemyColonel::K_ONCE_INTERVAL
+               && _mSoldiers.empty()) {
+        launchAForce();
+    }
+    
+    _timePassed += dt;
+    if (_interval != MEnemyColonel::K_ONCE_INTERVAL) {
+        _timePassed = _timePassed < _interval ? _timePassed : _timePassed - _interval;
+    }
+    
+    return !_mSoldiers.empty();
+}
+
+
+bool MEnemyColonelConscripter::init() {
     return true;
+}
+
+Vector<MEnemy*> MEnemyColonelConscripter::getEnemys() {
+    Vector<MEnemy*> enemys;
+    return enemys;
+}
+
+bool MEnemyColonelDeployer::init() {
+    return true;
+}
+
+void MEnemyColonelDeployer::deployEnemys(Vector<MEnemy*> enemys) {
+
 }

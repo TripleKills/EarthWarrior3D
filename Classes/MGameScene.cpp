@@ -14,6 +14,7 @@
 #include "MBullet2.h"
 #include "MWeapon2.h"
 #include "MEnemy.h"
+#include "MEnemyGeneral.h"
 
 USING_NS_CC;
 
