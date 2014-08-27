@@ -14,6 +14,8 @@
 #include "MWeapon2.h"
 #include "MEnemy.h"
 #include "MEnemyGeneral.h"
+#include "MAirCraft.h"
+#include "MJsonUtils.h"
 
 USING_NS_CC;
 
@@ -83,6 +85,12 @@ void MGameScene::initLayer() {
     enemy->setRotation(180);
     addChild(enemy);
     enemy->setPosition(Vec2(320, 700));
+    
+    auto air = new MAirCraft();
+    
+    air->initWithJson("configuration/one.json");
+    addChild(air);
+    air->print();
 }
 
 void MGameScene::onEnter(){

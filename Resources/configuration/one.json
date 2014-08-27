@@ -1,0 +1,7 @@
+{
+    "hp": 100,
+    "speed": 120,
+    "modelObj": "playerv002.c3b",
+    "modelImg": "playerv002_256.png",
+    "modelScale": 8
+}

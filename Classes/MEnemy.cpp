@@ -16,13 +16,29 @@ void MEnemy::onEnter() {
     scheduleUpdate();
 }
 
-MEnemyLine* MEnemyLine::create(float speed) {
+void MEnemyLine::print() {
+    MAirCraft::print();
+}
+
+void MEnemyLine::initWithJson(rapidjson::Document& document) {
+    MAirCraft::initWithJson(document);
+}
+
+void MEnemyLine::initWithJson(const char* fileName) {
+    MAirCraft::initWithJson(fileName);
+}
+
+MEnemyLine* MEnemyLine::createWithJson(rapidjson::Document& document){
     auto enemy = new MEnemyLine();
-    enemy->_speed = speed;
+    enemy->initWithJson(document);
     enemy->autorelease();
-    enemy->_model = Sprite3D::create("playerv002.c3b", "playerv002_256.png");
-    enemy->_model->setScale(8);
-    enemy->addChild(enemy->_model);
+    return enemy;
+}
+
+MEnemyLine* MEnemyLine::createWithJson(const char* fileName) {
+    auto enemy = new MEnemyLine();
+    enemy->initWithJson(fileName);
+    enemy->autorelease();
     return enemy;
 }
 

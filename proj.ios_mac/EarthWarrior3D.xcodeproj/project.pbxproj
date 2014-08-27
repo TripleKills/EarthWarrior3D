@@ -233,6 +233,10 @@
 		E3E4702F199F570000E45D99 /* MPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E4702D199F570000E45D99 /* MPlayer.cpp */; };
 		E3E47031199F577300E45D99 /* MAirCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47030199F577300E45D99 /* MAirCraft.cpp */; };
 		E3E47032199F577300E45D99 /* MAirCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E47030199F577300E45D99 /* MAirCraft.cpp */; };
+		E3E6822F19AE0EBD00028CF9 /* MJsonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E6822E19AE0EBD00028CF9 /* MJsonUtils.cpp */; };
+		E3E6823019AE0EBD00028CF9 /* MJsonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E6822E19AE0EBD00028CF9 /* MJsonUtils.cpp */; };
+		E3E6823219AE10E400028CF9 /* configuration in Resources */ = {isa = PBXBuildFile; fileRef = E3E6823119AE10E400028CF9 /* configuration */; };
+		E3E6823319AE10E400028CF9 /* configuration in Resources */ = {isa = PBXBuildFile; fileRef = E3E6823119AE10E400028CF9 /* configuration */; };
 		E3E6F13719A228C2009658FC /* MBullet2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E6F13619A228C2009658FC /* MBullet2.cpp */; };
 		E3E805E419A4D7790046BA6A /* MGeometryUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E805E319A4D7790046BA6A /* MGeometryUtils.cpp */; };
 		E3E805E519A4D7790046BA6A /* MGeometryUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3E805E319A4D7790046BA6A /* MGeometryUtils.cpp */; };
@@ -553,6 +557,9 @@
 		E3E4702C199F566900E45D99 /* MPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPlayer.h; path = ../Classes/MPlayer.h; sourceTree = "<group>"; };
 		E3E4702D199F570000E45D99 /* MPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MPlayer.cpp; path = ../Classes/MPlayer.cpp; sourceTree = "<group>"; };
 		E3E47030199F577300E45D99 /* MAirCraft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MAirCraft.cpp; path = ../Classes/MAirCraft.cpp; sourceTree = "<group>"; };
+		E3E6822B19AE0E9E00028CF9 /* MJsonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MJsonUtils.h; path = ../Classes/MJsonUtils.h; sourceTree = "<group>"; };
+		E3E6822E19AE0EBD00028CF9 /* MJsonUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MJsonUtils.cpp; path = ../Classes/MJsonUtils.cpp; sourceTree = "<group>"; };
+		E3E6823119AE10E400028CF9 /* configuration */ = {isa = PBXFileReference; lastKnownFileType = folder; path = configuration; sourceTree = "<group>"; };
 		E3E6F13519A227DE009658FC /* MBullet2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBullet2.h; path = ../Classes/MBullet2.h; sourceTree = "<group>"; };
 		E3E6F13619A228C2009658FC /* MBullet2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MBullet2.cpp; path = ../Classes/MBullet2.cpp; sourceTree = "<group>"; };
 		E3E805E019A4D73B0046BA6A /* MGeometryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGeometryUtils.h; path = ../Classes/MGeometryUtils.h; sourceTree = "<group>"; };
@@ -791,6 +798,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E3E6823119AE10E400028CF9 /* configuration */,
 				76B5F2EB195C47BC00C15B36 /* boss.c3b */,
 				76B5F2EC195C47BC00C15B36 /* bossCannon.c3b */,
 				76B5F2ED195C47BC00C15B36 /* coconut.c3b */,
@@ -937,6 +945,8 @@
 				E3E4702A199F481400E45D99 /* MConsts.h */,
 				E3E805E019A4D73B0046BA6A /* MGeometryUtils.h */,
 				E3E805E319A4D7790046BA6A /* MGeometryUtils.cpp */,
+				E3E6822B19AE0E9E00028CF9 /* MJsonUtils.h */,
+				E3E6822E19AE0EBD00028CF9 /* MJsonUtils.cpp */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1154,6 +1164,7 @@
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				BB0C4967190910E70015152C /* toonSmoke.plist in Resources */,
 				BB0C4937190910E70015152C /* gameover.png in Resources */,
+				E3E6823219AE10E400028CF9 /* configuration in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				BB0C4909190910E70015152C /* bossCannon.obj in Resources */,
 				BB0C490F190910E70015152C /* coconut.obj in Resources */,
@@ -1214,6 +1225,7 @@
 				BB0C492C190910E70015152C /* flare.plist in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				BB0C493E190910E70015152C /* hit.mp3 in Resources */,
+				E3E6823319AE10E400028CF9 /* configuration in Resources */,
 				BB0C494A190910E70015152C /* menuEmission.plist in Resources */,
 				BB0C4930190910E70015152C /* Marker Felt.ttf in Resources */,
 				BB0C4934190910E70015152C /* gameover_score_num.fnt in Resources */,
@@ -1296,6 +1308,7 @@
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 				E395C858199E3A3800AC2148 /* MMainScene.cpp in Sources */,
 				BB0C48B9190910CE0015152C /* GameOverLayer.cpp in Sources */,
+				E3E6822F19AE0EBD00028CF9 /* MJsonUtils.cpp in Sources */,
 				BB0C48BF190910CE0015152C /* MainMenuScene.cpp in Sources */,
 				BB0C48B3190910CE0015152C /* GameControllers.cpp in Sources */,
 				E3EA6FD1199F030000974707 /* MStringUtils.cpp in Sources */,
@@ -1323,6 +1336,7 @@
 				BB0C48B8190910CE0015152C /* GameLayer.cpp in Sources */,
 				BB0C48B4190910CE0015152C /* GameControllers.cpp in Sources */,
 				BB0C48C8190910CE0015152C /* PublicApi.cpp in Sources */,
+				E3E6823019AE0EBD00028CF9 /* MJsonUtils.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				E3E8778719A3894F002BAB2A /* MEnemy.cpp in Sources */,
 				BB0C48C0190910CE0015152C /* MainMenuScene.cpp in Sources */,

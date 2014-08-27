@@ -7,10 +7,37 @@
 //
 
 #include "MAirCraft.h"
+#include "MJsonUtils.h"
+
+USING_NS_CC;
+using namespace rapidjson;
 
 bool MAirCraft::init() {
-    if(!MGameEntity::init()) {
+    if (!MGameEntity::init()) {
         return false;
     }
     return true;
+}
+
+void MAirCraft::initWithJson(const Document& document) {
+    std::string obj = document["modelObj"].GetString();
+    std::string img = document["modelImg"].GetString();
+    _model = Sprite3D::create(obj, img);
+    _speed = document["speed"].GetDouble();
+    _hp = document["hp"].GetInt();
+    if(document.HasMember("modelScale")) {
+        float scale = document["modelScale"].GetDouble();
+        _model->setScale(scale);
+    }
+    addChild(_model);
+}
+
+void MAirCraft::initWithJson(const char* fileName) {
+    Document doc;
+    MJsonUtils::loadFileAsJson(fileName, doc);
+    initWithJson(doc);
+}
+
+void MAirCraft::print() {
+    CCLOG("MAirCraft:(speed:%f, hp:%d)", _speed, _hp);
 }

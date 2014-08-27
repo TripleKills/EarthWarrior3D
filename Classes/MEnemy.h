@@ -10,6 +10,9 @@
 #define EarthWarrior3D_MEnemy_h
 
 #include "cocos2d.h"
+#include "json/document.h"
+#include "json/writer.h"
+#include "json/stringbuffer.h"
 
 #include "MAirCraft.h"
 
@@ -20,9 +23,14 @@ public:
 
 class MEnemyLine : public MEnemy {
 public:
-    static MEnemyLine* create(float speed);
+    static MEnemyLine* createWithJson(rapidjson::Document& document);
+    static MEnemyLine* createWithJson(const char* fileName);
     virtual void update(float dt);
-    CC_SYNTHESIZE(float, _speed, Speed);
+    void print();
+private:
+    void initWithJson(rapidjson::Document& document);
+    void initWithJson(const char* fileName);
+    MEnemyLine(){};
 };
 
 class MEnemyArc : public MEnemy {

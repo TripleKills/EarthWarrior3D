@@ -81,6 +81,7 @@ public:
     void activate();
     bool isLoop();
     bool flee(float dt);
+    
 private:
     void launchAForce();
 public:
