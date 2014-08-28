@@ -8,6 +8,8 @@
 
 #include "MAirCraft.h"
 #include "MJsonUtils.h"
+#include <vector>
+#include "MStringUtils.h"
 
 USING_NS_CC;
 using namespace rapidjson;
@@ -29,6 +31,11 @@ void MAirCraft::initWithJson(const Document& document) {
         float scale = document["modelScale"].GetDouble();
         _model->setScale(scale);
     }
+    if(document.HasMember("rotation")) {
+        std::string rotations = document["rotation"].GetString();
+        _orientation = MStringUtils::parseVec3(rotations);
+        setRotation3D(_orientation);
+    }
     addChild(_model);
 }
 
@@ -39,5 +46,5 @@ void MAirCraft::initWithJson(const char* fileName) {
 }
 
 void MAirCraft::print() {
-    CCLOG("MAirCraft:(speed:%f, hp:%d)", _speed, _hp);
+    CCLOG("MAirCraft:[speed:%f, hp:%d, orientation(%f,%f,%f)]", _speed, _hp, _orientation.x, _orientation.y, _orientation.z);
 }

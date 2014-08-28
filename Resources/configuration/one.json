@@ -1,7 +1,10 @@
 {
     "hp": 100,
-    "speed": 120,
+    "speed": 220,
     "modelObj": "playerv002.c3b",
     "modelImg": "playerv002_256.png",
-    "modelScale": 8
+    "modelScale": 8,
+    "rotation":"0,0,0",
+    "rotateSpeed":10,
+    "radius":100
 }

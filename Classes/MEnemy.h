@@ -11,43 +11,64 @@
 
 #include "cocos2d.h"
 #include "json/document.h"
-#include "json/writer.h"
-#include "json/stringbuffer.h"
 
 #include "MAirCraft.h"
+
+#define CREATE_WITH_JSON(__TYPE__) \
+public:\
+    static __TYPE__* createWithJson(const char* fileName) {\
+        auto enemy = new __TYPE__();\
+        enemy->initWithJsonFile(fileName);\
+        enemy->autorelease();\
+        return enemy;\
+    }\
+    static __TYPE__* createWithJson(rapidjson::Document& document) {\
+        auto enemy = new __TYPE__();\
+        enemy->initWithJson(document);\
+        enemy->autorelease();\
+        return enemy;\
+    }\
 
 class MEnemy : public MAirCraft {
 public:
     void onEnter();
+    
+protected:
+    virtual void initWithJson(rapidjson::Document& document)=0;
+    void initWithJsonFile(const char* fileName);
 };
 
 class MEnemyLine : public MEnemy {
 public:
-    static MEnemyLine* createWithJson(rapidjson::Document& document);
-    static MEnemyLine* createWithJson(const char* fileName);
+    CREATE_WITH_JSON(MEnemyLine);
     virtual void update(float dt);
-    void print();
+protected:
+    void initWithJson(rapidjson::Document& document) { MEnemy::initWithJson(document);};
 private:
-    void initWithJson(rapidjson::Document& document);
-    void initWithJson(const char* fileName);
     MEnemyLine(){};
 };
 
 class MEnemyArc : public MEnemy {
 public:
-    static MEnemyArc* create(float speed, float rotateSpeed);
+    CREATE_WITH_JSON(MEnemyArc);
     virtual void update(float dt);
-    CC_SYNTHESIZE(float, _speed, Speed);
     CC_SYNTHESIZE(float, _rotateSpeed, RotateSpeed);
+    void print();
+protected:
+    MEnemyArc(){};
+    void initWithJson(rapidjson::Document& document);
 };
 
 class MEnemyRound : public MEnemy {
 public:
-    static MEnemyRound* create(float radius, float rotateSpeed);
+    CREATE_WITH_JSON(MEnemyRound);
+    void print();
     virtual void update(float dt);
     virtual void onEnter();
     CC_SYNTHESIZE(float, _radius, Radius);
     CC_SYNTHESIZE(float, _rotateSpeed, RotateSpeed);
+protected:
+    virtual void initWithJson(rapidjson::Document& document);
 protected:
     cocos2d::Vec2 _center;
 };
@@ -57,6 +78,8 @@ public:
     static MEnemyStaticAimTarget* create(cocos2d::Node* target);
     CC_SYNTHESIZE(cocos2d::Node*, _target, Target);
     virtual void update(float dt);
+protected:
+    void initWithJson(rapidjson::Document& document) { MEnemy::initWithJson(document);};
 };
 
 #endif

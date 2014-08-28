@@ -12,8 +12,6 @@
 #include "cocos2d.h"
 #include "MGameEntity.h"
 #include "json/document.h"
-#include "json/writer.h"
-#include "json/stringbuffer.h"
 
 class MAirCraft : public MGameEntity {
 public:

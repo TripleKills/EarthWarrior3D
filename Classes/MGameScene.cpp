@@ -86,10 +86,9 @@ void MGameScene::initLayer() {
     addChild(enemy);
     enemy->setPosition(Vec2(320, 700));
     
-    auto air = new MAirCraft();
-    
-    air->initWithJson("configuration/one.json");
+    auto air = MEnemyRound::createWithJson("configuration/one.json");
     addChild(air);
+    air->setPosition(Vec2(300,200));
     air->print();
 }
 
