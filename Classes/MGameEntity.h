@@ -10,22 +10,23 @@
 #define EarthWarrior3D_MGameEntity_h
 
 #include "cocos2d.h"
-#include "MConsts.h"
+#include "MMacros.h"
+
 
 class MGameEntity : public cocos2d::Node {
 public:
-    CREATE_FUNC(MGameEntity);
+    virtual void initWithJson(const rapidjson::Document& document);
+    virtual void print();
     
-    MGameEntity(): _type(entityTypes::kNone), _radius(0.0f), _orientation(cocos2d::Vec3(0,0,0)){};
-    
-    virtual bool init();
     void forward(float dist);
     void forward(float dist, float angle);
 
     CC_SYNTHESIZE(int, _type, Type);
     CC_SYNTHESIZE_READONLY(float, _radius, Radius);
     CC_SYNTHESIZE_READONLY(cocos2d::Vec3, _orientation, Orientation);
+    CC_SYNTHESIZE(float, _speed, Speed);
 protected:
+    MGameEntity(){};
     cocos2d::Node* _model;
 };
 

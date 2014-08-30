@@ -14,37 +14,33 @@
 USING_NS_CC;
 using namespace rapidjson;
 
-bool MAirCraft::init() {
-    if (!MGameEntity::init()) {
+void MAirCraft::initWithJson(const Document& document) {
+    MGameEntity::initWithJson(document);
+    _MAX_HP = document["hp"].GetInt();
+    _hp = _MAX_HP;
+}
+
+void MAirCraft::print() {
+    MGameEntity::print();
+    CCLOG("MAirCraft:[hp/maxhp:%d/%d]", _hp, _MAX_HP);
+}
+
+bool MAirCraft::hurt(int damage, Vec2 position) {
+    if (_hp <= 0) {
+        CCLOG("MAirCraft: hp has been to %d, not big than 0, do not hurt", _hp);
         return false;
+    }
+    _hp -= damage;
+    _hp = _hp >= 0 ? _hp : 0;
+    position = position == nullptr ? getPosition() : position;
+    onHurt(damage, position);
+    if (_hp == 0) {
+        onDead();
     }
     return true;
 }
 
-void MAirCraft::initWithJson(const Document& document) {
-    std::string obj = document["modelObj"].GetString();
-    std::string img = document["modelImg"].GetString();
-    _model = Sprite3D::create(obj, img);
-    _speed = document["speed"].GetDouble();
-    _hp = document["hp"].GetInt();
-    if(document.HasMember("modelScale")) {
-        float scale = document["modelScale"].GetDouble();
-        _model->setScale(scale);
-    }
-    if(document.HasMember("rotation")) {
-        std::string rotations = document["rotation"].GetString();
-        _orientation = MStringUtils::parseVec3(rotations);
-        setRotation3D(_orientation);
-    }
-    addChild(_model);
+void MAirCraft::onHurt(int damage, cocos2d::Vec2 position) {
 }
-
-void MAirCraft::initWithJson(const char* fileName) {
-    Document doc;
-    MJsonUtils::loadFileAsJson(fileName, doc);
-    initWithJson(doc);
-}
-
-void MAirCraft::print() {
-    CCLOG("MAirCraft:[speed:%f, hp:%d, orientation(%f,%f,%f)]", _speed, _hp, _orientation.x, _orientation.y, _orientation.z);
+void MAirCraft::onDead() {
 }

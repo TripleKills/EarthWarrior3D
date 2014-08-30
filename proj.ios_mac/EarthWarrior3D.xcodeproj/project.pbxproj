@@ -897,9 +897,9 @@
 				E3E47026199F42BB00E45D99 /* MGameEntity.h */,
 				E3E47027199F47AE00E45D99 /* MGameEntity.cpp */,
 				E3E4702B199F563E00E45D99 /* MAirCraft.h */,
+				E3E47030199F577300E45D99 /* MAirCraft.cpp */,
 				E3E4702C199F566900E45D99 /* MPlayer.h */,
 				E3E4702D199F570000E45D99 /* MPlayer.cpp */,
-				E3E47030199F577300E45D99 /* MAirCraft.cpp */,
 			);
 			name = model;
 			sourceTree = "<group>";

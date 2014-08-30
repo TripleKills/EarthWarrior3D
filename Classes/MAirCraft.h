@@ -11,17 +11,22 @@
 
 #include "cocos2d.h"
 #include "MGameEntity.h"
-#include "json/document.h"
+#include "MMacros.h"
 
 class MAirCraft : public MGameEntity {
 public:
-    virtual bool init();
+    virtual void initWithJson(const rapidjson::Document& document);
+    virtual void print();
     
-    CC_SYNTHESIZE(float, _speed, Speed);
+    bool hurt(int damage, cocos2d::Vec2 position = nullptr);
+    
+    CC_SYNTHESIZE_READONLY(int, _MAX_HP, MaxHP);
     CC_SYNTHESIZE(int, _hp, HP);
-    void initWithJson(const rapidjson::Document& document);
-    void initWithJson(const char* fileName);
-    void print();
+
+protected:
+    MAirCraft(){};
+    virtual void onHurt(int damage, cocos2d::Vec2 position);
+    virtual void onDead();
 };
 
 #endif

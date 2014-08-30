@@ -9,20 +9,8 @@
 #include "MPlayer.h"
 
 USING_NS_CC;
-
-bool MPlayer::init() {
-    if (!MAirCraft::init()) {
-        return false;
-    }
-    return true;
-}
-
 void MPlayer::onEnter() {
     Node::onEnter();
-    _model = Sprite3D::create("playerv002.c3b", "playerv002_256.png");
-    _model->setScale(8);
-    this->addChild(_model);
-    
     initTouchEvent();
 }
 

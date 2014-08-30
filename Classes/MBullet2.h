@@ -27,7 +27,6 @@ public:
 
     CC_SYNTHESIZE(int, _owner, Owner);
     CC_SYNTHESIZE(int, _damage, Damage);
-    CC_SYNTHESIZE(int, _speed, Speed);
     
     MBulletAimer* getAimer() { return _aimer; };
     void setAimer(MBulletAimer* aimer);

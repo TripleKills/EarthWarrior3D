@@ -45,7 +45,7 @@ void MGameScene::initLayer() {
     
     this->initBackground();
     
-    auto player = MPlayer::create();
+    auto player = MPlayer::createWithJson("configuration/one.json");
     addChild(player);
     player->setPosition(Vec2(200, 100));
 
@@ -81,10 +81,10 @@ void MGameScene::initLayer() {
     _weapon2->setPosition(Vec2(40, 40));
     //player->addChild(_weapon2);
     
-    auto enemy = MEnemyStaticAimTarget::create(player);
-    enemy->setRotation(180);
-    addChild(enemy);
-    enemy->setPosition(Vec2(320, 700));
+    //auto enemy = MEnemyStaticAimTarget::create(player);
+    //enemy->setRotation(180);
+    //addChild(enemy);
+    //enemy->setPosition(Vec2(320, 700));
     
     auto air = MEnemyRound::createWithJson("configuration/one.json");
     addChild(air);

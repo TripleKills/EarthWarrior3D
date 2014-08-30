@@ -11,41 +11,24 @@
 
 #include "cocos2d.h"
 #include "json/document.h"
-
 #include "MAirCraft.h"
 
-#define CREATE_WITH_JSON(__TYPE__) \
-public:\
-    static __TYPE__* createWithJson(const char* fileName) {\
-        auto enemy = new __TYPE__();\
-        enemy->initWithJsonFile(fileName);\
-        enemy->autorelease();\
-        return enemy;\
-    }\
-    static __TYPE__* createWithJson(rapidjson::Document& document) {\
-        auto enemy = new __TYPE__();\
-        enemy->initWithJson(document);\
-        enemy->autorelease();\
-        return enemy;\
-    }\
+#include "MJsonUtils.h"
+#include "MMacros.h"
+
+
 
 class MEnemy : public MAirCraft {
 public:
     void onEnter();
-    
 protected:
-    virtual void initWithJson(rapidjson::Document& document)=0;
-    void initWithJsonFile(const char* fileName);
+    virtual void initWithJson(rapidjson::Document& document);
 };
 
 class MEnemyLine : public MEnemy {
 public:
     CREATE_WITH_JSON(MEnemyLine);
     virtual void update(float dt);
-protected:
-    void initWithJson(rapidjson::Document& document) { MEnemy::initWithJson(document);};
-private:
-    MEnemyLine(){};
 };
 
 class MEnemyArc : public MEnemy {
@@ -53,10 +36,10 @@ public:
     CREATE_WITH_JSON(MEnemyArc);
     virtual void update(float dt);
     CC_SYNTHESIZE(float, _rotateSpeed, RotateSpeed);
-    void print();
+    virtual void print();
+   
 protected:
-    MEnemyArc(){};
-    void initWithJson(rapidjson::Document& document);
+    virtual void initWithJson(rapidjson::Document& document);
 };
 
 class MEnemyRound : public MEnemy {
@@ -75,11 +58,11 @@ protected:
 
 class MEnemyStaticAimTarget : public MEnemy {
 public:
-    static MEnemyStaticAimTarget* create(cocos2d::Node* target);
+    CREATE_WITH_JSON(MEnemyStaticAimTarget);
     CC_SYNTHESIZE(cocos2d::Node*, _target, Target);
     virtual void update(float dt);
 protected:
-    void initWithJson(rapidjson::Document& document) { MEnemy::initWithJson(document);};
+    void initWithJson(rapidjson::Document& document);
 };
 
 #endif

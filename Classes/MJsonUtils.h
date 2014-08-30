@@ -10,8 +10,6 @@
 #define EarthWarrior3D_MJsonUtils_h
 
 #include "json/document.h"
-#include "json/writer.h"
-#include "json/stringbuffer.h"
 #include "cocos2d.h"
 
 class MJsonUtils {

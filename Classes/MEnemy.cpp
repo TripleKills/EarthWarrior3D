@@ -8,7 +8,7 @@
 
 #include "MEnemy.h"
 #include "MGeometryUtils.h"
-#include "MJsonUtils.h"
+
 #include "MMacros.h"
 using namespace rapidjson;
 USING_NS_CC;
@@ -18,15 +18,11 @@ void MEnemy::onEnter() {
     scheduleUpdate();
 }
 
+
+
 void MEnemy::initWithJson(Document& document) {
     LOG_FUNC
     MAirCraft::initWithJson(document);
-}
-
-void MEnemy::initWithJsonFile(const char* fileName) {
-    Document doc;
-    MJsonUtils::loadFileAsJson(fileName, doc);
-    this->initWithJson(doc);
 }
 
 void MEnemyLine::update(float dt) {
@@ -75,14 +71,11 @@ void MEnemyRound::update(float dt) {
     setPosition(curPos);
 }
 
-MEnemyStaticAimTarget* MEnemyStaticAimTarget::create(Node* target) {
-    auto enemy = new MEnemyStaticAimTarget();
-    enemy->_target = target;
-    enemy->autorelease();
-    enemy->_model = Sprite3D::create("playerv002.c3b", "playerv002_256.png");
-    enemy->_model->setScale(8);
-    enemy->addChild(enemy->_model);
-    return enemy;
+
+
+
+void MEnemyStaticAimTarget::initWithJson(Document& document) {
+    MEnemy::initWithJson(document);
 }
 
 void MEnemyStaticAimTarget::update(float dt) {
