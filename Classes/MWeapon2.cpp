@@ -42,12 +42,12 @@ void MWeaponEmitterArc::emmit(cocos2d::Vector<MBullet2*> bullets) {
     int count = bullets.size();
     float deltaRotation = 10;
     
-    float time = 0;
+    float time = 3;
     Vec2 vec = Vec2(20, 20);
     float rotation = -count * deltaRotation / 2;
     while(iter != bullets.end()) {
         (*iter)->setPosition(vec+=Vec2(5,0));
-        (*iter)->getAimer()->setTime(0);
+        (*iter)->getAimer()->setTime(3);
         (*iter)->setRotation(rotation+=10);
         iter++;
     }
