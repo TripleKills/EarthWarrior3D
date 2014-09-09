@@ -87,3 +87,11 @@ Vec2 MStringUtils::parseVec2(const std::string &myString) {
     return Vec2(MStringUtils::toFloat(vec.at(0)),
                 MStringUtils::toFloat(vec.at(1)));
 }
+
+Rect MStringUtils::parseRect(const std::string &myString) {
+    std::vector<std::string> vec = MStringUtils::split(myString, ',');
+    return Rect(MStringUtils::toFloat(vec.at(0)),
+                MStringUtils::toFloat(vec.at(1)),
+                MStringUtils::toFloat(vec.at(2)),
+                MStringUtils::toFloat(vec.at(3)));
+}

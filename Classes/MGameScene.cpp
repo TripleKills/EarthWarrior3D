@@ -16,6 +16,7 @@
 #include "MEnemyGeneral.h"
 #include "MAirCraft.h"
 #include "MJsonUtils.h"
+#include "MGameController.h"
 
 USING_NS_CC;
 
@@ -68,7 +69,7 @@ void MGameScene::initLayer() {
     _weapon->setInterval(1);
     _weapon->setEmitter(emitter);
     _weapon->setPosition(Vec2(-75, 40));
-    //player->addChild(_weapon);
+    player->addChild(_weapon);
     
     auto _weapon2 = MWeapon2::create();
     auto loader2 = MWeaponLoader::create(1);
@@ -90,6 +91,8 @@ void MGameScene::initLayer() {
     addChild(air);
     air->setPosition(Vec2(300,200));
     air->print();
+    
+    MGameController::getInstance()->setPlayer(player);
 }
 
 void MGameScene::onEnter(){

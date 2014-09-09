@@ -26,7 +26,7 @@ public:\
     MJsonUtils::loadFileAsJson(fileName, doc);\
     return __TYPE__::createWithJson(doc);\
 }\
-    static __TYPE__* createWithJson(rapidjson::Document& document) {\
+    template<typename T> static __TYPE__* createWithJson(T& document) {\
     auto enemy = new __TYPE__();\
     enemy->initWithJson(document);\
     enemy->autorelease();\

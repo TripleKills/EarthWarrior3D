@@ -248,6 +248,8 @@
 		E3EA6FD2199F030000974707 /* MStringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD0199F030000974707 /* MStringUtils.cpp */; };
 		E3EA6FD6199F0AB800974707 /* MGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD5199F0AB800974707 /* MGameScene.cpp */; };
 		E3EA6FD7199F0AB800974707 /* MGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6FD5199F0AB800974707 /* MGameScene.cpp */; };
+		E3EB9A4E19B5FE6A00FE9421 /* MGameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EB9A4D19B5FE6A00FE9421 /* MGameController.cpp */; };
+		E3EB9A4F19B5FE6A00FE9421 /* MGameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EB9A4D19B5FE6A00FE9421 /* MGameController.cpp */; };
 		E3EF599519A61DBC00D6541B /* MEnemyGeneral.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EF599419A61DBC00D6541B /* MEnemyGeneral.cpp */; };
 		E3EF599619A61DBD00D6541B /* MEnemyGeneral.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3EF599419A61DBC00D6541B /* MEnemyGeneral.cpp */; };
 /* End PBXBuildFile section */
@@ -572,6 +574,8 @@
 		E3EA6FD0199F030000974707 /* MStringUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MStringUtils.cpp; path = ../Classes/MStringUtils.cpp; sourceTree = "<group>"; };
 		E3EA6FD4199F0A7100974707 /* MGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGameScene.h; path = ../Classes/MGameScene.h; sourceTree = "<group>"; };
 		E3EA6FD5199F0AB800974707 /* MGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MGameScene.cpp; path = ../Classes/MGameScene.cpp; sourceTree = "<group>"; };
+		E3EB9A4A19B5FA0F00FE9421 /* MGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGameController.h; path = ../Classes/MGameController.h; sourceTree = "<group>"; };
+		E3EB9A4D19B5FE6A00FE9421 /* MGameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MGameController.cpp; path = ../Classes/MGameController.cpp; sourceTree = "<group>"; };
 		E3EF599119A61C8300D6541B /* MEnemyGeneral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MEnemyGeneral.h; path = ../Classes/MEnemyGeneral.h; sourceTree = "<group>"; };
 		E3EF599419A61DBC00D6541B /* MEnemyGeneral.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MEnemyGeneral.cpp; path = ../Classes/MEnemyGeneral.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -931,6 +935,8 @@
 			children = (
 				E3EA6FCA199EF9FD00974707 /* MParticleManager.h */,
 				E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */,
+				E3EB9A4A19B5FA0F00FE9421 /* MGameController.h */,
+				E3EB9A4D19B5FE6A00FE9421 /* MGameController.cpp */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -1298,6 +1304,7 @@
 				BB0C48AD190910CE0015152C /* Effects.cpp in Sources */,
 				E3E805E419A4D7790046BA6A /* MGeometryUtils.cpp in Sources */,
 				BB0C48C1190910CE0015152C /* ParticleManager.cpp in Sources */,
+				E3EB9A4E19B5FE6A00FE9421 /* MGameController.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */,
 				BB0C48AB190910CE0015152C /* Bullets.cpp in Sources */,
@@ -1341,6 +1348,7 @@
 				E3E8778719A3894F002BAB2A /* MEnemy.cpp in Sources */,
 				BB0C48C0190910CE0015152C /* MainMenuScene.cpp in Sources */,
 				E3E47024199F364200E45D99 /* MLayerUtil.cpp in Sources */,
+				E3EB9A4F19B5FE6A00FE9421 /* MGameController.cpp in Sources */,
 				E3EF599619A61DBD00D6541B /* MEnemyGeneral.cpp in Sources */,
 				E35778E4199EE859004AA26F /* MLoadingScene.cpp in Sources */,
 				BB0C48BA190910CE0015152C /* GameOverLayer.cpp in Sources */,

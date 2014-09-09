@@ -13,10 +13,7 @@
 #include "json/document.h"
 #include "MAirCraft.h"
 
-#include "MJsonUtils.h"
 #include "MMacros.h"
-
-
 
 class MEnemy : public MAirCraft {
 public:

@@ -32,6 +32,8 @@ public:
     static cocos2d::Vec3 parseVec3(const std::string &myString);
     
     static cocos2d::Vec2 parseVec2(const std::string &myString);
+    
+    static cocos2d::Rect parseRect(const std::string &myString);
 };
 
 #endif

@@ -1,0 +1,14 @@
+{
+    "speed": 220,
+    "modelType":"2d",
+    "modelImg": "bullets.png",
+    "modelRect": "54,57,36,67",
+    "damage":100,
+    "runner":{
+        "target":"player"
+    },
+    "aimer":{
+        "time":5,
+        "target":"player"
+    }
+}

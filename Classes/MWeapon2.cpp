@@ -22,16 +22,10 @@ MWeaponLoader* MWeaponLoader::create(int bulletNum) {
 Vector<MBullet2*> MWeaponLoader::getBullets() {
     Vector<MBullet2*> bullets;
     for (int i = 0 ; i < _bulletNum; i++) {
-        auto bullet = MBullet2::create();
-        auto runner = MBulletRunnerTarget::create();
-        auto aimer = MBulletAimerStatic::create(2);
-        runner->setTarget(_target);
-        
-        bullet->setAimer(aimer);
+        auto bullet = MBullet2::createWithJson("configuration/two.json");
         bullet->setRotation(-120);
         bullet->setSpeed(300);
         bullet->setDamage(100);
-        bullet->setRunner(runner);
         bullets.pushBack(bullet);
     }
     return bullets;

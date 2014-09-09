@@ -13,9 +13,19 @@ USING_NS_CC;
 using namespace rapidjson;
 
 void MGameEntity::initWithJson(const Document& document) {
-    std::string obj = document["modelObj"].GetString();
+    std::string modelType = document.HasMember("modelType") ? document["modelType"].GetString(): "3d";
     std::string img = document["modelImg"].GetString();
-    _model = Sprite3D::create(obj, img);
+    if (modelType == "3d") {
+        std::string obj = document["modelObj"].GetString();
+        _model = Sprite3D::create(obj, img);
+    } else if (modelType == "2d") {
+        if (document.HasMember("modelRect")) {
+            Rect rect = MStringUtils::parseRect(document["modelRect"].GetString());
+            _model = Sprite::create(img, rect);
+        } else {
+            _model = Sprite::create(img);
+        }
+    }
     addChild(_model);
     
     if (document.HasMember("speed")) {

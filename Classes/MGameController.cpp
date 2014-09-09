@@ -7,3 +7,9 @@
 //
 
 #include "MGameController.h"
+
+USING_NS_CC;
+
+MGameController* MGameController::_sInstance = nullptr;
+
+Vector<MGameEntity*> MGameController::_aliveEnemys;

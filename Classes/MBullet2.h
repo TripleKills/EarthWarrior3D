@@ -12,14 +12,15 @@
 #include "cocos2d.h"
 
 #include "MGameEntity.h"
+#include "MMacros.h"
 class MBulletAimer;
 class MBulletRunner;
 
 class MBullet2 : public MGameEntity {
 public:
-    MBullet2() : _timePassed(0.0f){};
-    CREATE_FUNC(MBullet2);
-    virtual bool init();
+    CREATE_WITH_JSON(MBullet2);
+    virtual void print();
+    
     virtual void onEnter();
     void update(float dt);
     
@@ -31,6 +32,10 @@ public:
     MBulletAimer* getAimer() { return _aimer; };
     void setAimer(MBulletAimer* aimer);
     void setRunner(MBulletRunner* runner);
+
+protected:
+    virtual void initWithJson(rapidjson::Document& document);
+    
 protected:
     MBulletAimer* _aimer;
     MBulletRunner* _runner;
@@ -46,15 +51,18 @@ public:
 
 class MBulletAimerStatic : public MBulletAimer {
 public:
-    static MBulletAimerStatic* create(float time);
+    CREATE_WITH_JSON(MBulletAimerStatic);
+    template<typename T> void initWithJson(T& document);
     virtual void update(float dt);
 };
 
 class MBulletAimerTargeted : public MBulletAimer {
 public:
-    static MBulletAimerTargeted* create(float time, cocos2d::Node* target);
+    CREATE_WITH_JSON(MBulletAimerTargeted);
+    template<typename T> void initWithJson(T& document);
     virtual void update(float dt);
 private:
+    std::string _targetType;
     cocos2d::Node* _target;
 };
 
@@ -66,16 +74,19 @@ public:
 
 class MBulletRunnerLine : public MBulletRunner {
 public:
-    static MBulletRunnerLine* create();
+    CREATE_WITH_JSON(MBulletRunnerLine);
+    template<typename T> void initWithJson(T& document) {};
     virtual void update(float dt);
 };
 
 class MBulletRunnerTarget : public MBulletRunner {
 public:
-    static MBulletRunnerTarget* create();
+    CREATE_WITH_JSON(MBulletRunnerTarget);
+    template<typename T> void initWithJson(T& document);
     virtual void update(float dt);
     void setTarget(cocos2d::Node* target) { this->_target = target;};
 private:
+    std::string _targetType;
     cocos2d::Node* _target;
 };
 
