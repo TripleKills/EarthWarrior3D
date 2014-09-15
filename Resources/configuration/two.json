@@ -8,6 +8,7 @@
         "target":"player"
     },
     "aimer":{
+        "type":"targeted",
         "time":5,
         "target":"player"
     }

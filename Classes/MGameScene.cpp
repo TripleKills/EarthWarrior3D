@@ -48,6 +48,7 @@ void MGameScene::initLayer() {
     
     auto player = MPlayer::createWithJson("configuration/one.json");
     addChild(player);
+    MGameController::getInstance()->setPlayer(player);
     player->setPosition(Vec2(200, 100));
 
     auto target = Sprite3D::create("playerv002.c3b", "playerv002_256.png");
@@ -92,7 +93,7 @@ void MGameScene::initLayer() {
     air->setPosition(Vec2(300,200));
     air->print();
     
-    MGameController::getInstance()->setPlayer(player);
+    
 }
 
 void MGameScene::onEnter(){

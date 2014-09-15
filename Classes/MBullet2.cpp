@@ -23,9 +23,18 @@ void MBullet2::initWithJson(Document& document) {
     auto mrunner = MBulletRunnerLine::createWithJson(runner);
     setRunner(mrunner);
     
-    rapidjson::Value &aimer = document["aimer"];
-    auto maimer = MBulletAimerStatic::createWithJson(aimer);
-    setAimer(maimer);
+    if (document.HasMember("aimer")) {
+        rapidjson::Value &aimer = document["aimer"];
+        std::string type = aimer["type"].GetString();
+        MBulletAimer* maimer = nullptr;
+        if (type == "static") {
+            maimer = MBulletAimerStatic::createWithJson(aimer);
+        } else if (type == "targeted") {
+            maimer = MBulletAimerTargeted::createWithJson(aimer);
+        }
+        setAimer(maimer);
+    }
+    
     
     _timePassed = 0;
 }
@@ -45,11 +54,13 @@ void MBullet2::reset() {
 }
 
 void MBullet2::setAimer(MBulletAimer* aimer) {
+    LOG_FUNC
     this->_aimer = aimer;
     this->_aimer->retain();
     this->_aimer->setOwner(this);
 };
 void MBullet2::setRunner(MBulletRunner* runner) {
+    LOG_FUNC
     this->_runner = runner;
     this->_runner->retain();
     this->_runner->setOwner(this);
@@ -98,6 +109,8 @@ void MBulletAimerTargeted::update(float dt) {
     if (nullptr == _target) {
         return;
     }
+    CCLOG("owner reference %d", _owner->getReferenceCount());
+    CCLOG("target reference %d", _target->getReferenceCount());
     MGeometryUtils::aim(_owner, _target);
 }
 
