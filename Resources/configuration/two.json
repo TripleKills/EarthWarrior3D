@@ -5,11 +5,7 @@
     "modelRect": "54,57,36,67",
     "damage":100,
     "runner":{
-        "target":"player"
-    },
-    "aimer":{
         "type":"targeted",
-        "time":5,
-        "target":"player"
+        "target":"enemy"
     }
 }

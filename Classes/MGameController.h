@@ -23,13 +23,13 @@ public:
     
     CC_SYNTHESIZE(MGameEntity*, _player, Player);
     
-    MGameEntity* getRandomEnemy() {_aliveEnemys.getRandomObject();};
+    MGameEntity* getRandomEnemy() {return _aliveEnemys.getRandomObject();};
     
 public:
     static cocos2d::Vector<MGameEntity*> _aliveEnemys;
 private:
     static MGameController* _sInstance;
-    MGameController(){};
+    MGameController(){ _player = nullptr; };
 };
 
 #endif

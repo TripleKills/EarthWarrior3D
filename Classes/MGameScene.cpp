@@ -48,6 +48,7 @@ void MGameScene::initLayer() {
     
     auto player = MPlayer::createWithJson("configuration/one.json");
     addChild(player);
+    CCLOG("player typeid is %s", typeid(player).name());
     MGameController::getInstance()->setPlayer(player);
     player->setPosition(Vec2(200, 100));
 
@@ -92,7 +93,7 @@ void MGameScene::initLayer() {
     addChild(air);
     air->setPosition(Vec2(300,200));
     air->print();
-    
+    MGameController::_aliveEnemys.pushBack(air);
     
 }
 

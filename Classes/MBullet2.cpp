@@ -19,10 +19,18 @@ void MBullet2::initWithJson(Document& document) {
     _damage = document["damage"].GetInt();
     _owner = entityTypes::kNone;
     
+    _runner = nullptr;
     rapidjson::Value &runner = document["runner"];
-    auto mrunner = MBulletRunnerLine::createWithJson(runner);
+    std::string runnerType = runner["type"].GetString();
+    MBulletRunner* mrunner = nullptr;
+    if (runnerType == "line") {
+        mrunner = MBulletRunnerLine::createWithJson(runner);
+    } else if (runnerType == "targeted") {
+        mrunner = MBulletRunnerTarget::createWithJson(runner);
+    }
     setRunner(mrunner);
     
+    _aimer = nullptr;
     if (document.HasMember("aimer")) {
         rapidjson::Value &aimer = document["aimer"];
         std::string type = aimer["type"].GetString();
@@ -70,10 +78,8 @@ void MBullet2::update(float dt) {
     CCASSERT(_runner != nullptr, "must set runner");
     _timePassed += dt;
     if(nullptr != _aimer && _timePassed <= _aimer->getTime()) {
-        CCLOG("AIMER UPDATE");
         _aimer->update(dt);
     } else {
-        CCLOG("runner update");
         _runner->update(dt);
     }
 }
@@ -95,6 +101,7 @@ template<typename T> void MBulletAimerTargeted::initWithJson(T& document) {
     float time = document["time"].GetDouble();
     setTime(time);
     _targetType = document["target"].GetString();
+    _target = nullptr;
 }
 
 void MBulletAimerTargeted::update(float dt) {
@@ -109,8 +116,6 @@ void MBulletAimerTargeted::update(float dt) {
     if (nullptr == _target) {
         return;
     }
-    CCLOG("owner reference %d", _owner->getReferenceCount());
-    CCLOG("target reference %d", _target->getReferenceCount());
     MGeometryUtils::aim(_owner, _target);
 }
 
@@ -122,6 +127,7 @@ void MBulletRunnerLine::update(float dt) {
 
 template<typename T> void MBulletRunnerTarget::initWithJson(T& document) {
     _targetType = document["target"].GetString();
+    _target = nullptr;
 }
 
 void MBulletRunnerTarget::update(float dt) {
@@ -133,7 +139,19 @@ void MBulletRunnerTarget::update(float dt) {
             _target = MGameController::getInstance()->getRandomEnemy();
         }
     }
+    
     if (nullptr != _target) {
+        auto pos1 = _target->getPosition();
+        auto pos2 = _owner->getPosition();
+        if (pos1 == pos2) {
+            return;
+        }
+        float dist = pos1.getDistanceSq(pos2);
+        if (dist < 5) {
+            _owner->setPosition(_target->getPosition());
+            return;
+        }
+    
         MGeometryUtils::aim(_owner, _target);
     }
     _owner->forward(dt * _owner->getSpeed());
