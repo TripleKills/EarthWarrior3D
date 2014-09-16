@@ -34,7 +34,7 @@ public:
     void setRunner(MBulletRunner* runner);
 
 protected:
-    virtual void initWithJson(rapidjson::Document& document);
+    template<typename T> void initWithJson(T& document);
     
 protected:
     MBulletAimer* _aimer;

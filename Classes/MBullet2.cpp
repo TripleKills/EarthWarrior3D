@@ -14,7 +14,7 @@
 USING_NS_CC;
 using namespace rapidjson;
 
-void MBullet2::initWithJson(Document& document) {
+template<typename T> void MBullet2::initWithJson(T& document) {
     MGameEntity::initWithJson(document);
     _damage = document["damage"].GetInt();
     _owner = entityTypes::kNone;

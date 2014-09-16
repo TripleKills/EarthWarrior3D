@@ -63,7 +63,7 @@ void MGameScene::initLayer() {
 
     
     auto _weapon = MWeapon2::create();
-    auto loader = MWeaponLoader::create(1);
+    auto loader = MWeaponLoader::createWithJson("configuration/loader.json");
     auto emitter = MWeaponEmitterArc::create();
     loader->setTarget(target);
     _weapon->setBulletsLayer(this);
@@ -73,6 +73,7 @@ void MGameScene::initLayer() {
     _weapon->setPosition(Vec2(-75, 40));
     player->addChild(_weapon);
     
+    /**
     auto _weapon2 = MWeapon2::create();
     auto loader2 = MWeaponLoader::create(1);
     loader2->setTarget(target);
@@ -83,7 +84,7 @@ void MGameScene::initLayer() {
     _weapon2->setEmitter(emitter2);
     _weapon2->setPosition(Vec2(40, 40));
     //player->addChild(_weapon2);
-    
+    */
     //auto enemy = MEnemyStaticAimTarget::create(player);
     //enemy->setRotation(180);
     //addChild(enemy);

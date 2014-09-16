@@ -12,11 +12,16 @@
 
 USING_NS_CC;
 
+/**
 MWeaponLoader* MWeaponLoader::create(int bulletNum) {
     auto loader = new MWeaponLoader();
     loader->_bulletNum = bulletNum;
     loader->autorelease();
     return loader;
+}
+ */
+
+template<typename T> void MWeaponLoader::initWithJson(T& document) {
 }
 
 Vector<MBullet2*> MWeaponLoader::getBullets() {

@@ -10,16 +10,19 @@
 #define EarthWarrior3D_MWeapon2_h
 
 #include "cocos2d.h"
+#include "MMacros.h"
 
 class MBullet2;
 class MWeapon2;
 
 class MWeaponLoader : public cocos2d::Ref {
 public:
-    MWeaponLoader(): _bulletNum(0) {};
-    static MWeaponLoader* create(int bulletNum);
+    CREATE_WITH_JSON(MWeaponLoader);
+    //MWeaponLoader(): _bulletNum(0) {};
+    //static MWeaponLoader* create(int bulletNum);
     cocos2d::Vector<MBullet2*> getBullets();
     void setTarget(cocos2d::Node* target) { this->_target = target;};
+    template<typename T> void initWithJson(T& document);
 private:
     int _bulletNum;
     cocos2d::Node* _target;
