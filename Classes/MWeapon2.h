@@ -18,13 +18,12 @@ class MWeapon2;
 class MWeaponLoader : public cocos2d::Ref {
 public:
     CREATE_WITH_JSON(MWeaponLoader);
-    //MWeaponLoader(): _bulletNum(0) {};
-    //static MWeaponLoader* create(int bulletNum);
     cocos2d::Vector<MBullet2*> getBullets();
     void setTarget(cocos2d::Node* target) { this->_target = target;};
     template<typename T> void initWithJson(T& document);
 private:
     int _bulletNum;
+    rapidjson::Document doc;
     cocos2d::Node* _target;
 };
 
@@ -58,4 +57,13 @@ private:
     cocos2d::Node* _bulletsLayer;
 };
 
+template<typename T> void MWeaponLoader::initWithJson(T& document) {
+    this->_bulletNum = document["num"].GetInt();
+    
+    rapidjson::StringBuffer buffer;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+    document["bullet"].Accept(writer);
+    std::string reststring = buffer.GetString();
+    doc.Parse<0>(reststring.c_str());
+}
 #endif

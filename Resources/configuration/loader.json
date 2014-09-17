@@ -1,6 +1,7 @@
 {
 "num":3,
-    "bullet":{"speed": 220,
+    "bullet":{
+        "speed": 220,
         "modelType":"2d",
         "modelImg": "bullets.png",
         "modelRect": "54,57,36,67",
@@ -8,5 +9,6 @@
         "runner":{
             "type":"targeted",
             "target":"enemy"
-        }}
+        }
+    }
 }

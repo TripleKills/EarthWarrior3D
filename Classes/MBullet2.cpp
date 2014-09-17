@@ -13,7 +13,7 @@
 
 USING_NS_CC;
 using namespace rapidjson;
-
+/**
 template<typename T> void MBullet2::initWithJson(T& document) {
     MGameEntity::initWithJson(document);
     _damage = document["damage"].GetInt();
@@ -46,7 +46,7 @@ template<typename T> void MBullet2::initWithJson(T& document) {
     
     _timePassed = 0;
 }
-
+*/
 void MBullet2::print() {
     MGameEntity::print();
     CCLOG("MBullet2:[damage:%d, owner:%d]", _damage, _owner);
@@ -84,26 +84,27 @@ void MBullet2::update(float dt) {
     }
 }
 
-
+/**
 template<typename T> void MBulletAimerStatic::initWithJson(T& document) {
     float time = document["time"].GetDouble();
     CCLOG("MBulletAimerStatic set time to %f", time);
     setTime(time);
     CCLOG("MBulletAimerStatic time is %f", getTime());
 }
+ */
 
 void MBulletAimerStatic::update(float dt) {
     //do nothing
 }
 
-
+/**
 template<typename T> void MBulletAimerTargeted::initWithJson(T& document) {
     float time = document["time"].GetDouble();
     setTime(time);
     _targetType = document["target"].GetString();
     _target = nullptr;
 }
-
+*/
 void MBulletAimerTargeted::update(float dt) {
     CCASSERT(_owner != nullptr, "owner must exist");
     if (nullptr == _target) {
@@ -125,11 +126,12 @@ void MBulletRunnerLine::update(float dt) {
     _owner->forward(dt * _owner->getSpeed());
 }
 
+/**
 template<typename T> void MBulletRunnerTarget::initWithJson(T& document) {
     _targetType = document["target"].GetString();
     _target = nullptr;
 }
-
+*/
 void MBulletRunnerTarget::update(float dt) {
     CCASSERT(_owner != nullptr, "owner must exist");
     if (nullptr == _target) {

@@ -12,25 +12,13 @@
 
 USING_NS_CC;
 
-/**
-MWeaponLoader* MWeaponLoader::create(int bulletNum) {
-    auto loader = new MWeaponLoader();
-    loader->_bulletNum = bulletNum;
-    loader->autorelease();
-    return loader;
-}
- */
-
-template<typename T> void MWeaponLoader::initWithJson(T& document) {
-}
-
 Vector<MBullet2*> MWeaponLoader::getBullets() {
     Vector<MBullet2*> bullets;
+    //rapidjson::Value& bulletDef = doc["bullet"];
+   // bulletDef["speed"].GetInt();
     for (int i = 0 ; i < _bulletNum; i++) {
-        auto bullet = MBullet2::createWithJson("configuration/two.json");
+        auto bullet = MBullet2::createWithJson(doc);
         bullet->setRotation(-120);
-        bullet->setSpeed(300);
-        bullet->setDamage(100);
         bullets.pushBack(bullet);
     }
     return bullets;
@@ -51,7 +39,7 @@ void MWeaponEmitterArc::emmit(cocos2d::Vector<MBullet2*> bullets) {
     Vec2 vec = Vec2(20, 20);
     float rotation = -count * deltaRotation / 2;
     while(iter != bullets.end()) {
-        (*iter)->setPosition(vec+=Vec2(5,0));
+        (*iter)->setPosition(vec+=Vec2(25,0));
         //(*iter)->getAimer()->setTime(3);
         (*iter)->setRotation(rotation+=10);
         iter++;
