@@ -77,6 +77,8 @@ private:
 };
 
 template<typename T> void MWeapon2::initWithJson(T& document) {
+    this->_loader = nullptr;
+    this->_emitter = nullptr;
     this->_groupTimePassed = 0.0f;
     this->_parent = nullptr;
     this->_interval = 0.0f;

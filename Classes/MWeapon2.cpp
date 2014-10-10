@@ -113,8 +113,10 @@ void MWeapon2::setBulletsLayer(Node* layer) {
 }
 
 void MWeapon2::update(float dt) {
-    CCASSERT(nullptr != _loader, "must set loader for weapon");
-    CCASSERT(nullptr != _emitter, "must set emitter for weapon");
+    if (getParentWeapon() == nullptr) {
+        CCASSERT(nullptr != _loader, "must set loader for weapon");
+        CCASSERT(nullptr != _emitter, "must set emitter for weapon");
+    }
     CCASSERT(nullptr != _bulletsLayer, "must set bullets layer for weapon");
     if (_timePassed < 0 || _timePassed + dt >= _interval) {
         if (_weapons.empty()) {
