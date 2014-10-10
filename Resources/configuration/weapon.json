@@ -1,0 +1,18 @@
+{
+	"fireInterval":0.01,
+	"loader":{
+		"num":8,
+    	"bullet":{
+        	"speed": 220,
+        	"modelType":"2d",
+        	"modelImg": "bullets.png",
+        	"modelRect": "54,57,36,67",
+        	"damage":100,
+        	"runner":{
+            	"type":"line",
+            	"target":"enemy"
+        	}
+    	}
+    },
+	"emitter":{"type":"arc"}
+}

@@ -1,14 +1,13 @@
 {
-"num":3,
+    "num":5,
     "bullet":{
-        "speed": 220,
+        "speed": 420,
         "modelType":"2d",
         "modelImg": "bullets.png",
         "modelRect": "54,57,36,67",
         "damage":100,
         "runner":{
-            "type":"targeted",
-            "target":"enemy"
+            "type":"line"
         }
     }
 }

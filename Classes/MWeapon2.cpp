@@ -18,19 +18,48 @@ Vector<MBullet2*> MWeaponLoader::getBullets() {
    // bulletDef["speed"].GetInt();
     for (int i = 0 ; i < _bulletNum; i++) {
         auto bullet = MBullet2::createWithJson(doc);
-        bullet->setRotation(-120);
+    //    bullet->setRotation(-120);
         bullets.pushBack(bullet);
     }
     return bullets;
 }
 
+/**
 MWeaponEmitterArc* MWeaponEmitterArc::create() {
     auto emitter = new MWeaponEmitterArc();
     emitter->autorelease();
     return emitter;
 }
-
+*/
 void MWeaponEmitterArc::emmit(cocos2d::Vector<MBullet2*> bullets) {
+    auto iter = bullets.begin();
+    int count = bullets.size();
+    float totalRotation = 50;
+    float width = 50;
+    Vec2 start = Vec2(- width / 2, 20);
+    Vec2 deltaWidth = Vec2(width/count,0);
+    
+    float time = 3;
+    float startRotation = - totalRotation / 2;
+    float deltaRotation = totalRotation / count;
+    while(iter != bullets.end()) {
+        (*iter)->setPosition(start);
+        //(*iter)->getAimer()->setTime(3);
+        (*iter)->setRotation(startRotation);
+        iter++;
+        startRotation+=deltaRotation;
+        start += deltaWidth;
+    }
+}
+
+/**
+MWeaponEmitterParallel* MWeaponEmitterParallel::create() {
+    auto emitter = new MWeaponEmitterParallel();
+    emitter->autorelease();
+    return emitter;
+}
+*/
+void MWeaponEmitterParallel::emmit(cocos2d::Vector<MBullet2*> bullets) {
     auto iter = bullets.begin();
     int count = bullets.size();
     float deltaRotation = 10;
@@ -41,17 +70,17 @@ void MWeaponEmitterArc::emmit(cocos2d::Vector<MBullet2*> bullets) {
     while(iter != bullets.end()) {
         (*iter)->setPosition(vec+=Vec2(25,0));
         //(*iter)->getAimer()->setTime(3);
-        (*iter)->setRotation(rotation+=10);
+    //    (*iter)->setRotation(rotation+=10);
         iter++;
     }
 }
-
+/**
 MWeapon2* MWeapon2::create() {
     auto weapon = new MWeapon2();
     weapon->autorelease();
     return weapon;
 }
-
+*/
 void MWeapon2::setEmitter(MWeaponEmitter* emitter) {
     this->_emitter = emitter;
     this->_emitter->retain();

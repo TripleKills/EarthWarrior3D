@@ -34,15 +34,28 @@ public:
 
 class MWeaponEmitterArc : public MWeaponEmitter {
 public:
-    static MWeaponEmitterArc* create();
+    CREATE_WITH_JSON(MWeaponEmitterArc);
+    template<typename T> void initWithJson(T& document) {};
+    //static MWeaponEmitterArc* create();
+    virtual void emmit(cocos2d::Vector<MBullet2*> bullets);
+};
+
+class MWeaponEmitterParallel : public MWeaponEmitter {
+public:
+    CREATE_WITH_JSON(MWeaponEmitterParallel);
+    template<typename T> void initWithJson(T& document) {};
+   // static MWeaponEmitterParallel* create();
     virtual void emmit(cocos2d::Vector<MBullet2*> bullets);
 };
 
 class MWeapon2 : public cocos2d::Node {
 public:
-    static MWeapon2* create();
+   // static MWeapon2* create();
+    CREATE_WITH_JSON(MWeapon2);
+    template<typename T> void initWithJson(T& document);
+    
     virtual void onEnter();
-    MWeapon2():_timePassed(-1.0f), _interval(0.0f) {};
+   // MWeapon2():_timePassed(-1.0f), _interval(0.0f) {};
     void update(float dt);
     void setEmitter(MWeaponEmitter* emitter);
     MWeaponEmitter* getEmitter() {return _emitter;}
@@ -56,6 +69,20 @@ private:
     float _timePassed;
     cocos2d::Node* _bulletsLayer;
 };
+
+template<typename T> void MWeapon2::initWithJson(T& document) {
+    this->_interval = document["fireInterval"].GetDouble();
+    rapidjson::Value& loaderValue = document["loader"];
+    auto loader = MWeaponLoader::createWithJson(loaderValue);
+    setLoader(loader);
+    rapidjson::Value& emitterValue = document["emitter"];
+    std::string emitterType = emitterValue["type"].GetString();
+    if (emitterType == "arc") {
+        setEmitter(MWeaponEmitterArc::createWithJson(emitterValue));
+    } else if (emitterType == "parallel") {
+        setEmitter(MWeaponEmitterParallel::createWithJson(emitterValue));
+    }
+}
 
 template<typename T> void MWeaponLoader::initWithJson(T& document) {
     this->_bulletNum = document["num"].GetInt();

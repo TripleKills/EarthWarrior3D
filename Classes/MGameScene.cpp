@@ -61,10 +61,10 @@ void MGameScene::initLayer() {
     auto repeat = RepeatForever::create(seq);
     target->runAction(repeat);
 
-    
+    /**
     auto _weapon = MWeapon2::create();
     auto loader = MWeaponLoader::createWithJson("configuration/loader.json");
-    auto emitter = MWeaponEmitterArc::create();
+    auto emitter = MWeaponEmitterArc::createWithJson("configuration/emitter.json");
     loader->setTarget(target);
     _weapon->setBulletsLayer(this);
     _weapon->setLoader(loader);
@@ -72,7 +72,11 @@ void MGameScene::initLayer() {
     _weapon->setEmitter(emitter);
     _weapon->setPosition(Vec2(-75, 40));
     player->addChild(_weapon);
-    
+    */
+    auto _weapon = MWeapon2::createWithJson("configuration/weapon.json");
+    _weapon->setBulletsLayer(this);
+    _weapon->setPosition(Vec2(-75, 40));
+    player->addChild(_weapon);
     /**
     auto _weapon2 = MWeapon2::create();
     auto loader2 = MWeaponLoader::create(1);

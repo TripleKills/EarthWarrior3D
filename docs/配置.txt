@@ -1,0 +1,76 @@
+---------------------------------
+武器
+{
+	"weapons":[],
+	"fireInterval":1,
+	"loader":{},
+	"emitter":{}
+}
+
+---------------------------------
+武器加载器
+num:数量
+bullet:子弹定义
+{
+    "num":3,
+    "bullet":{
+        "speed": 220,
+        "modelType":"2d",
+        "modelImg": "bullets.png",
+        "modelRect": "54,57,36,67",
+        "damage":100,
+        "runner":{
+            "type":"targeted",
+            "target":"enemy"
+        }
+    }
+}
+
+
+---------------------------------
+武器发射器
+{
+	"type":"arc"
+}
+type:类型，可选arc, parallel
+
+---------------------------------
+子弹定义
+{
+    "speed": 220,
+    "modelType":"2d",
+    "modelImg": "bullets.png",
+    "modelRect": "54,57,36,67",
+    "damage":100,
+    "runner":{
+        "type":"targeted",
+        "target":"enemy"
+    }
+}
+speed:速度
+modelType:类型 2d或3d
+modelImg:图片
+modelRect:如果是截取图片某一块，这里指出区域
+damage:杀伤力
+
+
+---------------------------------
+子弹瞄准器
+{
+    "type":"targeted",
+    "target":"enemy",
+    "time":3
+}
+type: 类型，可选targeted, line
+target: 当类型为targeted时，配置瞄准对象，可选enemy, player
+time: 瞄准阶段时间
+
+
+---------------------------------
+子弹飞行器
+{
+    "type":"targeted",
+    "target":"enemy"
+}
+type:类型，目前可选targeted, line
+target:目标，当类型为targeted时配置此参数为追踪目标，参数可选enemy, player
