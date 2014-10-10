@@ -4,8 +4,15 @@
 	"weapons":[],
 	"fireInterval":1,
 	"loader":{},
-	"emitter":{}
+	"emitter":{},
+	"groupFireTime": 3
 }
+weapons:武器列表，假如包含武器列表，则下面的参数不用配置
+fireInterval: 发射间隔
+loader: 武器加载器
+emitter: 武器发射器
+groupFireTime: 如果被包含在武器列表中，则配置这个参数代表每一轮，该武器要运行多长时间
+               不包含在武器列表中则不配置
 
 ---------------------------------
 武器加载器

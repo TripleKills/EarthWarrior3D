@@ -62,13 +62,12 @@ MWeaponEmitterParallel* MWeaponEmitterParallel::create() {
 void MWeaponEmitterParallel::emmit(cocos2d::Vector<MBullet2*> bullets) {
     auto iter = bullets.begin();
     int count = bullets.size();
-    float deltaRotation = 10;
-    
-    float time = 3;
-    Vec2 vec = Vec2(20, 20);
-    float rotation = -count * deltaRotation / 2;
+    float width = 50;
+    Vec2 start = Vec2(- width / 2, 20);
+    Vec2 deltaWidth = Vec2(width/count,0);
     while(iter != bullets.end()) {
-        (*iter)->setPosition(vec+=Vec2(25,0));
+        (*iter)->setPosition(start);
+        start += deltaWidth;
         //(*iter)->getAimer()->setTime(3);
     //    (*iter)->setRotation(rotation+=10);
         iter++;
@@ -91,21 +90,60 @@ void MWeapon2::setLoader(MWeaponLoader* loader) {
 }
 void MWeapon2::onEnter() {
     Node::onEnter();
-    scheduleUpdate();
+    if (getParentWeapon() == nullptr) {
+        scheduleUpdate();
+    }
 }
+
+void MWeapon2::addChildWeapon(MWeapon2* child) {
+    _weapons.pushBack(child);
+    addChild(child);
+    child->setParentWeapon(this);
+}
+
+void MWeapon2::setBulletsLayer(Node* layer) {
+    if (_weapons.empty()) {
+        this->_bulletsLayer = layer;
+    } else {
+        auto iter = _weapons.begin();
+        while(iter != _weapons.end()) {
+            (*iter++)->setBulletsLayer(layer);
+        }
+    }
+}
+
 void MWeapon2::update(float dt) {
     CCASSERT(nullptr != _loader, "must set loader for weapon");
     CCASSERT(nullptr != _emitter, "must set emitter for weapon");
     CCASSERT(nullptr != _bulletsLayer, "must set bullets layer for weapon");
     if (_timePassed < 0 || _timePassed + dt >= _interval) {
-        Vector<MBullet2*> bullets = _loader->getBullets();
-        _emitter->emmit(bullets);
-        auto iter = bullets.begin();
-        while(iter != bullets.end()) {
-            _bulletsLayer->addChild(*iter);
-            Vec2 pos = convertToWorldSpace((*iter)->getPosition());
-            (*iter)->setPosition(_bulletsLayer->convertToNodeSpace(pos));
-            iter++;
+        if (_weapons.empty()) {
+            Vector<MBullet2*> bullets = _loader->getBullets();
+            _emitter->emmit(bullets);
+            auto iter = bullets.begin();
+            while(iter != bullets.end()) {
+                _bulletsLayer->addChild(*iter);
+                Vec2 pos = convertToWorldSpace((*iter)->getPosition());
+                (*iter)->setPosition(_bulletsLayer->convertToNodeSpace(pos));
+                iter++;
+            }
+        } else {
+            if (!_weapons.at(_weapons.size() - 1)->canFireInGroup()) {
+                auto iter = _weapons.begin();
+                while(iter != _weapons.end()) {
+                    (*iter++)->enableGroupFire();
+                }
+                _weapons.at(0)->update(dt);
+            } else {
+                auto iter = _weapons.begin();
+                while(iter != _weapons.end()) {
+                    if ((*iter)->canFireInGroup()) {
+                        (*iter)->update(dt);
+                        break;
+                    }
+                    iter++;
+                }
+            }
         }
         if(_timePassed < 0) {
             _timePassed = 0;
@@ -115,4 +153,5 @@ void MWeapon2::update(float dt) {
     } else {
         _timePassed += dt;
     }
+    _groupTimePassed += dt;
 }

@@ -61,17 +61,40 @@ public:
     MWeaponEmitter* getEmitter() {return _emitter;}
     void setLoader(MWeaponLoader* loader);
     MWeaponLoader* getLoader() { return _loader; };
-    void setBulletsLayer(cocos2d::Node* layer) { this->_bulletsLayer = layer;};
+    void setBulletsLayer(cocos2d::Node* layer);
     CC_SYNTHESIZE(float, _interval, Interval);
+    
+    CC_SYNTHESIZE(MWeapon2*, _parent, ParentWeapon);
+    void enableGroupFire() {_groupTimePassed = 0.0f;};
+    bool canFireInGroup() {return _groupTimePassed < _groupFireTime;};
+    void addChildWeapon(MWeapon2* child);
 private:
     MWeaponLoader* _loader;
     MWeaponEmitter* _emitter;
-    float _timePassed;
+    float _timePassed, _groupFireTime, _groupTimePassed;
+    cocos2d::Vector<MWeapon2*> _weapons;
     cocos2d::Node* _bulletsLayer;
 };
 
 template<typename T> void MWeapon2::initWithJson(T& document) {
+    this->_groupTimePassed = 0.0f;
+    this->_parent = nullptr;
+    this->_interval = 0.0f;
+    this->_groupFireTime = 0.0f;
+    if (document.HasMember("weapons")) {
+        rapidjson::Value& weaponsValue = document["weapons"];
+        for(int i = 0; i < weaponsValue.Size(); i++) {
+            rapidjson::Value& weaponValue = weaponsValue[i];
+            auto weapon = MWeapon2::createWithJson(weaponValue);
+            addChildWeapon(weapon);
+        }
+        return;
+    }
+    
     this->_interval = document["fireInterval"].GetDouble();
+    if (document.HasMember("groupFireTime")) {
+        this->_groupFireTime = document["groupFireTime"].GetDouble();
+    }
     rapidjson::Value& loaderValue = document["loader"];
     auto loader = MWeaponLoader::createWithJson(loaderValue);
     setLoader(loader);
