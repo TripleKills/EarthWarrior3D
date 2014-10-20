@@ -101,7 +101,9 @@ void MGameScene::initLayer() {
     **/
     auto mgr = MJsonDataManager::getInstance();
     mgr->load();
-    auto air = MEnemyRound::createWithJson(mgr->JSON_DOC["enemies"]["e_1"]);
+    rapidjson::Value& def1 =mgr->JSON_DOC["enemies"];
+    rapidjson::Value& def = def1["e_1"];
+    auto air = MEnemyRound::createWithJson(def);
     addChild(air);
     air->setPosition(Vec2(300,200));
     air->print();

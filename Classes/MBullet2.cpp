@@ -10,7 +10,7 @@
 #include "MGeometryUtils.h"
 #include "MGameController.h"
 #include "MMacros.h"
-
+#include "MJsonDataManager.h"
 USING_NS_CC;
 using namespace rapidjson;
 /**
@@ -126,7 +126,9 @@ void MBulletRunnerLine::update(float dt) {
     _owner->forward(dt * _owner->getSpeed());
 }
 void MBullet2::initWithJson(rapidjson::Value& document){
-    MGameEntity::initWithJson(document);
+    std::string bulletId = document["bulletId"].GetString();
+    MGameEntity::initWithJson(MJsonDataManager::getInstance()->JSON_DOC["bullets"][bulletId.c_str()]);
+    //MGameEntity::initWithJson(document);
     _damage = document["damage"].GetInt();
     _owner = entityTypes::kNone;
     

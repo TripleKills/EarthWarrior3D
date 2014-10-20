@@ -10,6 +10,10 @@
 #include "MGeometryUtils.h"
 
 #include "MMacros.h"
+#include "MWeapon2.h"
+#include "MJsonDataManager.h"
+#include "MGameScene.h"
+
 using namespace rapidjson;
 USING_NS_CC;
 
@@ -23,6 +27,11 @@ void MEnemy::onEnter() {
 void MEnemy::initWithJson(rapidjson::Value& document) {
     LOG_FUNC
     MAirCraft::initWithJson(document);
+    rapidjson::Value& weaponDef = document["weapon"];
+    std::string weaponId = weaponDef["weaponId"].GetString();
+    auto weapon = MWeapon2::createWithJson(MJsonDataManager::getInstance()->JSON_DOC["weapons"][weaponId.c_str()]);
+    this->addChild(weapon);
+    weapon->setPosition(MStringUtils::parseVec2(weaponDef["position"].GetString()));
 }
 
 void MEnemyLine::update(float dt) {
@@ -54,6 +63,7 @@ void MEnemyRound::print() {
 }
 
 void MEnemyRound::initWithJson(rapidjson::Value& document) {
+    LOG_FUNC
     MEnemy::initWithJson(document);
     _radius = document["radius"].GetDouble();
     _rotateSpeed = CC_DEGREES_TO_RADIANS(document["rotateSpeed"].GetDouble());

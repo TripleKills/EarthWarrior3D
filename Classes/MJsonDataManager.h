@@ -26,6 +26,9 @@ public:
         CC_SAFE_DELETE(_sInstance);
     }
     void load();
+    void hasMember(const char* m) {
+        CCLOG("has member in mgr %s, %d", m, JSON_DOC.HasMember(m) );
+    };
 private:
     static MJsonDataManager* _sInstance;
     MJsonDataManager() : JSON_DOC(){JSON_DOC.SetObject();};

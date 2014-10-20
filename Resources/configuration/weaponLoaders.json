@@ -1,0 +1,15 @@
+{
+    "value": {
+        "l_1": {
+            "num": 8,
+            "bullet": {
+                "bulletId": "b_1",
+                "damage": 100,
+                "runner": {
+                    "type": "line",
+                    "target": "enemy"
+                }
+            }
+        }
+    }
+}

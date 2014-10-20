@@ -9,7 +9,8 @@
 #include <stdio.h>
 #include "MWeapon2.h"
 #include "MBullet2.h"
-
+#include "MJsonDataManager.h"
+#include "MGameScene.h"
 USING_NS_CC;
 
 Vector<MBullet2*> MWeaponLoader::getBullets() {
@@ -93,6 +94,13 @@ void MWeapon2::onEnter() {
     if (getParentWeapon() == nullptr) {
         scheduleUpdate();
     }
+    if (_bulletsLayer == nullptr) {
+        auto gameScene = Director::getInstance()->getRunningScene();
+        Vector<Node*> children = gameScene->getChildren();
+        Node* bulletLayer = children.at(0)->getChildByTag(SceneZOrder::game_layer)->getChildByTag(GameZOrder::bullet_layer);
+        this->setBulletsLayer(bulletLayer);
+    }
+    
 }
 
 void MWeapon2::addChildWeapon(MWeapon2* child) {
@@ -158,6 +166,7 @@ void MWeapon2::update(float dt) {
     _groupTimePassed += dt;
 }
 void MWeapon2::initWithJson(rapidjson::Value& document) {
+    this->_bulletsLayer = nullptr;
     this->_loader = nullptr;
     this->_emitter = nullptr;
     this->_groupTimePassed = 0.0f;
@@ -178,7 +187,8 @@ void MWeapon2::initWithJson(rapidjson::Value& document) {
     if (document.HasMember("groupFireTime")) {
         this->_groupFireTime = document["groupFireTime"].GetDouble();
     }
-    rapidjson::Value& loaderValue = document["loader"];
+    std::string loaderId = document["loaderId"].GetString();
+    rapidjson::Value& loaderValue = MJsonDataManager::getInstance()->JSON_DOC["weaponLoaders"][loaderId.c_str()];//document["loader"];
     auto loader = MWeaponLoader::createWithJson(loaderValue);
     setLoader(loader);
     rapidjson::Value& emitterValue = document["emitter"];
