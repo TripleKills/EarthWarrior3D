@@ -14,7 +14,6 @@
 #include "MJsonDataManager.h"
 #include "MGameScene.h"
 
-using namespace rapidjson;
 USING_NS_CC;
 
 void MEnemy::onEnter() {
@@ -24,14 +23,15 @@ void MEnemy::onEnter() {
 
 
 
-void MEnemy::initWithJson(rapidjson::Value& document) {
+void MEnemy::initWithJson(Json* document) {
     LOG_FUNC
     MAirCraft::initWithJson(document);
-    rapidjson::Value& weaponDef = document["weapon"];
-    std::string weaponId = weaponDef["weaponId"].GetString();
-    auto weapon = MWeapon2::createWithJson(MJsonDataManager::getInstance()->JSON_DOC["weapons"][weaponId.c_str()]);
+    Json* weaponDef = Json_getItem(document, "weapon");
+    std::string weaponId = Json_getString(weaponDef, "weaponId", "");
+    Json* realWeapon = Json_getItem(MJsonDataManager::getInstance()->JSON_DOC["weapons"], weaponId.c_str());
+    auto weapon = MWeapon2::createWithJson(realWeapon);
     this->addChild(weapon);
-    weapon->setPosition(MStringUtils::parseVec2(weaponDef["position"].GetString()));
+    weapon->setPosition(MStringUtils::parseVec2(Json_getString(weaponDef, "position", "0,0")));
 }
 
 void MEnemyLine::update(float dt) {
@@ -40,10 +40,11 @@ void MEnemyLine::update(float dt) {
 
 
 
-void MEnemyArc::initWithJson(rapidjson::Value& document) {
+void MEnemyArc::initWithJson(Json* document) {
     LOG_FUNC
     MEnemy::initWithJson(document);
-    _rotateSpeed = document["rotateSpeed"].GetDouble();
+    _rotateSpeed = Json_getFloat(document, "rotateSpeed", 0.0f);
+    //_rotateSpeed = document["rotateSpeed"].GetDouble();
 }
 
 void MEnemyArc::print() {
@@ -62,11 +63,11 @@ void MEnemyRound::print() {
     CCLOG("MEnemyRound:[raidus:%f,rotateSpeed:%f]",_radius,_rotateSpeed);
 }
 
-void MEnemyRound::initWithJson(rapidjson::Value& document) {
+void MEnemyRound::initWithJson(Json* document) {
     LOG_FUNC
     MEnemy::initWithJson(document);
-    _radius = document["radius"].GetDouble();
-    _rotateSpeed = CC_DEGREES_TO_RADIANS(document["rotateSpeed"].GetDouble());
+    _radius = Json_getFloat(document, "radius", 0.0f);
+    _rotateSpeed = CC_DEGREES_TO_RADIANS(Json_getFloat(document, "rotateSpeed", 0.0f));
 }
 
 void MEnemyRound::onEnter() {
@@ -84,7 +85,7 @@ void MEnemyRound::update(float dt) {
 
 
 
-void MEnemyStaticAimTarget::initWithJson(rapidjson::Value& document) {
+void MEnemyStaticAimTarget::initWithJson(Json* document) {
     MEnemy::initWithJson(document);
 }
 

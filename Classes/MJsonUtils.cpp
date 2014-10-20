@@ -8,11 +8,10 @@
 
 #include "MJsonUtils.h"
 
-using namespace rapidjson;
 USING_NS_CC;
 
-bool MJsonUtils::loadFileAsJson(const char* fileName, rapidjson::Document &jsonDict){
+Json* MJsonUtils::loadFileAsJson(const char* fileName){
     std::string contentStr = FileUtils::getInstance()->getStringFromFile(fileName);
-    jsonDict.Parse<0>(contentStr.c_str());
-    return jsonDict.HasParseError();
+    Json* json = Json_create(contentStr.c_str());
+    return json;
 }

@@ -10,7 +10,7 @@
 #define EarthWarrior3D_MEnemy_h
 
 #include "cocos2d.h"
-#include "json/document.h"
+#include "spine/Json.h"
 #include "MAirCraft.h"
 
 #include "MMacros.h"
@@ -19,7 +19,7 @@ class MEnemy : public MAirCraft {
 public:
     void onEnter();
 protected:
-    virtual void initWithJson(rapidjson::Value& document);
+    virtual void initWithJson(Json* document);
 };
 
 class MEnemyLine : public MEnemy {
@@ -36,7 +36,7 @@ public:
     virtual void print();
    
 protected:
-    virtual void initWithJson(rapidjson::Value& document);
+    virtual void initWithJson(Json* document);
 };
 
 class MEnemyRound : public MEnemy {
@@ -48,7 +48,7 @@ public:
     CC_SYNTHESIZE(float, _radius, Radius);
     CC_SYNTHESIZE(float, _rotateSpeed, RotateSpeed);
 protected:
-    virtual void initWithJson(rapidjson::Value& document);
+    virtual void initWithJson(Json* document);
 protected:
     cocos2d::Vec2 _center;
 };
@@ -59,7 +59,7 @@ public:
     CC_SYNTHESIZE(cocos2d::Node*, _target, Target);
     virtual void update(float dt);
 protected:
-    void initWithJson(rapidjson::Value& document);
+    void initWithJson(Json* document);
 };
 
 #endif

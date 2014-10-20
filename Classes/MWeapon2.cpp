@@ -165,7 +165,7 @@ void MWeapon2::update(float dt) {
     }
     _groupTimePassed += dt;
 }
-void MWeapon2::initWithJson(rapidjson::Value& document) {
+void MWeapon2::initWithJson(Json* document) {
     this->_bulletsLayer = nullptr;
     this->_loader = nullptr;
     this->_emitter = nullptr;
@@ -173,26 +173,28 @@ void MWeapon2::initWithJson(rapidjson::Value& document) {
     this->_parent = nullptr;
     this->_interval = 0.0f;
     this->_groupFireTime = 0.0f;
-    if (document.HasMember("weapons")) {
-        rapidjson::Value& weaponsValue = document["weapons"];
-        for(int i = 0; i < weaponsValue.Size(); i++) {
-            rapidjson::Value& weaponValue = weaponsValue[i];
-            auto weapon = MWeapon2::createWithJson(weaponValue);
+    Json* weaponsValue = Json_getItem(document, "weapons");
+    if (weaponsValue) {
+        Json* child = weaponsValue->child;
+        while(child) {
+            auto weapon = MWeapon2::createWithJson(child);
             addChildWeapon(weapon);
+            child++;
         }
         return;
     }
     
-    this->_interval = document["fireInterval"].GetDouble();
-    if (document.HasMember("groupFireTime")) {
-        this->_groupFireTime = document["groupFireTime"].GetDouble();
-    }
-    std::string loaderId = document["loaderId"].GetString();
-    rapidjson::Value& loaderValue = MJsonDataManager::getInstance()->JSON_DOC["weaponLoaders"][loaderId.c_str()];//document["loader"];
+    
+    this->_interval = Json_getFloat(document, "fireInterval", 0.0f);
+    this->_groupFireTime = Json_getFloat(document, "groupFireTime", 0.0f);
+    
+    std::string loaderId = Json_getString(document, "loaderId", "");
+    Json* loaderValue = Json_getItem(MJsonDataManager::getInstance()->JSON_DOC["weaponLoaders"], loaderId.c_str());
     auto loader = MWeaponLoader::createWithJson(loaderValue);
     setLoader(loader);
-    rapidjson::Value& emitterValue = document["emitter"];
-    std::string emitterType = emitterValue["type"].GetString();
+    
+    Json* emitterValue = Json_getItem(document,"emitter");
+    std::string emitterType = Json_getString(emitterValue, "type", "");
     if (emitterType == "arc") {
         setEmitter(MWeaponEmitterArc::createWithJson(emitterValue));
     } else if (emitterType == "parallel") {
@@ -200,12 +202,8 @@ void MWeapon2::initWithJson(rapidjson::Value& document) {
     }
 }
 
-void MWeaponLoader::initWithJson(rapidjson::Value& document) {
-    this->_bulletNum = document["num"].GetInt();
+void MWeaponLoader::initWithJson(Json* document) {
+    this->_bulletNum = Json_getInt(document, "num", 1);
     
-    rapidjson::StringBuffer buffer;
-    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-    document["bullet"].Accept(writer);
-    std::string reststring = buffer.GetString();
-    doc.Parse<0>(reststring.c_str());
+    doc = Json_getItem(document, "bullet");
 }

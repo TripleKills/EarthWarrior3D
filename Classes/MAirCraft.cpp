@@ -12,11 +12,11 @@
 #include "MStringUtils.h"
 
 USING_NS_CC;
-using namespace rapidjson;
 
-void MAirCraft::initWithJson(const rapidjson::Value& document) {
+void MAirCraft::initWithJson(Json* document) {
     MGameEntity::initWithJson(document);
-    _MAX_HP = document["hp"].GetInt();
+    
+    _MAX_HP = Json_getInt(document, "hp", 0);
     _hp = _MAX_HP;
 }
 

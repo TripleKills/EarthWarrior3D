@@ -15,7 +15,7 @@
 
 class MGameEntity : public cocos2d::Node {
 public:
-    virtual void initWithJson(const rapidjson::Value& document);
+    virtual void initWithJson(Json* document);
     virtual void print();
     
     void forward(float dist);

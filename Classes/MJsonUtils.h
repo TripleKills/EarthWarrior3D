@@ -10,13 +10,11 @@
 #define EarthWarrior3D_MJsonUtils_h
 
 #include "cocos2d.h"
-#include "json/document.h"
-#include "json/writer.h"
-#include "json/stringbuffer.h"
+#include "spine/Json.h"
 
 class MJsonUtils {
 public:
-    static bool loadFileAsJson(const char* fileName, rapidjson::Document &jsonDict);
+    static Json* loadFileAsJson(const char* fileName);
 };
 
 #endif

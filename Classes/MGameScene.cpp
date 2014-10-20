@@ -19,6 +19,8 @@
 #include "MGameController.h"
 #include "MJsonDataManager.h"
 
+#include "spine/Json.h"
+
 USING_NS_CC;
 
 #define BACKGROUND_SPEED 20
@@ -101,8 +103,9 @@ void MGameScene::initLayer() {
     **/
     auto mgr = MJsonDataManager::getInstance();
     mgr->load();
-    rapidjson::Value& def1 =mgr->JSON_DOC["enemies"];
-    rapidjson::Value& def = def1["e_1"];
+    
+    Json* enemies = mgr->JSON_DOC["enemies"];
+    Json* def = Json_getItem(enemies, "e_1");
     auto air = MEnemyRound::createWithJson(def);
     addChild(air);
     air->setPosition(Vec2(300,200));

@@ -10,17 +10,18 @@
 #include "MStringUtils.h"
 
 USING_NS_CC;
-using namespace rapidjson;
 
-void MGameEntity::initWithJson(const rapidjson::Value& document) {
-    std::string modelType = document.HasMember("modelType") ? document["modelType"].GetString(): "3d";
-    std::string img = document["modelImg"].GetString();
+void MGameEntity::initWithJson(Json* document) {
+    
+    std::string modelType = Json_getString(document, "modelType", "3d");
+    std::string img = Json_getString(document, "modelImg", "");
     if (modelType == "3d") {
-        std::string obj = document["modelObj"].GetString();
+        std::string obj = Json_getString(document, "modelObj", "");
         _model = cocos2d::Sprite3D::create(obj, img);
     } else if (modelType == "2d") {
-        if (document.HasMember("modelRect")) {
-            cocos2d::Rect rect = MStringUtils::parseRect(document["modelRect"].GetString());
+        const char* modelRect = Json_getString(document, "modelRect", nullptr);
+        if (modelRect) {
+            cocos2d::Rect rect = MStringUtils::parseRect(modelRect);
             _model = cocos2d::Sprite::create(img, rect);
         } else {
             _model = cocos2d::Sprite::create(img);
@@ -28,19 +29,12 @@ void MGameEntity::initWithJson(const rapidjson::Value& document) {
     }
     addChild(_model);
     
-    if (document.HasMember("speed")) {
-        _speed = document["speed"].GetDouble();
-    } else {
-        _speed = 0.0f;
-    }
+    _speed = Json_getInt(document, "speed", 0);
     
-    if(document.HasMember("modelScale")) {
-        float scale = document["modelScale"].GetDouble();
-        _model->setScale(scale);
-    }
+    _model->setScale(Json_getFloat(document, "modelScale", 1.0f));
     
-    if(document.HasMember("rotation")) {
-        std::string rotations = document["rotation"].GetString();
+    const char* rotations = Json_getString(document, "rotation", nullptr);
+    if(rotations) {
         _orientation = MStringUtils::parseVec3(rotations);
         setRotation3D(_orientation);
     } else {

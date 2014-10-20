@@ -14,6 +14,7 @@
 #include "MGeometryUtils.h"
 #include "MConsts.h"
 #include "MLayerUtil.h"
+#include "spine/Json.h"
 
 #define LOG_FUNC CCLOG("%s\n%s:%d",__FILE__,__FUNCTION__,__LINE__);
 
@@ -21,7 +22,7 @@
 protected:\
     __TYPE__(){};\
 public:\
-    static __TYPE__* createWithJson(rapidjson::Value& document) {\
+    static __TYPE__* createWithJson(Json* document) {\
     auto enemy = new __TYPE__();\
     enemy->initWithJson(document);\
     enemy->autorelease();\

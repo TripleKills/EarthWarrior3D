@@ -13,6 +13,7 @@
 
 #include "MGameEntity.h"
 #include "MMacros.h"
+#include "spine/Json.h"
 class MBulletAimer;
 class MBulletRunner;
 
@@ -34,7 +35,7 @@ public:
     void setRunner(MBulletRunner* runner);
 
 protected:
-    void initWithJson(rapidjson::Value& document);
+    void initWithJson(Json* document);
     
 protected:
     MBulletAimer* _aimer;
@@ -52,14 +53,14 @@ public:
 class MBulletAimerStatic : public MBulletAimer {
 public:
     CREATE_WITH_JSON(MBulletAimerStatic);
-    void initWithJson(rapidjson::Value& document);
+    void initWithJson(Json* document);
     virtual void update(float dt);
 };
 
 class MBulletAimerTargeted : public MBulletAimer {
 public:
     CREATE_WITH_JSON(MBulletAimerTargeted);
-    void initWithJson(rapidjson::Value& document);
+    void initWithJson(Json* document);
     virtual void update(float dt);
 private:
     std::string _targetType;
@@ -75,14 +76,14 @@ public:
 class MBulletRunnerLine : public MBulletRunner {
 public:
     CREATE_WITH_JSON(MBulletRunnerLine);
-    void initWithJson(rapidjson::Value& document) {};
+    void initWithJson(Json* document) {};
     virtual void update(float dt);
 };
 
 class MBulletRunnerTarget : public MBulletRunner {
 public:
     CREATE_WITH_JSON(MBulletRunnerTarget);
-    void initWithJson(rapidjson::Value& document);
+    void initWithJson(Json* document);
     virtual void update(float dt);
     void setTarget(cocos2d::Node* target) { this->_target = target;};
 private:

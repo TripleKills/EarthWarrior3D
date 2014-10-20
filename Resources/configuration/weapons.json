@@ -1,5 +1,4 @@
 {
-    "value": {
         "w_1": {
             "fireInterval": 0.5,
             "loaderId": "l_1",
@@ -7,5 +6,4 @@
                 "type": "arc"
             }
         }
-    }
 }

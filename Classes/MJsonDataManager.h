@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "MJsonUtils.h"
+#include <map>
 
 class MJsonDataManager {
 public:
@@ -26,14 +27,12 @@ public:
         CC_SAFE_DELETE(_sInstance);
     }
     void load();
-    void hasMember(const char* m) {
-        CCLOG("has member in mgr %s, %d", m, JSON_DOC.HasMember(m) );
-    };
 private:
     static MJsonDataManager* _sInstance;
-    MJsonDataManager() : JSON_DOC(){JSON_DOC.SetObject();};
+    
+    MJsonDataManager() : JSON_DOC(){};
 public:
-    rapidjson::Document JSON_DOC;
+    std::map<std::string, Json*> JSON_DOC;
 };
 
 #endif

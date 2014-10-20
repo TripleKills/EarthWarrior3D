@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "MMacros.h"
 
+
 class MBullet2;
 class MWeapon2;
 
@@ -20,10 +21,10 @@ public:
     CREATE_WITH_JSON(MWeaponLoader);
     cocos2d::Vector<MBullet2*> getBullets();
     void setTarget(cocos2d::Node* target) { this->_target = target;};
-    void initWithJson(rapidjson::Value& document);
+    void initWithJson(Json* document);
 private:
     int _bulletNum;
-    rapidjson::Document doc;
+    Json* doc;
     cocos2d::Node* _target;
 };
 
@@ -35,7 +36,7 @@ public:
 class MWeaponEmitterArc : public MWeaponEmitter {
 public:
     CREATE_WITH_JSON(MWeaponEmitterArc);
-    void initWithJson(rapidjson::Value& document) {};
+    void initWithJson(Json* document) {};
     //static MWeaponEmitterArc* create();
     virtual void emmit(cocos2d::Vector<MBullet2*> bullets);
 };
@@ -43,7 +44,7 @@ public:
 class MWeaponEmitterParallel : public MWeaponEmitter {
 public:
     CREATE_WITH_JSON(MWeaponEmitterParallel);
-    void initWithJson(rapidjson::Value& document) {};
+    void initWithJson(Json* document) {};
    // static MWeaponEmitterParallel* create();
     virtual void emmit(cocos2d::Vector<MBullet2*> bullets);
 };
@@ -52,7 +53,7 @@ class MWeapon2 : public cocos2d::Node {
 public:
    // static MWeapon2* create();
     CREATE_WITH_JSON(MWeapon2);
-    void initWithJson(rapidjson::Value& document);
+    void initWithJson(Json* document);
     
     virtual void onEnter();
    // MWeapon2():_timePassed(-1.0f), _interval(0.0f) {};
