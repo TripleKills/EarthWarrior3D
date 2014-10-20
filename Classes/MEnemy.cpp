@@ -20,7 +20,7 @@ void MEnemy::onEnter() {
 
 
 
-void MEnemy::initWithJson(Document& document) {
+void MEnemy::initWithJson(rapidjson::Value& document) {
     LOG_FUNC
     MAirCraft::initWithJson(document);
 }
@@ -31,7 +31,7 @@ void MEnemyLine::update(float dt) {
 
 
 
-void MEnemyArc::initWithJson(rapidjson::Document& document) {
+void MEnemyArc::initWithJson(rapidjson::Value& document) {
     LOG_FUNC
     MEnemy::initWithJson(document);
     _rotateSpeed = document["rotateSpeed"].GetDouble();
@@ -53,7 +53,7 @@ void MEnemyRound::print() {
     CCLOG("MEnemyRound:[raidus:%f,rotateSpeed:%f]",_radius,_rotateSpeed);
 }
 
-void MEnemyRound::initWithJson(rapidjson::Document& document) {
+void MEnemyRound::initWithJson(rapidjson::Value& document) {
     MEnemy::initWithJson(document);
     _radius = document["radius"].GetDouble();
     _rotateSpeed = CC_DEGREES_TO_RADIANS(document["rotateSpeed"].GetDouble());
@@ -74,7 +74,7 @@ void MEnemyRound::update(float dt) {
 
 
 
-void MEnemyStaticAimTarget::initWithJson(Document& document) {
+void MEnemyStaticAimTarget::initWithJson(rapidjson::Value& document) {
     MEnemy::initWithJson(document);
 }
 

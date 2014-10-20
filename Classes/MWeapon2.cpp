@@ -157,3 +157,45 @@ void MWeapon2::update(float dt) {
     }
     _groupTimePassed += dt;
 }
+void MWeapon2::initWithJson(rapidjson::Value& document) {
+    this->_loader = nullptr;
+    this->_emitter = nullptr;
+    this->_groupTimePassed = 0.0f;
+    this->_parent = nullptr;
+    this->_interval = 0.0f;
+    this->_groupFireTime = 0.0f;
+    if (document.HasMember("weapons")) {
+        rapidjson::Value& weaponsValue = document["weapons"];
+        for(int i = 0; i < weaponsValue.Size(); i++) {
+            rapidjson::Value& weaponValue = weaponsValue[i];
+            auto weapon = MWeapon2::createWithJson(weaponValue);
+            addChildWeapon(weapon);
+        }
+        return;
+    }
+    
+    this->_interval = document["fireInterval"].GetDouble();
+    if (document.HasMember("groupFireTime")) {
+        this->_groupFireTime = document["groupFireTime"].GetDouble();
+    }
+    rapidjson::Value& loaderValue = document["loader"];
+    auto loader = MWeaponLoader::createWithJson(loaderValue);
+    setLoader(loader);
+    rapidjson::Value& emitterValue = document["emitter"];
+    std::string emitterType = emitterValue["type"].GetString();
+    if (emitterType == "arc") {
+        setEmitter(MWeaponEmitterArc::createWithJson(emitterValue));
+    } else if (emitterType == "parallel") {
+        setEmitter(MWeaponEmitterParallel::createWithJson(emitterValue));
+    }
+}
+
+void MWeaponLoader::initWithJson(rapidjson::Value& document) {
+    this->_bulletNum = document["num"].GetInt();
+    
+    rapidjson::StringBuffer buffer;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+    document["bullet"].Accept(writer);
+    std::string reststring = buffer.GetString();
+    doc.Parse<0>(reststring.c_str());
+}

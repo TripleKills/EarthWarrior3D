@@ -34,7 +34,7 @@ public:
     void setRunner(MBulletRunner* runner);
 
 protected:
-    template<typename T> void initWithJson(T& document);
+    void initWithJson(rapidjson::Value& document);
     
 protected:
     MBulletAimer* _aimer;
@@ -52,14 +52,14 @@ public:
 class MBulletAimerStatic : public MBulletAimer {
 public:
     CREATE_WITH_JSON(MBulletAimerStatic);
-    template<typename T> void initWithJson(T& document);
+    void initWithJson(rapidjson::Value& document);
     virtual void update(float dt);
 };
 
 class MBulletAimerTargeted : public MBulletAimer {
 public:
     CREATE_WITH_JSON(MBulletAimerTargeted);
-    template<typename T> void initWithJson(T& document);
+    void initWithJson(rapidjson::Value& document);
     virtual void update(float dt);
 private:
     std::string _targetType;
@@ -75,14 +75,14 @@ public:
 class MBulletRunnerLine : public MBulletRunner {
 public:
     CREATE_WITH_JSON(MBulletRunnerLine);
-    template<typename T> void initWithJson(T& document) {};
+    void initWithJson(rapidjson::Value& document) {};
     virtual void update(float dt);
 };
 
 class MBulletRunnerTarget : public MBulletRunner {
 public:
     CREATE_WITH_JSON(MBulletRunnerTarget);
-    template<typename T> void initWithJson(T& document);
+    void initWithJson(rapidjson::Value& document);
     virtual void update(float dt);
     void setTarget(cocos2d::Node* target) { this->_target = target;};
 private:
@@ -90,56 +90,6 @@ private:
     cocos2d::Node* _target;
 };
 
-template<typename T> void MBullet2::initWithJson(T& document){
-    MGameEntity::initWithJson(document);
-    _damage = document["damage"].GetInt();
-    _owner = entityTypes::kNone;
-    
-    _runner = nullptr;
-    rapidjson::Value &runner = document["runner"];
-    std::string runnerType = runner["type"].GetString();
-    MBulletRunner* mrunner = nullptr;
-    if (runnerType == "line") {
-        mrunner = MBulletRunnerLine::createWithJson(runner);
-    } else if (runnerType == "targeted") {
-        mrunner = MBulletRunnerTarget::createWithJson(runner);
-    }
-    setRunner(mrunner);
-    
-    _aimer = nullptr;
-    if (document.HasMember("aimer")) {
-        rapidjson::Value &aimer = document["aimer"];
-        std::string type = aimer["type"].GetString();
-        MBulletAimer* maimer = nullptr;
-        if (type == "static") {
-            maimer = MBulletAimerStatic::createWithJson(aimer);
-        } else if (type == "targeted") {
-            maimer = MBulletAimerTargeted::createWithJson(aimer);
-        }
-        setAimer(maimer);
-    }
-    
-    
-    _timePassed = 0;
-};
 
-template<typename T> void MBulletAimerStatic::initWithJson(T& document) {
-    float time = document["time"].GetDouble();
-    CCLOG("MBulletAimerStatic set time to %f", time);
-    setTime(time);
-    CCLOG("MBulletAimerStatic time is %f", getTime());
-}
-
-template<typename T> void MBulletAimerTargeted::initWithJson(T& document) {
-    float time = document["time"].GetDouble();
-    setTime(time);
-    _targetType = document["target"].GetString();
-    _target = nullptr;
-}
-
-template<typename T> void MBulletRunnerTarget::initWithJson(T& document) {
-    _targetType = document["target"].GetString();
-    _target = nullptr;
-}
 
 #endif

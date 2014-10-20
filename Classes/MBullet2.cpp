@@ -125,7 +125,57 @@ void MBulletRunnerLine::update(float dt) {
     CCASSERT(_owner != nullptr, "owner must exist");
     _owner->forward(dt * _owner->getSpeed());
 }
+void MBullet2::initWithJson(rapidjson::Value& document){
+    MGameEntity::initWithJson(document);
+    _damage = document["damage"].GetInt();
+    _owner = entityTypes::kNone;
+    
+    _runner = nullptr;
+    rapidjson::Value &runner = document["runner"];
+    std::string runnerType = runner["type"].GetString();
+    MBulletRunner* mrunner = nullptr;
+    if (runnerType == "line") {
+        mrunner = MBulletRunnerLine::createWithJson(runner);
+    } else if (runnerType == "targeted") {
+        mrunner = MBulletRunnerTarget::createWithJson(runner);
+    }
+    setRunner(mrunner);
+    
+    _aimer = nullptr;
+    if (document.HasMember("aimer")) {
+        rapidjson::Value &aimer = document["aimer"];
+        std::string type = aimer["type"].GetString();
+        MBulletAimer* maimer = nullptr;
+        if (type == "static") {
+            maimer = MBulletAimerStatic::createWithJson(aimer);
+        } else if (type == "targeted") {
+            maimer = MBulletAimerTargeted::createWithJson(aimer);
+        }
+        setAimer(maimer);
+    }
+    
+    
+    _timePassed = 0;
+};
 
+void MBulletAimerStatic::initWithJson(rapidjson::Value& document) {
+    float time = document["time"].GetDouble();
+    CCLOG("MBulletAimerStatic set time to %f", time);
+    setTime(time);
+    CCLOG("MBulletAimerStatic time is %f", getTime());
+}
+
+void MBulletAimerTargeted::initWithJson(rapidjson::Value& document) {
+    float time = document["time"].GetDouble();
+    setTime(time);
+    _targetType = document["target"].GetString();
+    _target = nullptr;
+}
+
+void MBulletRunnerTarget::initWithJson(rapidjson::Value& document) {
+    _targetType = document["target"].GetString();
+    _target = nullptr;
+}
 /**
 template<typename T> void MBulletRunnerTarget::initWithJson(T& document) {
     _targetType = document["target"].GetString();

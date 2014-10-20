@@ -17,6 +17,7 @@
 #include "MAirCraft.h"
 #include "MJsonUtils.h"
 #include "MGameController.h"
+#include "MJsonDataManager.h"
 
 USING_NS_CC;
 
@@ -45,7 +46,7 @@ void MGameScene::initLayer() {
     MLayerUtil::addLayerSameZorderTag(BulletZOrder::player, BulletZOrder::enemy, bulletLayer);
     
     this->initBackground();
-    
+    /**
     auto player = MPlayer::createWithJson("configuration/one.json");
     addChild(player);
     CCLOG("player typeid is %s", typeid(player).name());
@@ -72,7 +73,6 @@ void MGameScene::initLayer() {
     _weapon->setEmitter(emitter);
     _weapon->setPosition(Vec2(-75, 40));
     player->addChild(_weapon);
-    */
     auto _weapon = MWeapon2::createWithJson("configuration/weapon.json");
     _weapon->setBulletsLayer(this);
     _weapon->setPosition(Vec2(-75, 40));
@@ -88,7 +88,6 @@ void MGameScene::initLayer() {
     _weapon2->setEmitter(emitter2);
     _weapon2->setPosition(Vec2(40, 40));
     //player->addChild(_weapon2);
-    */
     //auto enemy = MEnemyStaticAimTarget::create(player);
     //enemy->setRotation(180);
     //addChild(enemy);
@@ -99,7 +98,14 @@ void MGameScene::initLayer() {
     air->setPosition(Vec2(300,200));
     air->print();
     MGameController::_aliveEnemys.pushBack(air);
-    
+    **/
+    auto mgr = MJsonDataManager::getInstance();
+    mgr->load();
+    auto air = MEnemyRound::createWithJson(mgr->JSON_DOC["enemies"]["e_1"]);
+    addChild(air);
+    air->setPosition(Vec2(300,200));
+    air->print();
+    MGameController::_aliveEnemys.pushBack(air);
 }
 
 void MGameScene::onEnter(){

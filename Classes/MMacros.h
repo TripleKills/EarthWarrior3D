@@ -21,12 +21,7 @@
 protected:\
     __TYPE__(){};\
 public:\
-    static __TYPE__* createWithJson(const char* fileName) {\
-    rapidjson::Document doc;\
-    MJsonUtils::loadFileAsJson(fileName, doc);\
-    return __TYPE__::createWithJson(doc);\
-}\
-    template<typename T> static __TYPE__* createWithJson(T& document) {\
+    static __TYPE__* createWithJson(rapidjson::Value& document) {\
     auto enemy = new __TYPE__();\
     enemy->initWithJson(document);\
     enemy->autorelease();\

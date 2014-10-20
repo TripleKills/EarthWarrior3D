@@ -1,0 +1,12 @@
+{"value":
+{
+	"e_1":{
+		"type":"round",
+		"hp":1000,
+		"modelImg":"planes/e1.png",
+		"modelType":"2d",
+		"radius":300,
+		"rotateSpeed":60
+	}
+
+}}

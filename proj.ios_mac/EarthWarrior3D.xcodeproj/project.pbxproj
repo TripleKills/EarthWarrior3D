@@ -221,6 +221,10 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		E328643819A2F1D10098A2F6 /* MWeapon2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E328643719A2F1D10098A2F6 /* MWeapon2.cpp */; };
 		E328643919A2F1D10098A2F6 /* MWeapon2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E328643719A2F1D10098A2F6 /* MWeapon2.cpp */; };
+		E3566A5619F49CC600F34C34 /* MJsonDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3566A5519F49CC600F34C34 /* MJsonDataManager.cpp */; };
+		E3566A5719F49CC600F34C34 /* MJsonDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3566A5519F49CC600F34C34 /* MJsonDataManager.cpp */; };
+		E3566A5C19F4B71100F34C34 /* planes in Resources */ = {isa = PBXBuildFile; fileRef = E3566A5B19F4B71100F34C34 /* planes */; };
+		E3566A5D19F4B71100F34C34 /* planes in Resources */ = {isa = PBXBuildFile; fileRef = E3566A5B19F4B71100F34C34 /* planes */; };
 		E35778E3199EE859004AA26F /* MLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E35778E2199EE859004AA26F /* MLoadingScene.cpp */; };
 		E35778E4199EE859004AA26F /* MLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E35778E2199EE859004AA26F /* MLoadingScene.cpp */; };
 		E395C858199E3A3800AC2148 /* MMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E395C857199E3A3800AC2148 /* MMainScene.cpp */; };
@@ -545,6 +549,9 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		E328643619A2EB250098A2F6 /* MWeapon2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MWeapon2.h; path = ../Classes/MWeapon2.h; sourceTree = "<group>"; };
 		E328643719A2F1D10098A2F6 /* MWeapon2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MWeapon2.cpp; path = ../Classes/MWeapon2.cpp; sourceTree = "<group>"; };
+		E3566A5219F49B3D00F34C34 /* MJsonDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MJsonDataManager.h; path = ../Classes/MJsonDataManager.h; sourceTree = "<group>"; };
+		E3566A5519F49CC600F34C34 /* MJsonDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MJsonDataManager.cpp; path = ../Classes/MJsonDataManager.cpp; sourceTree = "<group>"; };
+		E3566A5B19F4B71100F34C34 /* planes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = planes; sourceTree = "<group>"; };
 		E35778E2199EE859004AA26F /* MLoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLoadingScene.cpp; path = ../Classes/MLoadingScene.cpp; sourceTree = "<group>"; };
 		E395C853199E39DA00AC2148 /* MMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMacros.h; path = ../Classes/MMacros.h; sourceTree = "<group>"; };
 		E395C854199E39FD00AC2148 /* MMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMainScene.h; path = ../Classes/MMainScene.h; sourceTree = "<group>"; };
@@ -802,6 +809,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E3566A5B19F4B71100F34C34 /* planes */,
 				E3E6823119AE10E400028CF9 /* configuration */,
 				76B5F2EB195C47BC00C15B36 /* boss.c3b */,
 				76B5F2EC195C47BC00C15B36 /* bossCannon.c3b */,
@@ -937,6 +945,8 @@
 				E3EA6FCB199EFB4000974707 /* MParticleManager.cpp */,
 				E3EB9A4A19B5FA0F00FE9421 /* MGameController.h */,
 				E3EB9A4D19B5FE6A00FE9421 /* MGameController.cpp */,
+				E3566A5219F49B3D00F34C34 /* MJsonDataManager.h */,
+				E3566A5519F49CC600F34C34 /* MJsonDataManager.cpp */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -1170,6 +1180,7 @@
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				BB0C4967190910E70015152C /* toonSmoke.plist in Resources */,
 				BB0C4937190910E70015152C /* gameover.png in Resources */,
+				E3566A5C19F4B71100F34C34 /* planes in Resources */,
 				E3E6823219AE10E400028CF9 /* configuration in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				BB0C4909190910E70015152C /* bossCannon.obj in Resources */,
@@ -1219,6 +1230,7 @@
 				AB2EA980196BF8F2005FC902 /* playerv002.c3b in Resources */,
 				BB0C490C190910E70015152C /* bullets.png in Resources */,
 				BB0C4938190910E70015152C /* gameover.png in Resources */,
+				E3566A5D19F4B71100F34C34 /* planes in Resources */,
 				BB0C4924190910E70015152C /* emission.plist in Resources */,
 				BB0C495C190910E70015152C /* playerv002_256.png in Resources */,
 				BB0C4906190910E70015152C /* boss.obj in Resources */,
@@ -1306,6 +1318,7 @@
 				BB0C48C1190910CE0015152C /* ParticleManager.cpp in Sources */,
 				E3EB9A4E19B5FE6A00FE9421 /* MGameController.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				E3566A5619F49CC600F34C34 /* MJsonDataManager.cpp in Sources */,
 				E3EA6FCC199EFB4000974707 /* MParticleManager.cpp in Sources */,
 				BB0C48AB190910CE0015152C /* Bullets.cpp in Sources */,
 				E3E47023199F364200E45D99 /* MLayerUtil.cpp in Sources */,
@@ -1357,6 +1370,7 @@
 				BB0C48BE190910CE0015152C /* LoadingScene.cpp in Sources */,
 				E3E4702F199F570000E45D99 /* MPlayer.cpp in Sources */,
 				BB0C48AC190910CE0015152C /* Bullets.cpp in Sources */,
+				E3566A5719F49CC600F34C34 /* MJsonDataManager.cpp in Sources */,
 				E3E805E519A4D7790046BA6A /* MGeometryUtils.cpp in Sources */,
 				BB0C48B2190910CE0015152C /* Explosion.cpp in Sources */,
 				E3E47032199F577300E45D99 /* MAirCraft.cpp in Sources */,

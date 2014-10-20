@@ -1,0 +1,72 @@
+{
+    "value":{"weapons": [
+        {
+            "groupFireTime": 3,
+            "fireInterval": 0.5,
+            "loader": {
+                "num": 8,
+                "bullet": {
+                    "speed": 220,
+                    "modelType": "2d",
+                    "modelImg": "bullets.png",
+                    "modelRect": "54,57,36,67",
+                    "damage": 100,
+                    "runner": {
+                        "type": "line",
+                        "target": "enemy"
+                    }
+                }
+            },
+            "emitter": {
+                "type": "arc"
+            }
+        },
+        {
+            "groupFireTime": 6,
+            "fireInterval": 0.5,
+            "loader": {
+                "num": 4,
+                "bullet": {
+                    "speed": 220,
+                    "modelType": "2d",
+                    "modelImg": "bullets.png",
+                    "modelRect": "54,57,36,67",
+                    "damage": 100,
+                    "runner": {
+                        "type": "targeted",
+                        "target": "enemy"
+                    }
+                }
+            },
+            "emitter": {
+                "type": "parallel"
+            }
+        },
+        {
+            "groupFireTime": 6,
+            "fireInterval": 0.5,
+            "loader": {
+                "num": 4,
+                "bullet": {
+                    "speed": 220,
+                    "modelType": "2d",
+                    "modelImg": "bullets.png",
+                    "modelRect": "54,57,36,67",
+                    "damage": 100,
+                    "runner": {
+                        "type": "targeted",
+                        "target": "enemy"
+                    },
+                    "aimer": {
+                        "type": "targeted",
+                        "target": "enemy",
+                        "time": 1
+                    }
+                }
+            },
+            "emitter": {
+                "type": "parallel"
+            }
+        }
+    ]}
+}

@@ -14,7 +14,7 @@
 USING_NS_CC;
 using namespace rapidjson;
 
-void MAirCraft::initWithJson(const Document& document) {
+void MAirCraft::initWithJson(const rapidjson::Value& document) {
     MGameEntity::initWithJson(document);
     _MAX_HP = document["hp"].GetInt();
     _hp = _MAX_HP;

@@ -15,7 +15,7 @@
 
 class MAirCraft : public MGameEntity {
 public:
-    virtual void initWithJson(const rapidjson::Document& document);
+    virtual void initWithJson(const rapidjson::Value& document);
     virtual void print();
     
     bool hurt(int damage, cocos2d::Vec2 position = nullptr);
