@@ -1,9 +1,37 @@
 {
-        "w_1": {
-            "fireInterval": 0.5,
-            "loaderId": "l_1",
-            "emitter": {
-                "type": "arc"
-            }
+    "w_1": {
+        "fireInterval": 0.5,
+        "loaderId": "l_1",
+        "emitter": {
+            "type": "arc"
         }
+    },
+    "w_2": {
+        "weapons": [
+            {
+                "groupFireTime": 3,
+                "fireInterval": 0.5,
+                "loaderId": "l_1",
+                "emitter": {
+                    "type": "arc"
+                }
+            },
+            {
+                "groupFireTime": 6,
+                "fireInterval": 1.5,
+                "loaderId": "l_1",
+                "emitter": {
+                    "type": "arc"
+                }
+            },
+            {
+                "groupFireTime": 12,
+                "fireInterval": 3.5,
+                "loaderId": "l_1",
+                "emitter": {
+                    "type": "arc"
+                }
+            }
+        ]
+    }
 }

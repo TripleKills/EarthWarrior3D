@@ -91,16 +91,15 @@ void MWeapon2::setLoader(MWeaponLoader* loader) {
 }
 void MWeapon2::onEnter() {
     Node::onEnter();
-    if (getParentWeapon() == nullptr) {
-        scheduleUpdate();
-    }
     if (_bulletsLayer == nullptr) {
         auto gameScene = Director::getInstance()->getRunningScene();
         Vector<Node*> children = gameScene->getChildren();
         Node* bulletLayer = children.at(0)->getChildByTag(SceneZOrder::game_layer)->getChildByTag(GameZOrder::bullet_layer);
         this->setBulletsLayer(bulletLayer);
     }
-    
+    if (getParentWeapon() == nullptr) {
+        scheduleUpdate();
+    }
 }
 
 void MWeapon2::addChildWeapon(MWeapon2* child) {
@@ -124,8 +123,9 @@ void MWeapon2::update(float dt) {
     if (_weapons.empty()) {
         CCASSERT(nullptr != _loader, "must set loader for weapon");
         CCASSERT(nullptr != _emitter, "must set emitter for weapon");
+        CCASSERT(nullptr != _bulletsLayer, "must set bullets layer for weapon");
     }
-    CCASSERT(nullptr != _bulletsLayer, "must set bullets layer for weapon");
+    
     if (_timePassed < 0 || _timePassed + dt >= _interval) {
         if (_weapons.empty()) {
             Vector<MBullet2*> bullets = _loader->getBullets();
@@ -179,7 +179,7 @@ void MWeapon2::initWithJson(Json* document) {
         while(child) {
             auto weapon = MWeapon2::createWithJson(child);
             addChildWeapon(weapon);
-            child++;
+            child = child->next;
         }
         return;
     }
