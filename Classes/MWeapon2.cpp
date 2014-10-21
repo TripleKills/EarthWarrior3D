@@ -15,23 +15,14 @@ USING_NS_CC;
 
 Vector<MBullet2*> MWeaponLoader::getBullets() {
     Vector<MBullet2*> bullets;
-    //rapidjson::Value& bulletDef = doc["bullet"];
-   // bulletDef["speed"].GetInt();
     for (int i = 0 ; i < _bulletNum; i++) {
         auto bullet = MBullet2::createWithJson(doc);
-    //    bullet->setRotation(-120);
         bullets.pushBack(bullet);
+        bullet->setFace(_owner->getFace());
     }
     return bullets;
 }
 
-/**
-MWeaponEmitterArc* MWeaponEmitterArc::create() {
-    auto emitter = new MWeaponEmitterArc();
-    emitter->autorelease();
-    return emitter;
-}
-*/
 void MWeaponEmitterArc::emmit(cocos2d::Vector<MBullet2*> bullets) {
     auto iter = bullets.begin();
     int count = bullets.size();
@@ -45,21 +36,13 @@ void MWeaponEmitterArc::emmit(cocos2d::Vector<MBullet2*> bullets) {
     float deltaRotation = totalRotation / count;
     while(iter != bullets.end()) {
         (*iter)->setPosition(start);
-        //(*iter)->getAimer()->setTime(3);
-        (*iter)->setRotation(startRotation);
+        (*iter)->rotate(startRotation);
         iter++;
         startRotation+=deltaRotation;
         start += deltaWidth;
     }
 }
 
-/**
-MWeaponEmitterParallel* MWeaponEmitterParallel::create() {
-    auto emitter = new MWeaponEmitterParallel();
-    emitter->autorelease();
-    return emitter;
-}
-*/
 void MWeaponEmitterParallel::emmit(cocos2d::Vector<MBullet2*> bullets) {
     auto iter = bullets.begin();
     int count = bullets.size();
@@ -69,24 +52,18 @@ void MWeaponEmitterParallel::emmit(cocos2d::Vector<MBullet2*> bullets) {
     while(iter != bullets.end()) {
         (*iter)->setPosition(start);
         start += deltaWidth;
-        //(*iter)->getAimer()->setTime(3);
-    //    (*iter)->setRotation(rotation+=10);
         iter++;
     }
 }
-/**
-MWeapon2* MWeapon2::create() {
-    auto weapon = new MWeapon2();
-    weapon->autorelease();
-    return weapon;
-}
-*/
+
 void MWeapon2::setEmitter(MWeaponEmitter* emitter) {
     this->_emitter = emitter;
+    this->_emitter->setOwner(this);
     this->_emitter->retain();
 }
 void MWeapon2::setLoader(MWeaponLoader* loader) {
     this->_loader = loader;
+    this->_loader->setOwner(this);
     this->_loader->retain();
 }
 void MWeapon2::onEnter() {
@@ -104,7 +81,7 @@ void MWeapon2::onEnter() {
 
 void MWeapon2::addChildWeapon(MWeapon2* child) {
     _weapons.pushBack(child);
-    addChild(child);
+    addChildEntity(child);
     child->setParentWeapon(this);
 }
 
@@ -203,6 +180,7 @@ void MWeapon2::initWithJson(Json* document) {
 }
 
 void MWeaponLoader::initWithJson(Json* document) {
+    _owner = nullptr;
     this->_bulletNum = Json_getInt(document, "num", 1);
     
     doc = Json_getItem(document, "bullet");

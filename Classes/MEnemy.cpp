@@ -30,7 +30,7 @@ void MEnemy::initWithJson(Json* document) {
     std::string weaponId = Json_getString(weaponDef, "weaponId", "");
     Json* realWeapon = Json_getItem(MJsonDataManager::getInstance()->JSON_DOC["weapons"], weaponId.c_str());
     auto weapon = MWeapon2::createWithJson(realWeapon);
-    this->addChild(weapon);
+    this->addChildEntity(weapon);
     weapon->setPosition(MStringUtils::parseVec2(Json_getString(weaponDef, "position", "0,0")));
 }
 

@@ -106,9 +106,9 @@ void MGameScene::initLayer() {
     
     Json* enemies = mgr->JSON_DOC["enemies"];
     Json* def = Json_getItem(enemies, "e_1");
-    auto air = MEnemyRound::createWithJson(def);
+    auto air = MEnemyLine::createWithJson(def);
     addChild(air);
-    air->setPosition(Vec2(300,200));
+    air->setPosition(Vec2(300,600));
     air->print();
     MGameController::_aliveEnemys.pushBack(air);
 }

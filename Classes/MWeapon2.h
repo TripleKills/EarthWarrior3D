@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "MMacros.h"
-
+#include "MGameEntity.h"
 
 class MBullet2;
 class MWeapon2;
@@ -22,15 +22,20 @@ public:
     cocos2d::Vector<MBullet2*> getBullets();
     void setTarget(cocos2d::Node* target) { this->_target = target;};
     void initWithJson(Json* document);
+    void setOwner(MWeapon2* owner) {_owner = owner;};
 private:
     int _bulletNum;
     Json* doc;
     cocos2d::Node* _target;
+    MWeapon2* _owner;
 };
 
 class MWeaponEmitter : public cocos2d::Ref {
 public:
     virtual void emmit(cocos2d::Vector<MBullet2*> bullets) = 0;
+    void setOwner(MWeapon2* owner) {_owner = owner;};
+private:
+    MWeapon2* _owner;
 };
 
 class MWeaponEmitterArc : public MWeaponEmitter {
@@ -49,7 +54,7 @@ public:
     virtual void emmit(cocos2d::Vector<MBullet2*> bullets);
 };
 
-class MWeapon2 : public cocos2d::Node {
+class MWeapon2 : public MGameEntity {
 public:
    // static MWeapon2* create();
     CREATE_WITH_JSON(MWeapon2);

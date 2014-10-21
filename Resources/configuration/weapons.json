@@ -13,7 +13,7 @@
                 "fireInterval": 0.5,
                 "loaderId": "l_1",
                 "emitter": {
-                    "type": "arc"
+                    "type": "parallel"
                 }
             },
             {
