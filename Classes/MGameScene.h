@@ -10,7 +10,7 @@
 #define EarthWarrior3D_MGameScene_h
 
 #include "cocos2d.h"
-
+#include "MEnemyGeneral.h"
 /**
 scene's layer
     background_layer
@@ -81,6 +81,7 @@ private:
 private:
     cocos2d::Sprite* _background;
     float _xScroll;
+    MEnemyColonel* colonel;
 };
 
 

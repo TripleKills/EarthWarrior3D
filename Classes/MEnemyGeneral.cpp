@@ -7,7 +7,8 @@
 //
 
 #include "MEnemyGeneral.h"
-
+#include "MJsonDataManager.h"
+#include "MGameScene.h"
 USING_NS_CC;
 
 MEnemyGeneral* MEnemyGeneral::_sInstance = nullptr;
@@ -87,9 +88,14 @@ void MEnemyMajor::activate() {
 }
 
 
-MEnemyColonel::MEnemyColonel() : _mSoldiers(), _timePassed(0.0f),
-                                 _interval(-1), _fleeSpeed(-200) {
-
+void MEnemyColonel::initWithJson(Json* document) {
+    _timePassed = 0.0f;
+    _interval = Json_getFloat(document, "interval", -1.0f);
+    _fleeSpeed = Json_getFloat(document, "fleeSpeed", 500);
+    Json* deployJson = Json_getItem(document, "deployer");
+    _deployer = MEnemyColonelDeployer::createWithJson(deployJson);
+    Json* conscripterJson =Json_getItem(document, "conscripter");
+    _conscripter = MEnemyColonelConscripter::createWithJson(conscripterJson);
 }
 MEnemyColonel::~MEnemyColonel() {
     
@@ -115,7 +121,7 @@ bool MEnemyColonel::isLoop() {
 }
 
 void MEnemyColonel::launchAForce() {
-    _mSoldiers = _conscripter->getEnemys();
+    _conscripter->conscript(_mSoldiers);
     _deployer->deployEnemys(_mSoldiers);
 }
 
@@ -140,15 +146,51 @@ bool MEnemyColonelConscripter::init() {
     return true;
 }
 
-Vector<MEnemy*> MEnemyColonelConscripter::getEnemys() {
-    Vector<MEnemy*> enemys;
-    return enemys;
+void MEnemyColonelConscripter::conscript(cocos2d::Vector<MEnemy*>& enemies) {
+    enemies.clear();
+    Json* child = _enemyJson->child;
+    while (child) {
+        std::string enemyName = child->valueString;
+        CCLOG("init child %s", enemyName.c_str());
+        Json* enemyJson = Json_getItem(MJsonDataManager::getInstance()->JSON_DOC["enemies"],enemyName.c_str());
+        auto enemy = MEnemyLine::createWithJson(enemyJson);
+        enemies.pushBack(enemy);
+        child = child->next;
+    }
+}
+
+void MEnemyColonelConscripter::initWithJson(Json* document) {
+    _enemyJson = document;
 }
 
 bool MEnemyColonelDeployer::init() {
     return true;
 }
 
-void MEnemyColonelDeployer::deployEnemys(Vector<MEnemy*> enemys) {
+void MEnemyColonelDeployer::deployEnemys(Vector<MEnemy*>& enemys) {
+    
+    auto gameScene = Director::getInstance()->getRunningScene();
+    Vector<Node*> children = gameScene->getChildren();
+    Node* enemylayer = children.at(0)->getChildByTag(SceneZOrder::game_layer)->getChildByTag(GameZOrder::enemy_layer);
+    
+    std::vector<cocos2d::Vec2> _mpositions;
+    Json* child = _posJson->child;
+    while (child) {
+        _mpositions.push_back(MStringUtils::parseVec2(child->valueString));
+        child = child->next;
+    }
 
+    for (int i = 0; i < enemys.size(); i++) {
+        MEnemy* enemy = enemys.at(i);
+        
+        std::vector<cocos2d::Vec2>::size_type size = _mpositions.size();
+        
+        int posIndex = i >= size ? size - 1 : i;
+       enemy->setPosition(_mpositions.at(posIndex));
+        enemylayer->addChild(enemy);
+    }
+}
+
+void MEnemyColonelDeployer::initWithJson(Json* document) {
+    _posJson = document;
 }

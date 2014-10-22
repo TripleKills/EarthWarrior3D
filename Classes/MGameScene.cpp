@@ -18,6 +18,7 @@
 #include "MJsonUtils.h"
 #include "MGameController.h"
 #include "MJsonDataManager.h"
+#include "MEnemyGeneral.h"
 
 #include "spine/Json.h"
 
@@ -103,7 +104,7 @@ void MGameScene::initLayer() {
     **/
     auto mgr = MJsonDataManager::getInstance();
     mgr->load();
-    
+    /**
     Json* enemies = mgr->JSON_DOC["enemies"];
     Json* def = Json_getItem(enemies, "e_1");
     auto air = MEnemyLine::createWithJson(def);
@@ -111,6 +112,10 @@ void MGameScene::initLayer() {
     air->setPosition(Vec2(300,600));
     air->print();
     MGameController::_aliveEnemys.pushBack(air);
+     */
+    Json* colonelJson = MJsonUtils::loadFileAsJson("configuration/colonel.json");
+    colonel = MEnemyColonel::createWithJson(colonelJson);
+    colonel->retain();
 }
 
 void MGameScene::onEnter(){
@@ -120,6 +125,7 @@ void MGameScene::onEnter(){
 
 void MGameScene::update(float dt) {
     updateBackground(dt);
+    colonel->update(dt);
 }
 
 void MGameScene::updateBackground(float dt) {

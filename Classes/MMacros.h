@@ -19,8 +19,6 @@
 #define LOG_FUNC CCLOG("%s\n%s:%d",__FILE__,__FUNCTION__,__LINE__);
 
 #define CREATE_WITH_JSON(__TYPE__) \
-protected:\
-    __TYPE__(){};\
 public:\
     static __TYPE__* createWithJson(Json* document) {\
     auto enemy = new __TYPE__();\

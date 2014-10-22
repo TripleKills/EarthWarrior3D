@@ -1,7 +1,7 @@
 {
         "e_1": {
             "type": "line",
-            "face":"up",
+            "face":"down",
             "hp": 1000,
             "modelImg": "planes/e1.png",
             "modelType": "2d",

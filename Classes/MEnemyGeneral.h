@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "MEnemy.h"
-
+#include "MMacros.h"
 class MEnemyMajor;
 class MEnemyColonel;
 class MEnemyColonelConscripter;
@@ -73,15 +73,15 @@ private:
  */
 class MEnemyColonel : public cocos2d::Ref {
 public:
-    CREATE_FUNC(MEnemyColonel);
-    MEnemyColonel();
+    CREATE_WITH_JSON(MEnemyColonel);
     ~MEnemyColonel();
     bool init();
     bool update(float dt);
     void activate();
     bool isLoop();
     bool flee(float dt);
-    
+protected:
+    virtual void initWithJson(Json* document);
 private:
     void launchAForce();
 public:
@@ -95,16 +95,25 @@ private:
 
 class MEnemyColonelConscripter : public cocos2d::Ref {
 public:
-    CREATE_FUNC(MEnemyColonelConscripter);
+    CREATE_WITH_JSON(MEnemyColonelConscripter);
     bool init();
-    cocos2d::Vector<MEnemy*> getEnemys();
+    void conscript(cocos2d::Vector<MEnemy*>& enemies);
+protected:
+    virtual void initWithJson(Json* document);
+private:
+    Json* _enemyJson;
 };
 
 class MEnemyColonelDeployer : public cocos2d::Ref {
 public:
-    CREATE_FUNC(MEnemyColonelDeployer);
+    CREATE_WITH_JSON(MEnemyColonelDeployer);
     bool init();
-    void deployEnemys(cocos2d::Vector<MEnemy*> enemys);
+    void deployEnemys(cocos2d::Vector<MEnemy*>& enemys);
+protected:
+    MEnemyColonelDeployer() : _posJson(nullptr) {};
+    virtual void initWithJson(Json* document);
+private:
+    Json* _posJson;
 };
 
 
