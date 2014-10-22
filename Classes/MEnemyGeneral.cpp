@@ -108,7 +108,8 @@ bool MEnemyColonel::init() {
 bool MEnemyColonel::flee(float dt) {
     for (auto iter = _mSoldiers.begin(); iter != _mSoldiers.end(); iter++) {
         (*iter)->unscheduleUpdate();
-        (*iter)->setPosition((*iter)->getPosition() + Vec2(0, _fleeSpeed));
+        float dist = (*iter)->getPosition().getDistance((*iter)->getPosition() + Vec2(0, _fleeSpeed*dt));
+        (*iter)->forward(dist);
     }
     return !_mSoldiers.empty();
 }
@@ -151,7 +152,6 @@ void MEnemyColonelConscripter::conscript(cocos2d::Vector<MEnemy*>& enemies) {
     Json* child = _enemyJson->child;
     while (child) {
         std::string enemyName = child->valueString;
-        CCLOG("init child %s", enemyName.c_str());
         Json* enemyJson = Json_getItem(MJsonDataManager::getInstance()->JSON_DOC["enemies"],enemyName.c_str());
         auto enemy = MEnemyLine::createWithJson(enemyJson);
         enemies.pushBack(enemy);
@@ -182,11 +182,9 @@ void MEnemyColonelDeployer::deployEnemys(Vector<MEnemy*>& enemys) {
 
     for (int i = 0; i < enemys.size(); i++) {
         MEnemy* enemy = enemys.at(i);
-        
-        std::vector<cocos2d::Vec2>::size_type size = _mpositions.size();
-        
+        int size = _mpositions.size();
         int posIndex = i >= size ? size - 1 : i;
-       enemy->setPosition(_mpositions.at(posIndex));
+        enemy->setPosition(_mpositions.at(posIndex));
         enemylayer->addChild(enemy);
     }
 }

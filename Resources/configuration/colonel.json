@@ -1,6 +1,6 @@
 {
     "interval": "6",
-    "fleeSpeed": 500,
+    "fleeSpeed": 50,
     "conscripter": [
         "e_1",
         "e_1",

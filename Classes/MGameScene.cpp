@@ -116,16 +116,19 @@ void MGameScene::initLayer() {
     Json* colonelJson = MJsonUtils::loadFileAsJson("configuration/colonel.json");
     colonel = MEnemyColonel::createWithJson(colonelJson);
     colonel->retain();
+    
 }
 
 void MGameScene::onEnter(){
     Layer::onEnter();
     scheduleUpdate();
+    colonel->update(1);
 }
 
 void MGameScene::update(float dt) {
     updateBackground(dt);
-    colonel->update(dt);
+   // colonel->update(dt);
+    colonel->flee(dt);
 }
 
 void MGameScene::updateBackground(float dt) {
