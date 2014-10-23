@@ -19,8 +19,8 @@ MJsonDataManager::~MJsonDataManager(){
 }
 
 void MJsonDataManager::load() {
-    const int files = 5;
-    std::string names[files] = {"weapons", "enemies", "weaponLoaders", "bullets", "colonels"};
+    const int files = 6;
+    std::string names[files] = {"weapons", "enemies", "weaponLoaders", "bullets", "colonels", "majors"};
     
     for (int index = 0; index < files; index++) {
         char buff[50];

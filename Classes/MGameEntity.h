@@ -18,6 +18,7 @@ enum EntityFaces {
 };
 
 class MGameEntity : public cocos2d::Node {
+    enum ScreenState {sNone, sIn, sOut};
 public:
     virtual void initWithJson(Json* document);
     virtual void print();
@@ -34,10 +35,18 @@ public:
     CC_SYNTHESIZE_READONLY(float, _radius, Radius);
     CC_SYNTHESIZE_READONLY(cocos2d::Vec3, _orientation, Orientation);
     CC_SYNTHESIZE(float, _speed, Speed);
+    
+    void checkScreenState(float dt);
+    virtual bool isInScreen();
+    
 protected:
     EntityFaces _face;
-    MGameEntity(): _type(kNone), _face(DOWN), _speed(0.0f), _radius(0.0f){};
+    MGameEntity(): _type(kNone), _face(DOWN), _speed(0.0f), _radius(0.0f)
+    , _screenState(sNone)
+    , _checkScreenInterval(0.5), _checkScreenTimePassed(_checkScreenInterval) {};
     cocos2d::Node* _model;
+    ScreenState _screenState;
+    float _checkScreenInterval, _checkScreenTimePassed;
 };
 
 

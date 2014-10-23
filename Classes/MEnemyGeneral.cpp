@@ -13,14 +13,21 @@ USING_NS_CC;
 
 MEnemyGeneral* MEnemyGeneral::_sInstance = nullptr;
 
-MEnemyGeneral::MEnemyGeneral() : _timePassed(0.0f), _interval(0.5f),
-                                _timeInterval(0.0f), _mMajors(){
-                                    init();
+MEnemyGeneral::MEnemyGeneral() : _timePassed(0.0f), _mMajors(){
+                                    
 }
 
-void MEnemyGeneral::init() {
+void MEnemyGeneral::initWithJson(Json* document) {
+    Json* majorsJson = Json_getItem(document, "majors");
+    Json* child = majorsJson->child;
+    while (child) {
+        const char* majorName = child->valueString;
+        Json* majorJson = Json_getItem(MJsonDataManager::getInstance()->JSON_DOC["majors"], majorName);
+        MEnemyMajor* major = MEnemyMajor::createWithJson(majorJson);
+        _mMajors.pushBack(major);
+        child = child->next;
+    }
 }
-
 MEnemyGeneral::~MEnemyGeneral() {
     _mMajors.clear();
 }
@@ -33,16 +40,14 @@ void MEnemyGeneral::destroy() {
 
 void MEnemyGeneral::update(float dt) {
     _timePassed += dt;
-    if (_timeInterval == 0 or _timeInterval + dt >= _interval) {
-        auto major = _mMajors.back();
-        float subDt = _timeInterval == 0 ? dt : _timeInterval + dt;
-        if (!major->update(subDt)) {
-            _mMajors.popBack();
-        }
+    auto major = _mMajors.back();
+    if (!major->update(dt)) {
+        _mMajors.popBack();
     }
-    _timeInterval += dt;
-    _timeInterval = _timeInterval >= _interval ? _timeInterval - _interval : _timeInterval;
 }
+
+
+
 
 
 void MEnemyMajor::initWithJson(Json* document) {
@@ -159,10 +164,6 @@ bool MEnemyColonel::update(float dt) {
 }
 
 
-bool MEnemyColonelConscripter::init() {
-    return true;
-}
-
 void MEnemyColonelConscripter::conscript(cocos2d::Vector<MEnemy*>& enemies) {
     enemies.clear();
     Json* child = _enemyJson->child;
@@ -177,10 +178,6 @@ void MEnemyColonelConscripter::conscript(cocos2d::Vector<MEnemy*>& enemies) {
 
 void MEnemyColonelConscripter::initWithJson(Json* document) {
     _enemyJson = document;
-}
-
-bool MEnemyColonelDeployer::init() {
-    return true;
 }
 
 void MEnemyColonelDeployer::deployEnemys(Vector<MEnemy*>& enemys) {

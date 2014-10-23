@@ -16,14 +16,17 @@
 #include "MMacros.h"
 
 class MEnemy : public MAirCraft {
+    
 public:
     void onEnter();
     virtual void update(float dt);
+    
 protected:
     virtual void initWithJson(Json* document);
-    
+    MEnemy() : _weapon(nullptr){};
 private:
     MWeapon2* _weapon;
+    
 };
 
 class MEnemyLine : public MEnemy {

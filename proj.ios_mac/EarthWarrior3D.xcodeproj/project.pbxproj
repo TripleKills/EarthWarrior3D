@@ -557,6 +557,7 @@
 		E395C854199E39FD00AC2148 /* MMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMainScene.h; path = ../Classes/MMainScene.h; sourceTree = "<group>"; };
 		E395C857199E3A3800AC2148 /* MMainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MMainScene.cpp; path = ../Classes/MMainScene.cpp; sourceTree = "<group>"; };
 		E395C85A199E3E7A00AC2148 /* MLoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLoadingScene.h; path = ../Classes/MLoadingScene.h; sourceTree = "<group>"; };
+		E3A1D7F919F8D48600FBD5C2 /* MEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MEventData.h; path = ../Classes/MEventData.h; sourceTree = "<group>"; };
 		E3E4701F199F360700E45D99 /* MLayerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLayerUtil.h; path = ../Classes/MLayerUtil.h; sourceTree = "<group>"; };
 		E3E47022199F364200E45D99 /* MLayerUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLayerUtil.cpp; path = ../Classes/MLayerUtil.cpp; sourceTree = "<group>"; };
 		E3E47026199F42BB00E45D99 /* MGameEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGameEntity.h; path = ../Classes/MGameEntity.h; sourceTree = "<group>"; };
@@ -947,6 +948,7 @@
 				E3EB9A4D19B5FE6A00FE9421 /* MGameController.cpp */,
 				E3566A5219F49B3D00F34C34 /* MJsonDataManager.h */,
 				E3566A5519F49CC600F34C34 /* MJsonDataManager.cpp */,
+				E3A1D7F919F8D48600FBD5C2 /* MEventData.h */,
 			);
 			name = controller;
 			sourceTree = "<group>";

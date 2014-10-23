@@ -33,17 +33,15 @@ public:
     };
     
     ~MEnemyGeneral();
-    
+    void initWithJson(Json* document);
     void destroy();
     void update(float dt);
-    CC_SYNTHESIZE(float, _interval, Interval);
 private:
     MEnemyGeneral();
-    void init();
     
 private:
     static MEnemyGeneral* _sInstance;
-    float _timePassed, _timeInterval;
+    float _timePassed;
     cocos2d::Vector<MEnemyMajor*> _mMajors;
 };
 
@@ -106,7 +104,6 @@ private:
 class MEnemyColonelConscripter : public cocos2d::Ref {
 public:
     CREATE_WITH_JSON(MEnemyColonelConscripter);
-    bool init();
     void conscript(cocos2d::Vector<MEnemy*>& enemies);
 protected:
     virtual void initWithJson(Json* document);
@@ -118,7 +115,6 @@ private:
 class MEnemyColonelDeployer : public cocos2d::Ref {
 public:
     CREATE_WITH_JSON(MEnemyColonelDeployer);
-    bool init();
     void deployEnemys(cocos2d::Vector<MEnemy*>& enemys);
 protected:
     MEnemyColonelDeployer() : _posJson(nullptr) {};

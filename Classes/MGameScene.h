@@ -81,7 +81,7 @@ private:
 private:
     cocos2d::Sprite* _background;
     float _xScroll;
-    MEnemyMajor* major;
+    MEnemyGeneral* general;
 };
 
 

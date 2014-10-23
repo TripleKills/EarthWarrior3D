@@ -84,3 +84,23 @@ void MGameEntity::setFace(EntityFaces face) {
         }
     }
 }
+
+void MGameEntity::checkScreenState(float dt) {
+    _checkScreenTimePassed += dt;
+    if (_checkScreenTimePassed > _checkScreenInterval) {
+        return;
+    }
+    _checkScreenTimePassed -= _checkScreenInterval;
+    ScreenState curState = isInScreen() ? sOut : sIn;
+    if (curState == sOut && _screenState == sIn) {
+        // enemy went out of screen
+        CCLOG("went out of screen");
+    }
+    _screenState = curState;
+}
+
+bool MGameEntity::isInScreen() {
+    Size winSize = Director::getInstance()->getWinSize();
+    Rect winRect = Rect(0, 0, winSize.width, winSize.height);
+    return winRect.intersectsRect(getBoundingBox());
+}

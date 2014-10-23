@@ -113,9 +113,9 @@ void MGameScene::initLayer() {
     air->print();
     MGameController::_aliveEnemys.pushBack(air);
      */
-    Json* majorJson = MJsonUtils::loadFileAsJson("configuration/major.json");
-    major = MEnemyMajor::createWithJson(majorJson);
-    major->retain();
+    Json* generalJson = MJsonUtils::loadFileAsJson("configuration/general.json");
+    general = MEnemyGeneral::getInstance();
+    general->initWithJson(generalJson);
     
 }
 
@@ -126,7 +126,7 @@ void MGameScene::onEnter(){
 
 void MGameScene::update(float dt) {
     updateBackground(dt);
-    major->update(dt);
+    general->update(dt);
 }
 
 void MGameScene::updateBackground(float dt) {

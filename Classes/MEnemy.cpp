@@ -36,6 +36,7 @@ void MEnemy::initWithJson(Json* document) {
 
 void MEnemy::update(float dt) {
     _weapon->update(dt);
+    checkScreenState(dt);
 }
 
 void MEnemyLine::update(float dt) {

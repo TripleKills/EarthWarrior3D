@@ -7,7 +7,7 @@
 //
 
 #include "MGameController.h"
-
+#include "MEventData.h"
 USING_NS_CC;
 
 MGameController* MGameController::_sInstance = nullptr;
