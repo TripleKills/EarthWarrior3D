@@ -25,7 +25,23 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/ParticleManager.cpp \
                    ../../Classes/Plane.cpp \
                    ../../Classes/Sprite3DEffect.cpp \
-                   ../../Classes/LicenseLayer.cpp
+                   ../../Classes/LicenseLayer.cpp \
+                   ../../Classes/MAirCraft.cpp \
+                   ../../Classes/MBullet2.cpp \
+                   ../../Classes/MEnemy.cpp \
+                   ../../Classes/MEnemyGeneral.cpp \
+                   ../../Classes/MGameEntity.cpp \
+                   ../../Classes/MGameController.cpp \
+                   ../../Classes/MGameScene.cpp \
+                   ../../Classes/MGeometryUtils.cpp \
+                   ../../Classes/MJsonDataManager.cpp \
+                   ../../Classes/MJsonUtils.cpp \
+                   ../../Classes/MLayerUtil.cpp \
+                   ../../Classes/MLoadingScene.cpp \
+                   ../../Classes/MMainScene.cpp \
+                   ../../Classes/MParticleManager.cpp \
+                   ../../Classes/MStringUtils.cpp \
+                   ../../Classes/MWeapon2.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 
@@ -34,7 +50,7 @@ LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static
 
 # LOCAL_WHOLE_STATIC_LIBRARIES += box2d_static
 # LOCAL_WHOLE_STATIC_LIBRARIES += cocosbuilder_static
-# LOCAL_WHOLE_STATIC_LIBRARIES += spine_static
+LOCAL_WHOLE_STATIC_LIBRARIES += spine_static
 # LOCAL_WHOLE_STATIC_LIBRARIES += cocostudio_static
 # LOCAL_WHOLE_STATIC_LIBRARIES += cocos_network_static
 # LOCAL_WHOLE_STATIC_LIBRARIES += cocos_extension_static
@@ -47,7 +63,7 @@ $(call import-module,audio/android)
 
 # $(call import-module,Box2D)
 # $(call import-module,editor-support/cocosbuilder)
-# $(call import-module,editor-support/spine)
+$(call import-module,editor-support/spine)
 # $(call import-module,editor-support/cocostudio)
 # $(call import-module,network)
 # $(call import-module,extensions)

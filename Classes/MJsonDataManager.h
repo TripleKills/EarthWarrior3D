@@ -15,7 +15,7 @@
 
 class MJsonDataManager {
 public:
-    ~MJsonDataManager(){};
+    ~MJsonDataManager();
     
     static MJsonDataManager* getInstance() {
         if (_sInstance == nullptr) {

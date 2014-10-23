@@ -1,0 +1,20 @@
+{
+    "fightTime": 10,
+    "colonels": [
+        {
+            "name": "c_3"
+        },
+        {
+            "name": "c_4",
+            "delay": 0.3
+        },
+        {
+            "name": "c_5",
+            "delay": 0.6
+        },
+        {
+            "name": "c_6",
+            "delay": 0.9
+        }
+    ]
+}

@@ -113,22 +113,20 @@ void MGameScene::initLayer() {
     air->print();
     MGameController::_aliveEnemys.pushBack(air);
      */
-    Json* colonelJson = MJsonUtils::loadFileAsJson("configuration/colonel.json");
-    colonel = MEnemyColonel::createWithJson(colonelJson);
-    colonel->retain();
+    Json* majorJson = MJsonUtils::loadFileAsJson("configuration/major.json");
+    major = MEnemyMajor::createWithJson(majorJson);
+    major->retain();
     
 }
 
 void MGameScene::onEnter(){
     Layer::onEnter();
     scheduleUpdate();
-    colonel->update(1);
 }
 
 void MGameScene::update(float dt) {
     updateBackground(dt);
-   // colonel->update(dt);
-    colonel->flee(dt);
+    major->update(dt);
 }
 
 void MGameScene::updateBackground(float dt) {

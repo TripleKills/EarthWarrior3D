@@ -11,9 +11,16 @@
 
 MJsonDataManager* MJsonDataManager::_sInstance = nullptr;
 
+MJsonDataManager::~MJsonDataManager(){
+    for(auto iter = JSON_DOC.begin(); iter != JSON_DOC.end(); iter++) {
+        Json* json = iter->second;
+        Json_dispose(json);
+    }
+}
+
 void MJsonDataManager::load() {
-    const int files = 4;
-    std::string names[files] = {"weapons", "enemies", "weaponLoaders", "bullets"};
+    const int files = 5;
+    std::string names[files] = {"weapons", "enemies", "weaponLoaders", "bullets", "colonels"};
     
     for (int index = 0; index < files; index++) {
         char buff[50];

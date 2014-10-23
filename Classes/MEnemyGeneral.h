@@ -55,11 +55,16 @@ private:
  */
 class MEnemyMajor : public cocos2d::Ref {
 public:
-    CREATE_FUNC(MEnemyMajor);
-    MEnemyMajor();
-    bool init();
+    CREATE_WITH_JSON(MEnemyMajor);
     bool update(float dt);
     void activate();
+    
+protected:
+    virtual void initWithJson(Json* document);
+    
+private:
+    MEnemyMajor() : _time(-1), _timePassed(0), _colonels() {};
+    
 public:
     constexpr const static float K_LOOP_INTERVAL = -1;
 private:
@@ -80,6 +85,7 @@ public:
     void activate();
     bool isLoop();
     bool flee(float dt);
+    void setFirstDelay(float delay) {_delayTimePassed = - delay;};
 protected:
     virtual void initWithJson(Json* document);
 private:
@@ -87,7 +93,11 @@ private:
 public:
     constexpr const static float K_ONCE_INTERVAL = -1;
 private:
-    float _interval, _timePassed, _fleeSpeed;
+    MEnemyColonel() : _interval(0), _timePassed(0), _fleeSpeed(0),
+                      _delayTimePassed(0),_conscripter(nullptr),
+                      _deployer(nullptr), _mSoldiers() {};
+    
+    float _interval, _timePassed, _fleeSpeed, _delayTimePassed;
     MEnemyColonelConscripter* _conscripter;
     MEnemyColonelDeployer* _deployer;
     cocos2d::Vector<MEnemy*> _mSoldiers;
@@ -101,6 +111,7 @@ public:
 protected:
     virtual void initWithJson(Json* document);
 private:
+    MEnemyColonelConscripter() : _enemyJson(nullptr) {};
     Json* _enemyJson;
 };
 

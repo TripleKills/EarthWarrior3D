@@ -12,14 +12,18 @@
 #include "cocos2d.h"
 #include "spine/Json.h"
 #include "MAirCraft.h"
-
+#include "MWeapon2.h"
 #include "MMacros.h"
 
 class MEnemy : public MAirCraft {
 public:
     void onEnter();
+    virtual void update(float dt);
 protected:
     virtual void initWithJson(Json* document);
+    
+private:
+    MWeapon2* _weapon;
 };
 
 class MEnemyLine : public MEnemy {

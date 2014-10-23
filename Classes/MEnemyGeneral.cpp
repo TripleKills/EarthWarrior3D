@@ -44,12 +44,22 @@ void MEnemyGeneral::update(float dt) {
     _timeInterval = _timeInterval >= _interval ? _timeInterval - _interval : _timeInterval;
 }
 
-MEnemyMajor::MEnemyMajor() : _time(-1), _colonels(), _timePassed(0.0f) {
-    
-}
 
-bool MEnemyMajor::init() {
-    return true;
+void MEnemyMajor::initWithJson(Json* document) {
+    _time = Json_getFloat(document, "fightTime", K_LOOP_INTERVAL);
+    Json* colonelsJson = Json_getItem(document, "colonels");
+    Json* child = colonelsJson->child;
+    while (child) {
+        const char* colonelName = Json_getString(child, "name", "");
+        float delay = Json_getFloat(child, "delay", -1);
+        Json* colonelJson = Json_getItem(MJsonDataManager::getInstance()->JSON_DOC["colonels"], colonelName);
+        MEnemyColonel* colonel = MEnemyColonel::createWithJson(colonelJson);
+        if (delay > 0) {
+            colonel->setFirstDelay(delay);
+        }
+        _colonels.pushBack(colonel);
+        child = child->next;
+    }
 }
 
 bool MEnemyMajor::update(float dt) {
@@ -94,11 +104,14 @@ void MEnemyColonel::initWithJson(Json* document) {
     _fleeSpeed = Json_getFloat(document, "fleeSpeed", 500);
     Json* deployJson = Json_getItem(document, "deployer");
     _deployer = MEnemyColonelDeployer::createWithJson(deployJson);
+    _deployer->retain();
     Json* conscripterJson =Json_getItem(document, "conscripter");
     _conscripter = MEnemyColonelConscripter::createWithJson(conscripterJson);
+    _conscripter->retain();
 }
 MEnemyColonel::~MEnemyColonel() {
-    
+    CC_SAFE_RELEASE_NULL(_deployer);
+    CC_SAFE_RELEASE_NULL(_conscripter);
 }
 
 bool MEnemyColonel::init() {
@@ -127,6 +140,9 @@ void MEnemyColonel::launchAForce() {
 }
 
 bool MEnemyColonel::update(float dt) {
+    if ( (_delayTimePassed += dt) < 0 ) {
+        return true;
+    }
     if (_timePassed == 0) {
         launchAForce();
     } else if (_timePassed + dt >= _interval && _interval != MEnemyColonel::K_ONCE_INTERVAL

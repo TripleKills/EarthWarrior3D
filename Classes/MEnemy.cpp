@@ -29,12 +29,17 @@ void MEnemy::initWithJson(Json* document) {
     Json* weaponDef = Json_getItem(document, "weapon");
     std::string weaponId = Json_getString(weaponDef, "weaponId", "");
     Json* realWeapon = Json_getItem(MJsonDataManager::getInstance()->JSON_DOC["weapons"], weaponId.c_str());
-    auto weapon = MWeapon2::createWithJson(realWeapon);
-    this->addChildEntity(weapon);
-    weapon->setPosition(MStringUtils::parseVec2(Json_getString(weaponDef, "position", "0,0")));
+    _weapon = MWeapon2::createWithJson(realWeapon);
+    this->addChildEntity(_weapon);
+    _weapon->setPosition(MStringUtils::parseVec2(Json_getString(weaponDef, "position", "0,0")));
+}
+
+void MEnemy::update(float dt) {
+    _weapon->update(dt);
 }
 
 void MEnemyLine::update(float dt) {
+    MEnemy::update(dt);
     forward(_speed * dt);
 }
 
@@ -53,6 +58,7 @@ void MEnemyArc::print() {
 }
 
 void MEnemyArc::update(float dt) {
+    MEnemy::update(dt);
     forward(_speed * dt, _rotateSpeed * dt);
 }
 
@@ -76,6 +82,7 @@ void MEnemyRound::onEnter() {
 }
 
 void MEnemyRound::update(float dt) {
+    MEnemy::update(dt);
     float angle = dt * _rotateSpeed;
     Vec2 curPos = getPosition();
     curPos.rotate(_center, angle);

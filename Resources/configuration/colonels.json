@@ -1,0 +1,74 @@
+{
+    "c_1": {
+        "interval": "6",
+        "fleeSpeed": 50,
+        "conscripter": [
+            "e_1",
+            "e_1",
+            "e_1",
+            "e_1"
+        ],
+        "deployer": [
+            "200,600",
+            "100,500",
+            "300,500",
+            "200,400"
+        ]
+    },
+    "c_2": {
+        "interval": "6",
+        "fleeSpeed": 50,
+        "conscripter": [
+            "e_1",
+            "e_1",
+            "e_1",
+            "e_1"
+        ],
+        "deployer": [
+            "500,600",
+            "400,500",
+            "600,500",
+            "500,400"
+        ]
+    },
+    "c_3": {
+        "interval": "6",
+        "fleeSpeed": 50,
+        "conscripter": [
+            "e_1"
+        ],
+        "deployer": [
+            "100,700"
+        ]
+    },
+    "c_4": {
+        "interval": "6",
+        "fleeSpeed": 50,
+        "conscripter": [
+            "e_1"
+        ],
+        "deployer": [
+            "150,600"
+        ]
+    },
+    "c_5": {
+        "interval": "6",
+        "fleeSpeed": 50,
+        "conscripter": [
+            "e_1"
+        ],
+        "deployer": [
+            "200,500"
+        ]
+    },
+    "c_6": {
+        "interval": "6",
+        "fleeSpeed": 50,
+        "conscripter": [
+            "e_1"
+        ],
+        "deployer": [
+            "250,400"
+        ]
+    }
+}

@@ -74,9 +74,9 @@ void MWeapon2::onEnter() {
         Node* bulletLayer = children.at(0)->getChildByTag(SceneZOrder::game_layer)->getChildByTag(GameZOrder::bullet_layer);
         this->setBulletsLayer(bulletLayer);
     }
-    if (getParentWeapon() == nullptr) {
-        scheduleUpdate();
-    }
+    //if (getParentWeapon() == nullptr) {
+    //    scheduleUpdate();
+    //}
 }
 
 void MWeapon2::addChildWeapon(MWeapon2* child) {
