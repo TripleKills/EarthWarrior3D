@@ -102,6 +102,7 @@ void MGameScene::initLayer() {
     air->print();
     MGameController::_aliveEnemys.pushBack(air);
     **/
+    auto controller = MGameController::getInstance();
     auto mgr = MJsonDataManager::getInstance();
     mgr->load();
     /**

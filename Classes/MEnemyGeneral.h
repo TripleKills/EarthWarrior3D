@@ -78,7 +78,8 @@ class MEnemyColonel : public cocos2d::Ref {
 public:
     CREATE_WITH_JSON(MEnemyColonel);
     ~MEnemyColonel();
-    bool init();
+    void registerEvents();
+    void unregisterEvents();
     bool update(float dt);
     void activate();
     bool isLoop();
@@ -86,14 +87,13 @@ public:
     void setFirstDelay(float delay) {_delayTimePassed = - delay;};
 protected:
     virtual void initWithJson(Json* document);
+    void checkSolderFleeOrDead(cocos2d::EventCustom* event);
 private:
     void launchAForce();
 public:
     constexpr const static float K_ONCE_INTERVAL = -1;
 private:
-    MEnemyColonel() : _interval(0), _timePassed(0), _fleeSpeed(0),
-                      _delayTimePassed(0),_conscripter(nullptr),
-                      _deployer(nullptr), _mSoldiers() {};
+    MEnemyColonel();
     
     float _interval, _timePassed, _fleeSpeed, _delayTimePassed;
     MEnemyColonelConscripter* _conscripter;

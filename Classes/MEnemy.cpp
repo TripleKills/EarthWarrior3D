@@ -35,13 +35,17 @@ void MEnemy::initWithJson(Json* document) {
 }
 
 void MEnemy::update(float dt) {
-    _weapon->update(dt);
+    if (!_isInFlee) {
+        _weapon->update(dt);
+    }
     checkScreenState(dt);
 }
 
 void MEnemyLine::update(float dt) {
     MEnemy::update(dt);
-    forward(_speed * dt);
+    if (!_isInFlee) {
+        forward(_speed * dt);
+    }
 }
 
 
@@ -60,7 +64,9 @@ void MEnemyArc::print() {
 
 void MEnemyArc::update(float dt) {
     MEnemy::update(dt);
-    forward(_speed * dt, _rotateSpeed * dt);
+    if (!_isInFlee) {
+        forward(_speed * dt, _rotateSpeed * dt);
+    }
 }
 
 
@@ -84,10 +90,12 @@ void MEnemyRound::onEnter() {
 
 void MEnemyRound::update(float dt) {
     MEnemy::update(dt);
-    float angle = dt * _rotateSpeed;
-    Vec2 curPos = getPosition();
-    curPos.rotate(_center, angle);
-    setPosition(curPos);
+    if (!_isInFlee) {
+        float angle = dt * _rotateSpeed;
+        Vec2 curPos = getPosition();
+        curPos.rotate(_center, angle);
+        setPosition(curPos);
+    }
 }
 
 

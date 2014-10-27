@@ -9,6 +9,7 @@
 #include "MEnemyGeneral.h"
 #include "MJsonDataManager.h"
 #include "MGameScene.h"
+#include "MEventData.h"
 USING_NS_CC;
 
 MEnemyGeneral* MEnemyGeneral::_sInstance = nullptr;
@@ -115,17 +116,45 @@ void MEnemyColonel::initWithJson(Json* document) {
     _conscripter->retain();
 }
 MEnemyColonel::~MEnemyColonel() {
+    unregisterEvents();
     CC_SAFE_RELEASE_NULL(_deployer);
     CC_SAFE_RELEASE_NULL(_conscripter);
 }
 
-bool MEnemyColonel::init() {
-    return true;
+MEnemyColonel::MEnemyColonel() : _interval(0), _timePassed(0), _fleeSpeed(0),
+_delayTimePassed(0),_conscripter(nullptr),
+_deployer(nullptr), _mSoldiers() {
+    registerEvents();
+}
+
+void MEnemyColonel::checkSolderFleeOrDead(cocos2d::EventCustom* event) {
+    MEventData* data = static_cast<MEventData*>(event->getUserData());
+    MEnemy* enemy = dynamic_cast<MEnemy*>(data->obj);
+    if (nullptr == enemy) {
+        return;
+    }
+    if (_mSoldiers.contains(enemy)) {
+        _mSoldiers.eraseObject(enemy);
+        CCLOG("erase enemy when %s", event->getEventName().c_str());
+    }
+}
+
+void MEnemyColonel::registerEvents() {
+    EventDispatcher* dispatcher = Director::getInstance()->getEventDispatcher();
+    EventListenerCustom* entityGoOutScreen = EventListenerCustom::create("entity_go_out",
+                                                                         CC_CALLBACK_1( MEnemyColonel::checkSolderFleeOrDead, this));
+    dispatcher->addEventListenerWithFixedPriority(entityGoOutScreen, 1);
+}
+
+void MEnemyColonel::unregisterEvents() {
+    EventDispatcher* dispatcher = Director::getInstance()->getEventDispatcher();
+    dispatcher->removeCustomEventListeners("entity_go_out");
 }
 
 bool MEnemyColonel::flee(float dt) {
     for (auto iter = _mSoldiers.begin(); iter != _mSoldiers.end(); iter++) {
-        (*iter)->unscheduleUpdate();
+     //   (*iter)->unscheduleUpdate();
+        (*iter)->setFlee(true);
         float dist = (*iter)->getPosition().getDistance((*iter)->getPosition() + Vec2(0, _fleeSpeed*dt));
         (*iter)->forward(dist);
     }

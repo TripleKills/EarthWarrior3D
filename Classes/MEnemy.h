@@ -20,12 +20,14 @@ class MEnemy : public MAirCraft {
 public:
     void onEnter();
     virtual void update(float dt);
-    
+    void setFlee(bool flee) {_isInFlee = flee;};
 protected:
     virtual void initWithJson(Json* document);
-    MEnemy() : _weapon(nullptr){};
+    MEnemy() : _weapon(nullptr), _isInFlee(false){};
 private:
     MWeapon2* _weapon;
+protected:
+    bool _isInFlee;
     
 };
 

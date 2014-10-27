@@ -8,6 +8,7 @@
 
 #include "MGameEntity.h"
 #include "MStringUtils.h"
+#include "MEventData.h"
 
 USING_NS_CC;
 
@@ -87,15 +88,23 @@ void MGameEntity::setFace(EntityFaces face) {
 
 void MGameEntity::checkScreenState(float dt) {
     _checkScreenTimePassed += dt;
-    if (_checkScreenTimePassed > _checkScreenInterval) {
+    if (_checkScreenTimePassed < _checkScreenInterval) {
         return;
     }
     _checkScreenTimePassed -= _checkScreenInterval;
-    ScreenState curState = isInScreen() ? sOut : sIn;
+    ScreenState curState = isInScreen() ? sIn : sOut;
     if (curState == sOut && _screenState == sIn) {
         // enemy went out of screen
-        CCLOG("went out of screen");
+        EventCustom ce("entity_go_out");
+        ValueMap* vm = new ValueMap;
+        (*vm)["seconds"] = 1;
+        MEventData* data = new MEventData(this, vm);
+        ce.setUserData(data);
+        EventDispatcher* dispatcher = Director::getInstance()->getEventDispatcher();
+        dispatcher->dispatchEvent(&ce);
+        CC_SAFE_DELETE(data);
     }
+    
     _screenState = curState;
 }
 

@@ -14,6 +14,8 @@
 
 class MGameController {
 public:
+    ~MGameController();
+    
     static MGameController* getInstance() {
         if (nullptr == _sInstance) {
             _sInstance = new MGameController();
@@ -25,11 +27,14 @@ public:
     
     MGameEntity* getRandomEnemy() {return _aliveEnemys.getRandomObject();};
     
+    void registerEvents();
+    void onEntityGoOutScreen(cocos2d::EventCustom* event);
+    
 public:
     static cocos2d::Vector<MGameEntity*> _aliveEnemys;
 private:
     static MGameController* _sInstance;
-    MGameController(){ _player = nullptr; };
+    MGameController();
 };
 
 #endif

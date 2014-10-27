@@ -5,7 +5,7 @@
             "hp": 1000,
             "modelImg": "planes/e1.png",
             "modelType": "2d",
-            "speed": 10,
+            "speed": 100,
             "weapon": {
                 "weaponId": "w_1",
                 "position": "0,0"
